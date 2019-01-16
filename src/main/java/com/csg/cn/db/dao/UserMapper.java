@@ -1,7 +1,7 @@
-package com.csg.cn.dao;
+package com.csg.cn.db.dao;
 
-import com.csg.cn.entity.User;
-import com.csg.cn.entity.UserExample;
+import com.csg.cn.db.entity.User;
+import com.csg.cn.db.entity.UserExample;
 import org.apache.ibatis.annotations.Select;
 import tk.mybatis.mapper.common.Mapper;
 

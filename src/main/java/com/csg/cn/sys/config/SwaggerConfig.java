@@ -1,4 +1,4 @@
-package com.csg.cn.config;
+package com.csg.cn.sys.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

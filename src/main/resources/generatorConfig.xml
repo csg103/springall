@@ -26,11 +26,11 @@
         <sqlMapGenerator targetPackage="${targetXMLPackage}"  targetProject="${targetResourcesProject}"/>
         <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}" type="XMLMAPPER" />
 
-        <!--<table tableName="t_sys_user" domainObjectName="SysUser" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
-        <!--<table tableName="t_sys_role" domainObjectName="SysRole" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
-        <!--<table tableName="t_sys_permission" domainObjectName="SysPermission" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
-        <!--<table tableName="t_sys_user_role" domainObjectName="SysUserRole" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
-        <!--<table tableName="t_sys_role_permission" domainObjectName="SysRolePermission" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
+        <table tableName="t_sys_user" domainObjectName="SysUser" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>
+        <table tableName="t_sys_role" domainObjectName="SysRole" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>
+        <table tableName="t_sys_permission" domainObjectName="SysPermission" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>
+        <table tableName="t_sys_user_role" domainObjectName="SysUserRole" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>
+        <table tableName="t_sys_role_permission" domainObjectName="SysRolePermission" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>
         <!--<table tableName="t_vip_matchmaker" domainObjectName="VipMachMaker" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
 
         <!--<table tableName="t_vip_mes_matchmaker" domainObjectName="VipMesMatchMaker" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
@@ -50,7 +50,7 @@
         <!--<table tableName="t_balance_alter_record" domainObjectName="BalanceAlterRecord" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
         <!--<table tableName="t_gift_record" domainObjectName="GiftRecord" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
         <!--<table tableName="t_user" domainObjectName="OfflineMessage" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
-        <table tableName="t_user_admin" domainObjectName="UserAdmin" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>
+        <!--<table tableName="t_user_admin" domainObjectName="UserAdmin" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
 
     </context>
 </generatorConfiguration>

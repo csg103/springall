@@ -1,4 +1,4 @@
-package com.csg.cn.entity;
+package com.csg.cn.db.entity;
 
 import java.util.Date;
 import javax.persistence.*;

@@ -1,8 +1,8 @@
 package com.csg.cn;
 
-import com.csg.cn.dao.UserMapper;
-import com.csg.cn.entity.User;
-import com.csg.cn.entity.UserExample;
+import com.csg.cn.db.dao.UserMapper;
+import com.csg.cn.db.entity.User;
+import com.csg.cn.db.entity.UserExample;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
