@@ -1,0 +1,23 @@
+.vipLabel{
+    text-align: left;
+    font-size: 14px;
+    width: 60px;
+    letter-spacing: 1px;
+    padding-left: 25px;
+    padding-right: 15px;
+}
+.vipInput{
+    margin-left: 100px;
+    margin-right:25px;
+}
+.vipCheckBlock{
+    float: left;
+    display: inline;
+    width: 130px;
+}
+.layui-form-checkbox span{
+    width: 56px;
+}
+.layui-form-radio *{
+    letter-spacing: 1px;
+}

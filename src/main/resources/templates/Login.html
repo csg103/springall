@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" th:href="@{/css/font.css}">
+    <link rel="stylesheet" th:href="@{/css/xadmin.css}">
+    <link rel="stylesheet" th:href="@{/third_party/layui/css/layui.css}">
+    <script type="text/javascript" th:src="@{/js/jquery-1.11.1.min.js}"></script>
+    <script th:src="@{/third_party/layui/layui.js}" charset="utf-8"></script>
+    <script type="text/javascript" th:src="@{/js/xadmin.js}"></script>
+    <script th:src="@{/js/md5.js}"></script>
+
+</head>
+<body class="login-bg">
+
+<div class="login">
+    <div class="message">x-admin2.0-管理登录</div>
+    <div id="darkbannerwrap"></div>
+
+    <form class="layui-form" >
+        <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+        <hr class="hr15">
+        <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+        <hr class="hr15">
+        <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
+        <hr class="hr20" >
+    </form>
+</div>
+
+<script type="text/javascript">
+        layui.use(['form','layer','jquery'], function(){
+
+            // 操作对象
+            var form = layui.form;
+            var $ = layui.jquery;
+            form.on('submit(login)',function (data) {
+
+                var newpwd = hex_md5(data.field.password)
+
+                data.field.password = newpwd
+                $.ajax({
+                    url:'ajaxLogin',
+                    data:data.field,
+                    dataType:'json',
+                    type:'post',
+                    success:function (data) {
+
+                        console.log(data.code)
+                        if (data.code == '0000'){
+                            location.href = "home";
+                        }else{
+                            layer.msg('登录名或密码错误');
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert( textStatus+"--------"+XMLHttpRequest.responseText+"--------"+errorThrown); //获取的信息即是异常中的Message
+                    }
+
+                })
+                return false;
+            });
+        })
+
+
+</script>
+
+
+<!-- 底部结束 -->
+</body>
+</html>
