@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单管理——订单查询</title>
+    <link rel="icon" href="icon.png" type="image/x-icon" />
+    <link href="../layui/css/layui.css" rel="stylesheet" />
+    <link href="../css/order.css" rel="stylesheet" />
+    <style>
+
+    </style>
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">湖北网通仓储平台</div>
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
+                <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
+                <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="">个人中心<span class="layui-badge-dot"></span></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                        <span>吴强</span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                        <dd><a href="">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">订单管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="01_order_list.html">订单查询</a></dd>
+                            <dd><a href="05_picking_list.html">拣货单号查询</a></dd>
+                            <dd><a href="10_transport_list.html">运单号查询</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">退货管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="15_return_list.html">退货接收单</a></dd>
+                            <dd><a href="16_return_list.html">退货交接单</a></dd>
+                            <dd><a href="17_return_list.html">退货审核</a></dd>
+                            <dd><a href="18_return_list.html">退货审核异常表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">仓库管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="40_purchase_list.html">到货接收单</a></dd>
+                            <dd><a href="41_purchase_list.html">入库单查询</a></dd>
+                            <dd><a href="50_goods_list.html">库存查询</a></dd>
+                            <dd><a href="60_returnForm_list.html">退货单查询</a></dd>
+                            <dd><a href="70_store_list.html">仓位调整</a></dd>
+                            <dd><a href="80_inventory_list.html">盘点单查询</a></dd>
+                            <dd><a href="90_inventory_list.html">盘点盈亏表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">权限管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="">人员管理</a></dd>
+                            <dd><a href="">权限管理</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div class="layui-fluid">
+                <div class="h15"></div>
+                <div class="layui-row">
+                    <span class="layui-breadcrumb" lay-separator="/">
+                        <a href="">订单管理</a>
+                        <a><cite>退货查询</cite></a>
+                    </span>
+                </div>
+                <hr class="layui-bg-gray">
+
+                <form class="layui-form">
+                    <div class="h10"></div>
+                    <div class="layui-row layui-col-space20">
+                        <div class="layui-form-item layui-col-md4">
+                            <input type="text" id="orderNum" placeholder="请输入订单号查询" autocomplete="off" class="layui-input border5">
+                        </div>
+                        <div class="layui-col-md2">
+                            <select name="channel" lay-verify="">
+                                <option value="">请选择购买渠道</option>
+                                <option value="010">麦乐商城</option>
+                                <option value="021">自营平台</option>
+                            </select>
+                        </div>
+                        <div class="layui-col-md2">
+                            <select name="goodsType" lay-verify="">
+                                <option value="">请选择商品类型</option>
+                                <option value="010">卡号</option>
+                                <option value="021">实物类</option>
+                                <option value="021">终端类</option>
+                            </select>
+                        </div>
+                        <div class="layui-col-md2">
+                            <button class="layui-btn border5" id="search">查询</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="h10"></div>
+                <div class="layui-row">
+                    <div class="right">
+                        <button class="layui-btn border5" id="time_uuid">新建订单</button>
+                        <button class="layui-btn border5" id="uuid">生成运单号</button>
+                        <button class="layui-btn border5" id="alertMsg">生成拣货单</button>
+                    </div>
+                    <div class="clearboth"></div>
+                </div>
+
+                <!-- 表格信息 -->
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="" lay-skin="primary">
+                            </th>
+                            <th>订单号</th>
+                            <th>用户名</th>
+                            <th>创建时间</th>
+                            <th>订单类型</th>
+                            <th>商品类型</th>
+                            <th>运单号</th>
+                            <th>拣货单号</th>
+                            <th>订单操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table">
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or1683928715117566</td>
+                            <td>周以柳</td>
+                            <td>2018/09/08 07:14</td>
+                            <th>麦乐商城</th>
+                            <td>卡号</td>
+                            <td>3691599553519972</td>
+                            <td>jh1379126958239422</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show1">生成运单</button>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show2">生成拣货单</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or5829498337832852</td>
+                            <td>崔清心</td>
+                            <td>2017/08/06 08:30</td>
+                            <th>自营平台</th>
+                            <td>卡号</td>
+                            <td>3691599553519972</td>
+                            <td>jh1719322389324263</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">
+                                        查看
+                                    </button>
+                                </a>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show1">生成运单</button>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show2">生成拣货单</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or4788451867981746</td>
+                            <td>沈悦恺</td>
+                            <td>2018/02/04 04:55</td>
+                            <th>自营平台</th>
+                            <td>实物类</td>
+                            <td>4372819280136398</td>
+                            <td>jh8185465864817692</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">
+                                        查看
+                                    </button></a>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show1">生成运单</button>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show2">生成拣货单</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or8468143907110272</td>
+                            <td>黎杉月</td>
+                            <td>2017/02/05 01:02</td>
+                            <th>自营平台</th>
+                            <td>终端类</td>
+                            <td>3691599553519972</td>
+                            <td>jh1719322389324263</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">
+                                        查看
+                                    </button></a>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show1">生成运单</button>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show2">生成拣货单</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or5310288592963478</td>
+                            <td>谭幼枫</td>
+                            <td>2017/02/05 01:02</td>
+                            <th>自营平台</th>
+                            <td>实物类、终端类</td>
+                            <td>8410379787102869</td>
+                            <td></td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">
+                                        查看
+                                    </button></a>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show1">生成运单</button>
+                                <button class="layui-btn layui-btn-sm show2">生成拣货单</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or2938162923821855</td>
+                            <td>贾语雪</td>
+                            <td>2018/06/11 05:34</td>
+                            <th>自营平台</th>
+                            <td>卡号、终端类</td>
+                            <td>6409428748466555</td>
+                            <td></td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">
+                                        查看
+                                    </button></a>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show1">生成运单</button>
+                                <button class="layui-btn layui-btn-sm show2">生成拣货单</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or7280136677556545</td>
+                            <td>龚恬静</td>
+                            <td>2018/06/07 04:11</td>
+                            <th>自营平台</th>
+                            <td>卡号</td>
+                            <td></td>
+                            <td>jh2545187101261153</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">
+                                        查看
+                                    </button></a>
+                                <button class="layui-btn  layui-btn-sm show1">生成运单</button>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show2">生成拣货单</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or2842291756441511</td>
+                            <td>贾米莱</td>
+                            <td>2018/02/03 10:34</td>
+                            <th>自营平台</th>
+                            <td>实物类</td>
+                            <td>9053407422728211</td>
+                            <td></td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">
+                                        查看
+                                    </button>
+                                </a>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm show1">生成运单</button>
+                                <button class="layui-btn layui-btn-sm show2">生成拣货单</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="page"></div>
+                <div class="layui-footer">
+                    <img src="../images/logo.png" class="logo" alt="">
+
+                    <span class="logo_title">© 2015-2030 浩鲸云计算科技股份有限公司 版权所有| All Rights Reserved </span>
+                </div>
+            </div>
+        </div>
+
+        <div id="model" style="display:none;" class="insert_model">
+            <form class="layui-form layui-row">
+                <div class="layui-form-item layui-col-md12">
+                    <label class="layui-form-label">商品</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="" placeholder="请输入需要添加的商品" autocomplete="off" class="layui-input layui-col-md6">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-md12">
+                    <label class="layui-form-label">请选择类型</label>
+                    <div class="layui-input-block">
+                        <select name="interest" lay-filter="aihao">
+                            <option value="0">卡号</option>
+                            <option value="1">实物</option>
+                            <option value="1">终端</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-md12">
+                    <label class="layui-form-label">订单类型</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="sex" value="1" title="自营订单" checked>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text layui-col-md12">
+                    <label class="layui-form-label">请填写备注</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-md12">
+                    <div class="layui-input-block">
+                        <button class="layui-btn submit_buttn" lay-submit lay-filter="*">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+                <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+            </form>
+        </div>
+
+    </div>
+
+
+    </div>
+
+</body>
+<script src="../js/jquery.js"></script>
+<script src="../layui/layui.all.js"></script>
+<script>
+    var count = 50;
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+    });
+
+    layui.use('laypage', function () {
+        var laypage = layui.laypage;
+
+        //执行一个laypage实例
+        laypage.render({
+            elem: 'page', //注意，这里的 test1 是 ID，不用加 # 号
+            count: count //数据总数，从服务端得到
+        });
+    });
+    layui.use('form', function () {
+        var form = layui.form;
+        var channel = "";
+        var goodsType = "";
+
+        form.on('select()', function (data) {
+            // console.log(data.elem.name); //得到select原始DOM对象
+            // console.log("data.value" + data.value); //得到被选中的值
+            var name = data.elem.name;
+            var val = data.value;
+            switch (name) {
+                case "channel":
+                    channel = val;
+                    break;
+                case "goodsType":
+                    goodsType = val;
+                    break;
+                default:
+                    break;
+            }
+            console.log(channel, goodsType);
+
+        });
+        $("#search").click(function () {
+            var orderNum = $("#orderNum").val();
+            console.log("orderNum = "+orderNum);
+            console.log("channel = "+channel);
+            console.log("goodsType = "+goodsType);
+            
+            return false;
+            // $("#table tr:first").show().nextAll().hide();
+            // count = 1;
+            // layui.use('laypage', function () {
+            //     var laypage = layui.laypage;
+            //     laypage.render({
+            //         elem: 'page', //注意，这里的 test1 是 ID，不用加 # 号
+            //         count: count //数据总数，从服务端得到
+            //     });
+            // });
+            // return false;
+        })
+
+        form.on('submit(*)', function (data) {
+            layer.msg('创建成功', { icon: -1, time: 2000 });
+            return false;
+        });
+    });
+    function uuid() {
+        var array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2];
+        var str = "";
+        for (var i = 0; i < 16; i++) {
+            var rondmon = (Math.random() * 10).toFixed(0);
+            str = str + array[rondmon];
+        }
+        console.log(str)
+    }
+
+    function timeUuid() {
+        var year = [2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018,];
+
+        var month = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+
+        var day = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"];
+
+        var hour = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "01", "02", "03"];
+
+        var minu = ["11", "02", "23", "34", "55", "06", "07", "18", "09", "30", "14", "42", "13", "14", "15"];
+
+        for (var i = 0; i < 10; i++) {
+            var str = "";
+            var rondmon = 0;
+            rondmon = (Math.random() * 10).toFixed(0);
+            // str = str + year[rondmon] + "/" + month[rondmon] + "/" + month[rondmon] + " " + hour[rondmon] + ":" + minu[rondmon];
+            str = str + year[rondmon];
+            rondmon = (Math.random() * 10).toFixed(0);
+            str = str + "/" + month[rondmon];
+            rondmon = (Math.random() * 10).toFixed(0);
+            str = str + "/" + day[rondmon] + " ";
+            rondmon = (Math.random() * 10).toFixed(0);
+            str = str + hour[rondmon] + ":";
+            rondmon = (Math.random() * 10).toFixed(0);
+            str = str + minu[rondmon];
+            console.log(str);
+        }
+
+    }
+
+    $("#uuid").click(function () {
+        for (var i = 0; i < 10; i++) {
+            uuid();
+        }
+        layer.msg('已经运单号', { icon: -1, time: 1000 });
+    })
+    $("#time_uuid").click(function () {
+        timeUuid();
+        layer.open({
+            title: "新建订单",
+            type: 1,
+            content: $('#model'),
+            area: ['500px'],
+            shade: "rgba(0,0,0,0.3)",
+            anim: 1,
+            end: function (index, layero) {
+                $('#model').hide();
+            }
+        });
+    })
+    $("#alertMsg").click(function () {
+        layer.msg('已经生成拣货单', { icon: -1, time: 1000 });
+    })
+
+    $(".show1").click(function () {
+        layer.msg('已经生成运单', { icon: -1, time: 1000 });
+    })
+    $(".show2").click(function () {
+        layer.msg('已经生成拣货单', { icon: -1, time: 1000 });
+    })
+
+
+
+</script>
+<script>
+
+</script>
+
+</html>

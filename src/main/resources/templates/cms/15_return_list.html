@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>退货接收单</title>
+    <link href="../layui/css/layui.css" rel="stylesheet" />
+    <link href="../css/order.css" rel="stylesheet" />
+    <style>
+
+    </style>
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+            <div class="layui-header">
+                    <div class="layui-logo">湖北网通仓储平台</div>
+                    <!-- 头部区域（可配合layui已有的水平导航） -->
+                    <ul class="layui-nav layui-layout-left">
+                            <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
+                            <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
+                            <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
+                            <!-- <li class="layui-nav-item">
+                                        <a href="javascript:;">公司文化</a>
+                                        <dl class="layui-nav-child">
+                                            <dd><a href="">邮件管理</a></dd>
+                                            <dd><a href="">消息管理</a></dd>
+                                            <dd><a href="">授权管理</a></dd>
+                                        </dl>
+                                    </li> -->
+                        </ul>
+                    <ul class="layui-nav layui-layout-right">
+                        <li class="layui-nav-item">
+                            <a href="">个人中心<span class="layui-badge-dot"></span></a>
+                        </li>
+                        <li class="layui-nav-item">
+                            <a href="javascript:;">
+                                <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                                <span>管理员</span>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="">基本资料</a></dd>
+                                <dd><a href="">安全设置</a></dd>
+                                <dd><a href="">退出</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item">
+                        <a class="" href="javascript:;">订单管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="01_order_list.html">订单查询</a></dd>
+                            <dd><a href="05_picking_list.html">拣货单号查询</a></dd>
+                            <dd><a href="10_transport_list.html">运单号查询</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item  layui-nav-itemed">
+                        <a href="javascript:;">退货管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="15_return_list.html">退货接收单</a></dd>
+                            <dd><a href="16_return_list.html">退货交接单</a></dd>
+                            <dd><a href="17_return_list.html">退货审核</a></dd>
+                            <dd><a href="18_return_list.html">退货审核异常表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">仓库管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="40_purchase_list.html">到货接收单</a></dd>
+                            <dd><a href="41_purchase_list.html">入库单查询</a></dd>
+                            <dd><a href="50_goods_list.html">库存查询</a></dd>
+                            <dd><a href="60_returnForm_list.html">退货单查询</a></dd>
+                            <dd><a href="70_store_list.html">仓位调整</a></dd>
+                            <dd><a href="80_inventory_list.html">盘点单查询</a></dd>
+                            <dd><a href="90_inventory_list.html">盘点盈亏表</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                            <a href="javascript:;">权限管理</a>
+                            <dl class="layui-nav-child">
+                                <dd><a href="">人员管理</a></dd>
+                                <dd><a href="">权限管理</a></dd>
+                            </dl>
+                        </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div class="layui-fluid">
+                <div class="h15"></div>
+                <div class="layui-row">
+                    <span class="layui-breadcrumb" lay-separator="/">
+                        <a href="15_return_list.html">退货接收单</a>
+                        <a><cite>接收单详细</cite></a>
+                    </span>
+                </div>
+                <hr class="layui-bg-gray">
+
+                <form class="layui-form" action="">
+                    <div class="h10"></div>
+                    <div class="layui-row layui-col-space20">
+                        <div class="layui-form-item layui-col-md4">
+                            <input type="text" name="title" required lay-verify="required" placeholder="请输入订单号、运单号、手机号、串号查询"
+                                autocomplete="off" class="layui-input border5">
+                        </div>
+                        <div class="layui-col-md2">
+                            <select name="city" lay-verify="">
+                                <option value="">请选择购买渠道</option>
+                                <option value="010">麦乐商城</option>
+                                <option value="021">自营平台</option>
+                            </select>
+                        </div>
+                        <div class="layui-col-md2">
+                            <button class="layui-btn border5">查询</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="h10"></div>
+                <!-- <blockquote class="layui-elem-quote">详细信息</blockquote> -->
+
+                <div class="layui-row">
+                    <div class="right">
+                        <button class="layui-btn border5">同意退货</button>
+                    </div>
+                    <div class="clearboth"></div>
+                </div>
+
+                <!-- 表格信息 -->
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <th>订单号</th>
+                            <th>用户名</th>
+                            <th>创建时间</th>
+                            <th>手机号</th>
+                            <th>承运商</th>
+                            <th>运单号</th>
+                            <th>状态</th>
+                            <th>订单操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or7918256288087636</td>
+                            <td>吴华清</td>
+                            <td>2018/06/03 07:18</td>
+                            <th>13810213566</th>
+                            <td>商城</td>
+                            <td>5281767752131192</td>
+                            <td>同意退货</td>
+                            <td>
+                                <a href="30_return_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <button class="layui-btn layui-btn-disabled layui-btn-danger layui-btn-sm">同意退货</button>
+                                <button class="layui-btn layui-btn-danger border5 layui-btn-sm">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or1406160421227180</td>
+                            <td>石立诚</td>
+                            <td>2018/08/08 07:02</td>
+                            <th>13911664411</th>
+                            <td>商城</td>
+                            <td>7424783337015485</td>
+                            <td>同意退货</td>
+                            <td>
+                                <a href="30_return_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <button class="layui-btn layui-btn-disabled layui-btn-danger layui-btn-sm">同意退货</button>
+                                <button class="layui-btn layui-btn-danger border5 layui-btn-sm">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or7424783337015485</td>
+                            <td>万明哲</td>
+                            <td>2018/03/05 05:18</td>
+                            <th>13581909888</th>
+                            <td>商城</td>
+                            <td>7129335494135436</td>
+                            <td>拒接</td>
+                            <td>
+                                <a href="30_return_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm">同意退货</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-disabled border5 layui-btn-sm">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or6918818083735861</td>
+                            <td>侯立果</td>
+                            <td>2018/07/10 08:30</td>
+                            <th>15711137888</th>
+                            <td>商城</td>
+                            <td>9433927372526594</td>
+                            <td>同意退货</td>
+                            <td>
+                                <a href="30_return_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm">同意退货</button>
+                                <button class="layui-btn layui-btn-danger border5 layui-btn-sm">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or8219219278477243</td>
+                            <td>徐俊健</td>
+                            <td>2018/05/07 05:14</td>
+                            <th>13581884488</th>
+                            <td>商城</td>
+                            <td>5945253443722312</td>
+                            <td>拒绝</td>
+                            <td>
+                                <a href="30_return_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm">同意退货</button>
+                                <button class="layui-btn layui-btn-danger border5 layui-btn-disabled layui-btn-sm">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or3495597188716154</td>
+                            <td>崔建树</td>
+                            <td>2018/03/04 10:09</td>
+                            <th>13621160914</th>
+                            <td>商城</td>
+                            <td>9140184398188511</td>
+                            <td>拒绝</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm">同意退货</button>
+                                <button class="layui-btn layui-btn-danger border5 layui-btn-disabled layui-btn-sm">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or1299501391128737</td>
+                            <td>傅天泽</td>
+                            <td>2018/06/10 02:55</td>
+                            <th>15011199364</th>
+                            <td>商城</td>
+                            <td>0132891188814644</td>
+                            <td>拒绝</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm">同意退货</button>
+                                <button class="layui-btn layui-btn-danger border5 layui-btn-disabled layui-btn-sm">拒绝</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or9196389361647566</td>
+                            <td>白元白</td>
+                            <td>2018/08/03 05:09</td>
+                            <th>13671122364</th>
+                            <td>商城</td>
+                            <td>4532529795138110</td>
+                            <td>同意退货</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <button class="layui-btn layui-btn-disabled layui-btn-sm">同意退货</button>
+                                <button class="layui-btn layui-btn-danger border5 layui-btn-sm">拒绝</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="page"></div>
+                <div class="layui-footer">
+                        <img src="../images/logo.png" class="logo" alt="">
+
+                        <span class="logo_title">© 2015-2030 浩鲸云计算科技股份有限公司 版权所有| All Rights Reserved </span>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+
+</body>
+<script src="../js/jquery.js"></script>
+<script src="../layui/layui.all.js"></script>
+<script>
+    //JavaScript代码区域
+    layui.use('element', function () {
+        var element = layui.element;
+
+    });
+    layui.use('laypage', function () {
+        var laypage = layui.laypage;
+
+        //执行一个laypage实例
+        laypage.render({
+            elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
+            , count: 50 //数据总数，从服务端得到
+        });
+    });
+    $("#transport").click(function () {
+        layer.open({
+            title: "物流单号：3691599553519972",
+            type: 1,
+            content: $('#model'),
+            area: ['500px', '700px'],
+            shade: "rgba(0,0,0,0.3)",
+            anim: 1,
+            end: function (index, layero) {
+                $('#model').hide();
+            }
+        });
+    })
+</script>
+<script>
+
+</script>
+
+</html>
