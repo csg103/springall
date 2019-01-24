@@ -12,6 +12,7 @@ public class testa {
     private testb d;
     private String e;
 
+
     public String getE() {
         return e;
     }
