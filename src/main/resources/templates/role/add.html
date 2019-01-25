@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>角色管理</title>
+    <div th:include="common/common"></div>
+    <script th:src="@{/third_party/jstree/dist/jstree.js}"></script>
+    <script th:src="@{/js/role/add.js}"></script>
+    <link rel="stylesheet" th:href="@{/third_party/jstree/dist/themes/default/style.css}">
+</head>
+<body>
+<div class="x-body">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label for="L_role" class="layui-form-label">
+                <span class="x-red">*</span>角色名
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <input type="text" id="L_role" name="role" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <!--<div class="layui-form-mid layui-word-aux">-->
+            <!--<span class="x-red">*</span>-->
+            <!--</div>-->
+        </div>
+        <div class="layui-form-item">
+            <label for="L_flag" class="layui-form-label">
+                <span class="x-red">*</span>是否启用
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <!--<input type="text" id="L_isMenu" name="isMenu" required=""-->
+                <!--autocomplete="off" class="layui-input">-->
+                <select name="flag" id="L_flag" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_description" class="layui-form-label">
+                描述
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <textarea name="description" id="L_description" placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_description" class="layui-form-label">
+                选择权限
+            </label>
+            <div id="permissionTree" style="margin-left: 20%"></div>
+
+        </div>
+        <div class="layui-form-item">
+            <label for="L_description" class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="add" lay-submit="">
+                增加
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

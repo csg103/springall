@@ -19,6 +19,7 @@ public class SysPermission {
     @Column(name = "c_pid")
     private String pid;
 
+    @Transient
     private String UserId;
 
     public String getUserId() {
