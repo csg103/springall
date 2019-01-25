@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>仓库管理</title>
+    <div th:include="common/common"></div>
+</head>
+<body>
+<div class="x-body">
+    <form class="layui-form">
+        <input type="hidden" name="id" id="id" th:value="${sysCompany.id}">
+        <input type="hidden" name="lastCompanyName" th:value="${sysCompany.companyName}">
+        <div class="layui-form-item">
+            <label for="L_role" class="layui-form-label">
+                <span class="x-red">*</span>仓库名称
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <input type="text" id="L_role" name="companyName" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input" th:value="${sysCompany.companyName}">
+            </div>
+            <!--<div class="layui-form-mid layui-word-aux">-->
+            <!--<span class="x-red">*</span>-->
+            <!--</div>-->
+        </div>
+        <div class="layui-form-item">
+            <label for="L_flag" class="layui-form-label">
+                仓库电话
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <input type="text" id="L_flag" name="companyPhone" maxlength="11" required="" lay-verify=""
+                       autocomplete="off" class="layui-input" th:value="${sysCompany.companyPhone}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_description" class="layui-form-label">
+                仓库简介
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <textarea name="companyDescription" id="L_description" placeholder="请输入内容" class="layui-textarea" th:text="${sysCompany.companyDescription}">
+                </textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_Status" class="layui-form-label">
+                <span class="x-red">*</span>是否启用
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <!--<input type="text" id="L_isMenu" name="isMenu" required=""-->
+                <!--autocomplete="off" class="layui-input">-->
+                <select name="companyStatus" id="L_Status" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0" th:selected="${sysCompany.companyStatus == '0'}">否</option>
+                    <option value="1" th:selected="${sysCompany.companyStatus == '1'}">是</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_description" class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="save" lay-submit="">
+                保存
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+
+    layui.use(['form', 'layer'], function () {
+        $ = layui.jquery;
+        var form = layui.form
+            , layer = layui.layer;
+
+        form.on('submit(save)', function (data) {
+            console.log(data.field);
+
+            $.ajax({
+                url:ctx + 'company/saveEdit',
+                type:'post',
+                dataType:'json',
+                data:data.field,
+                success:function (data) {
+                    if (data.code == '0000'){
+                        layer.alert("编辑成功", {icon: 6},function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.loadData(parent.opts.current_page, parent.opts.items_per_page, '');
+                            parent.layer.close(index);
+                        });
+                    } else {
+                        layer.alert("编辑失败 " + data.message, {icon: 6},function (index) {
+                            layer.close(index);
+                        });
+                    }
+                }
+            })
+            return false;
+        });
+    });
+
+</script>
+</body>
+</html>

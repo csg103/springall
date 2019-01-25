@@ -10,10 +10,10 @@ $(function(){
             },
             data:{
                 'url': function (node) {
-                    return ctx + 'permission/getTreeWithState';
+                    return ctx + 'auth/getTreeWithState';
                 },
                 'data': function (node) {
-                    return {'pid': node.id, 'roleId' : $('#id').val()};
+                    return {'authParentId': node.id, 'roleId' : $('#id').val()};
                 }
             },
         },
@@ -54,7 +54,7 @@ $(function(){
                 traditional:true,
                 success:function(data){
                     if (data.code == '0000'){
-                        layer.alert("增加成功", {icon: 6},function () {
+                        layer.alert("编辑成功", {icon: 6},function () {
                             // 获得frame索引
                             var index = parent.layer.getFrameIndex(window.name);
                             //关闭当前frame
@@ -62,7 +62,7 @@ $(function(){
                             parent.layer.close(index);
                         });
                     } else {
-                        layer.alert("增加失败 " + data.message, {icon: 5},function (index) {
+                        layer.alert("编辑失败 " + data.message, {icon: 5},function (index) {
                             layer.close(index)
                         });
                     }

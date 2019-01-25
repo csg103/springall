@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>权限管理</title>
+    <div th:include="common/common"></div>
+</head>
+<body>
+<div class="x-body">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label for="L_name" class="layui-form-label">
+                <span class="x-red">*</span>权限名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_name" name="authName" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <!--<div class="layui-form-mid layui-word-aux">-->
+                <!--<span class="x-red">*</span>-->
+            <!--</div>-->
+        </div>
+        <div class="layui-form-item">
+            <label for="L_url" class="layui-form-label">
+                <span class="x-red">*</span>链接
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_url" name="authUrl" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_permission" class="layui-form-label">
+                <span class="x-red">*</span>权限
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="L_permission" name="authPermission" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <input type="hidden" name="authParentId" th:value="${authParentId}">
+        <div class="layui-form-item">
+            <label for="L_isMenu" class="layui-form-label">
+                <span class="x-red">*</span>权限类型
+            </label>
+            <div class="layui-input-inline">
+                <!--<input type="text" id="L_isMenu" name="isMenu" required=""-->
+                       <!--autocomplete="off" class="layui-input">-->
+                <select name="authType" id="L_isMenu" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0">菜单</option>
+                    <option value="1">按钮</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_isMenu" class="layui-form-label">
+                <span class="x-red">*</span>权限排序
+            </label>
+            <div class="layui-input-inline">
+                <!--<input type="text" id="L_isMenu" name="isMenu" required=""-->
+                <!--autocomplete="off" class="layui-input">-->
+                <input type="text" id="L_authOrder" name="authOrder" required="" lay-verify="number"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_isMenu" class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="add" lay-submit="">
+                增加
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+            ,layer = layui.layer;
+
+        //自定义验证规则
+        // form.verify({
+        //     nikename: function(value){
+        //         if(value.length < 5){
+        //             return '昵称至少得5个字符啊';
+        //         }
+        //     }
+        //     ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+        //     ,repass: function(value){
+        //         if($('#L_pass').val()!=$('#L_repass').val()){
+        //             return '两次密码不一致';
+        //         }
+        //     }
+        // });
+
+        //监听提交
+        form.on('submit(add)', function(data){
+            console.log(data.field);
+            //发异步，把数据提交给php
+
+            $.ajax({
+                url:ctx + "auth/saveAdd",
+                type:'post',
+                dataType:'json',
+                data:data.field,
+                success:function(data){
+                    if (data.code == '0000'){
+                        layer.alert("增加成功", {icon: 6},function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.addNode("#permissionTree", data.data)
+                            parent.layer.close(index);
+                        });
+                    } else {
+                        layer.alert("增加失败 " + data.message, {icon: 6},function (index) {
+                            layer.close(index)
+                        });
+                    }
+                }
+            });
+            return false;
+        });
+
+
+    });
+</script>
+</body>
+</html>

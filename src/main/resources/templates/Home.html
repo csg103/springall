@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>后台登录-X-admin2.0</title>
+    <title>仓库系统</title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -13,29 +13,31 @@
 <body>
 <!-- 顶部开始 -->
 <div class="container">
-    <div class="logo"><a href="javascript:;">X-admin v2.0</a></div>
+    <div class="logo"><a href="javascript:;">仓库系统</a></div>
     <div class="left_open">
         <i title="展开左侧栏" class="iconfont">&#xe699;</i>
     </div>
-    <!--<ul class="layui-nav left fast-add" lay-filter="">-->
-        <!--<li class="layui-nav-item">-->
-            <!--<a href="javascript:;">+新增</a>-->
-            <!--<dl class="layui-nav-child"> &lt;!&ndash; 二级菜单 &ndash;&gt;-->
-                <!--<dd><a onclick="x_admin_show('资讯','http://www.baidu.com')"><i class="iconfont">&#xe6a2;</i>资讯</a></dd>-->
-                <!--<dd><a onclick="x_admin_show('图片','http://www.baidu.com')"><i class="iconfont">&#xe6a8;</i>图片</a></dd>-->
-                <!--<dd><a onclick="x_admin_show('用户','http://www.baidu.com')"><i class="iconfont">&#xe6b8;</i>用户</a></dd>-->
-            <!--</dl>-->
-        <!--</li>-->
-    <!--</ul>-->
+
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
             <a href="javascript:;" th:text="${username}"></a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                <dd><a id="change" th:value="${userId}">修改密码</a></dd>
                 <dd><a th:href="@{logout}">退出</a></dd>
             </dl>
         </li>
     </ul>
 
+    <ul class="layui-nav right" lay-filter="" th:if="${userCompanies!=null && userCompanies.size()>0}">
+        <li class="layui-nav-item">
+            <a href="javascript:;" th:text="${currentCompany}"></a>
+            <dl class="layui-nav-child">
+                <dd th:each="company, iterStat:${userCompanies}">
+                    <a th:text="${company.companyName}" th:id="${company.companyId}" onclick="changeCompany(event)"></a>
+                </dd>
+            </dl>
+        </li>
+    </ul>
 </div>
 <!-- 顶部结束 -->
 <!-- 中部开始 -->
@@ -57,7 +59,7 @@
         </ul>
         <div class="layui-tab-content">
             <!--<div class="layui-tab-item layui-show">-->
-                <!--<iframe src='./welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>-->
+            <!--<iframe src='./welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>-->
             <!--</div>-->
         </div>
     </div>
@@ -69,5 +71,49 @@
 <div class="footer">
     <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved</div>
 </div>
+<script>
+
+    $(function () {
+        $('#change').on('click', function () {
+            var userId = $('#change').attr('value');
+            x_admin_show("修改密码",ctx + "user/change?userId=" + userId, 500, 400)
+        });
+    });
+
+    function changeCompany(event) {
+        var obj = event.srcElement || event.target;
+
+        layui.use(['layer'], function () {
+            $ = layui.jquery;
+            var layer = layui.layer;
+
+            layer.confirm('是否切换到仓库<span style="color: #FF5722; font-size: 16px;">'+ obj.innerText +'</span>?', function (index) {
+                $.ajax({
+                    url : ctx + 'changeCompany',
+                    type:'post',
+                    dataType:'json',
+                    data:{
+                        companyId:obj.id,
+                        companyName:obj.innerText
+                    },
+                    success:function(data){
+                        if (data.code == '0000') {
+                            layer.alert("切换成功", {icon: 6},function (i) {
+                                //关闭当前frame
+                                history.go(0);
+                            });
+                        }else {
+                            layer.alert("切换失败：" + data.message, {icon: 5},function (i) {
+                                //关闭当前frame
+                                layer.close(i)
+                            });
+                        }
+                    }
+                })
+            })
+        });
+    }
+
+</script>
 </body>
 </html>

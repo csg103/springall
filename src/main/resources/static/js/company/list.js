@@ -12,6 +12,10 @@ var opts = {
 $(function(){
     loadData(opts.current_page, opts.items_per_page);
 
+    $('#search').on('click', function () {
+        loadData(opts.current_page, opts.items_per_page);
+    });
+
     $('#deleteAll').on('click', function () {
         layui.use(['table'], function () {
             var table = layui.table;
@@ -22,7 +26,7 @@ $(function(){
                 for(k in data){
                     ids.push(data[k].id);
                 }
-                layer.confirm('是否删除选中公司?', function (index) {
+                layer.confirm('是否删除选中仓库?', function (index) {
                     $.ajax({
                         url:ctx+'company/deleteAll',
                         type:'post',
@@ -33,11 +37,11 @@ $(function(){
                             if (data.code == '0000') {
                                 layer.alert("删除成功", {icon: 6},function (i) {
                                     //关闭当前frame
-                                    loadData(opts.current_page, opts.items_per_page)
+                                    loadData(opts.current_page, opts.items_per_page);
                                     layer.close(i)
                                 });
                             }else {
-                                layer.alert("删除失败", {icon: 5},function (i) {
+                                layer.alert("删除失败，" + data.message, {icon: 5},function (i) {
                                     //关闭当前frame
                                     layer.close(i)
                                 });
@@ -59,15 +63,25 @@ function loadData(index, size){
             id:'id'
             ,elem: '#demo'
             ,height: 430
-            ,url: ctx + 'company/listAjax?index=' + index + '&size=' + size //数据接口
+            ,url: ctx + 'company/data?page=' + index + '&size=' + size + '&searchName=' + $('#searchName').val()//数据接口
             ,method: 'post'
             ,where:{index: index, size: size}
             ,cols: [[
                 {type:'checkbox'}
                 // ,{field: 'id', title: 'ID', }
-                ,{field: 'companyName', title: '门店名称'}
+                ,{field: 'companyName', title: '仓库名称'}
                 ,{field: 'companyPhone', title: '联系方式'}
-                ,{field: 'companyAddr', title: '门店地址', width:'30%'}
+                ,{field: 'companyDescription', title: '仓库简介', width:'30%'}
+                ,{field: 'companyStatus', title: '状态', width: '10%', templet: function (d) {
+                    var dom = ''
+                    if (d.companyStatus == 1){
+                        dom += '<a class="layui-btn layui-btn-xs" href="javascript:;">启用'
+                    } else {
+                        dom += '<a class="layui-btn layui-btn-xs layui-btn-danger" href="javascript:;">停用'
+                    }
+                    dom += '</a>'
+                    return dom;
+                }}
                 ,{title:'操作' ,fixed: 'right', width:150, align:'center', toolbar: '#toolbar'}
             ]],
             response:{
@@ -92,7 +106,7 @@ function loadData(index, size){
             } else if (layEvent == 'edit'){
                 editCompany(data.id);
             } else if (layEvent == 'del'){
-                layer.confirm('是否删除门店'+ data.companyName +'?', function(index){
+                layer.confirm('是否删除仓库<span style="color: #FF5722; font-size: 16px;">'+ data.companyName +'</span>?', function(index){
                     $.ajax({
                         url : ctx + 'company/delete',
                         type:'post',
@@ -104,11 +118,11 @@ function loadData(index, size){
                             if (data.code == '0000') {
                                 layer.alert("删除成功", {icon: 6},function (i) {
                                     //关闭当前frame
-                                    loadData(opts.current_page, opts.items_per_page)
+                                    loadData(opts.current_page, opts.items_per_page);
                                     layer.close(i)
                                 });
                             }else {
-                                layer.alert("删除失败", {icon: 5},function (i) {
+                                layer.alert("删除失败，" + data.message, {icon: 5},function (i) {
                                     //关闭当前frame
                                     layer.close(i)
                                 });
@@ -125,20 +139,6 @@ function generatePagination(total){
     $('#listPage').pagination(total, opts)
 }
 
-var addCompany = function () {
-    var add = layer.open({
-        type:2,
-        title:['添加门店', 'font-size:12px'],
-        content:ctx + 'company/toAdd',
-        area:['100%', '100%']
-    });
-}
-
 var editCompany = function (id) {
-    var edit = layer.open({
-        type:2,
-        title:['编辑门店', 'font-size:12px'],
-        content:ctx + 'company/edit?id=' + id,
-        area:['100%', '100%']
-    });
+    x_admin_show("编辑仓库",ctx + "company/edit?id=" + id, 500, 400)
 }

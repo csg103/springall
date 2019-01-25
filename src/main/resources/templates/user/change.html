@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>人员管理</title>
+    <div th:include="common/common"></div>
+</head>
+<body>
+<div class="x-body">
+    <form class="layui-form" lay-filter="editForm">
+        <input hidden="hidden" id="id" name="id" th:value="${financeUser.id}">
+        <div class="layui-form-item">
+            <label for="L_name" class="layui-form-label">
+                <span class="x-red">*</span>人员姓名
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <input type="text" id="L_name" name="name" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input" th:value="${financeUser.name}" readonly="readonly">
+            </div>
+            <!--<div class="layui-form-mid layui-word-aux">-->
+            <!--<span class="x-red">*</span>-->
+            <!--</div>-->
+        </div>
+        <div class="layui-form-item">
+            <label for="L_username" class="layui-form-label">
+                <span class="x-red">*</span>登录名
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <input type="text" id="L_username" name="username" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input" th:value="${financeUser.username}" readonly="readonly">
+            </div>
+            <!--<div class="layui-form-mid layui-word-aux">-->
+            <!--<span class="x-red">*</span>-->
+            <!--</div>-->
+        </div>
+        <div class="layui-form-item">
+            <label for="L_oldPassword" class="layui-form-label">
+                <span class="x-red">*</span>原密码
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <input type="password" id="L_oldPassword" name="oldPassword" required="required" lay-verify=""
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_newPassword" class="layui-form-label">
+                <span class="x-red">*</span>新密码
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <input type="password" id="L_newPassword" name="newPassword" required="required" lay-verify=""
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_confirm" class="layui-form-label">
+                <span class="x-red">*</span>确认新密码
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <input type="password" id="L_confirm" name="confirm" required="required" lay-verify="confirm"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_oldPassword" class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="save" lay-submit="">
+                保存
+            </button>
+        </div>
+    </form>
+</div>
+<script>
+
+    layui.use(['form', 'layer'], function () {
+        $ = layui.jquery;
+        var form = layui.form
+            , layer = layui.layer;
+
+        form.verify({
+            confirm:function (value, item) {
+                if($.trim($('#L_newPassword').val()) != $.trim($('#L_confirm').val())){
+                    return '新密码两次输入不一致';
+                }
+            }
+        });
+
+        form.on('submit(save)', function (data) {
+            console.log(data.field);
+
+            $.ajax({
+                url:ctx + 'user/saveChange',
+                type:'post',
+                dataType:'json',
+                data:data.field,
+                success:function (data) {
+                    if (data.code == '0000'){
+                        layer.alert("修改成功", {icon: 6},function () {
+                            // 获得frame索引
+                            var index = parent.layer.getFrameIndex(window.name);
+                            //关闭当前frame
+                            parent.layer.close(index);
+//                            parent.window.location.href = 'localhost:8086/logout';
+                        });
+                    } else {
+                        layer.alert("修改失败 " + data.message, {icon: 6},function (index) {
+                            layer.close(index);
+                        });
+                    }
+                }
+            })
+            return false;
+        });
+    });
+
+</script>
+</body>
+</html>

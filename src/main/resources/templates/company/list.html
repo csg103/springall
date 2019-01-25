@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>公司管理</title>
+    <div th:include="common/common"></div>
+    <script th:src="@{/js/company/list.js}"></script>
+</head>
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">列表</a>
+        <a href="">仓库</a>
+        <a>
+          <cite>展示</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <xblock>
+        <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
+        <button class="layui-btn" onclick="x_admin_show('添加仓库',ctx + 'company/add', 500, 400)"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" id="deleteAll"><i class="layui-icon"></i></button>
+        <!--<span class="x-right" style="line-height:40px">共有数据：88 条</span>-->
+        <button id="search" class="layui-btn" style="float: right;">搜索</button>
+        <div class="layui-input-inline" style="float: right">
+            <input id="searchName" type="text"  placeholder="仓库名称.." autocomplete="off" class="layui-input">
+        </div>
+        &nbsp;&nbsp;
+    </xblock>
+    <table class="layui-table" id="demo" lay-filter="user_table"></table>
+
+    <div class="page">
+        <div id="listPage">
+
+        </div>
+    </div>
+</div>
+<script type="text/html" id="toolbar">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script type="text/html" id="flagTemplate">
+
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csg.cn.db.dao.SysCompanyMapper">
+  <resultMap id="BaseResultMap" type="com.csg.cn.db.entity.SysCompany">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="company_phone" jdbcType="VARCHAR" property="companyPhone" />
+    <result column="company_description" jdbcType="VARCHAR" property="companyDescription" />
+    <result column="company_status" jdbcType="VARCHAR" property="companyStatus" />
+    <result column="company_parent_id" jdbcType="VARCHAR" property="companyParentId" />
+  </resultMap>
+
+  <resultMap id="SysCompanyCount" type="com.csg.cn.db.vo.SysCompanyCount" extends="BaseResultMap">
+    <result column="count" jdbcType="INTEGER" property="count"/>
+  </resultMap>
+
+  <resultMap id="SysCompanySimple" type="com.csg.cn.db.vo.SysCompanySimple">
+    <id column="id" jdbcType="VARCHAR" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, company_name, company_phone, company_description, company_status, company_parent_id
+  </sql>
+  <select id="countByExample" parameterType="com.csg.cn.db.entity.SysCompanyExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from t_sys_company
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+
+  <select id="getCompanyTreeWithState" resultMap="SysCompanyCount">
+    select b.*, (select count(1) from t_sys_company a where b.id = a.company_parent_id) as count
+    from t_sys_company b where b.company_parent_id = #{companyParentId} and company_status = '1'
+  </select>
+
+  <select id="userCompanies" resultMap="SysCompanySimple">
+    select a.id, a.company_name from t_sys_company a
+    left join t_sys_user_company b on a.id = b.company_id
+    where b.user_id = #{userId}
+    order by a.id
+  </select>
+</mapper>

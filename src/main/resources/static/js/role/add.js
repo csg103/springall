@@ -10,10 +10,10 @@ $(function(){
             },
             data:{
                 'url': function (node) {
-                    return ctx + 'permission/getTree';
+                    return ctx + 'auth/getTree';
                 },
                 'data': function (node) {
-                    return {'pid': node.id};
+                    return {'authParentId': node.id};
                 }
             },
         },

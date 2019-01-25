@@ -1,7 +1,9 @@
 package com.csg.cn.utils;
 
 
-import com.csg.cn.vo.MenuTree;
+
+
+import com.csg.cn.sys.tree.MenuTree;
 
 import java.util.List;
 
@@ -20,7 +22,7 @@ public class NavUtils {
                 sb.append("<a href='javascript:;'>");
                 sb.append("<i class='iconfont'>&#xe6b8;</i>");
                 sb.append("<cite>");
-                sb.append(t.getName());
+                sb.append(t.getAuthName());
                 sb.append("</cite>");
                 sb.append("<i class='iconfont nav_right'>&#xe697;</i>");
                 sb.append("</a>");
@@ -28,10 +30,10 @@ public class NavUtils {
                 sb.append(getMenuTree(ctx, t.getSubMenu()));
                 sb.append("</ul>");
             }else {
-                sb.append("<a _href='").append(ctx).append("/").append(t.getUrl()).append("'>");
+                sb.append("<a _href='").append(ctx).append("/").append(t.getAuthUrl()).append("'>");
                 sb.append("<i class='iconfont'>&#xe6b8;</i>");
                 sb.append("<cite>");
-                sb.append(t.getName());
+                sb.append(t.getAuthName());
                 sb.append("</cite>");
                 sb.append("</a>");
             }

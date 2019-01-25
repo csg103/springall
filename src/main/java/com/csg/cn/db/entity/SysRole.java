@@ -9,36 +9,30 @@ public class SysRole {
     private String id;
 
     /**
-     * 角色名
+     * 角色名称
      */
-    @Column(name = "c_role")
-    private String role;
+    @Column(name = "role_name")
+    private String roleName;
 
     /**
      * 角色描述
      */
-    @Column(name = "c_description")
-    private String description;
+    @Column(name = "role_description")
+    private String roleDescription;
 
     /**
-     * 启用状态 1 启用 0 停用
+     * 状态
+0：未启用
+1：启用
      */
-    @Column(name = "c_flag")
-    private Byte flag;
-
-
-    public List<SysPermission> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(List<SysPermission> permissions) {
-        this.permissions = permissions;
-    }
+    @Column(name = "role_status")
+    private String roleStatus;
 
     @Transient
-    private List<SysPermission> permissions;
+    private List<SysAuth> sysAuths;
 
-
+    @Transient
+    private String lastRoleName;
 
     /**
      * @return id
@@ -55,56 +49,80 @@ public class SysRole {
     }
 
     /**
-     * 获取角色名
+     * 获取角色名称
      *
-     * @return c_role - 角色名
+     * @return role_name - 角色名称
      */
-    public String getRole() {
-        return role;
+    public String getRoleName() {
+        return roleName;
     }
 
     /**
-     * 设置角色名
+     * 设置角色名称
      *
-     * @param role 角色名
+     * @param roleName 角色名称
      */
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     /**
      * 获取角色描述
      *
-     * @return c_description - 角色描述
+     * @return role_description - 角色描述
      */
-    public String getDescription() {
-        return description;
+    public String getRoleDescription() {
+        return roleDescription;
     }
 
     /**
      * 设置角色描述
      *
-     * @param description 角色描述
+     * @param roleDescription 角色描述
      */
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRoleDescription(String roleDescription) {
+        this.roleDescription = roleDescription;
     }
 
     /**
-     * 获取启用状态 1 启用 0 停用
+     * 获取状态
+0：未启用
+1：启用
      *
-     * @return c_flag - 启用状态 1 启用 0 停用
+     * @return role_status - 状态
+0：未启用
+1：启用
      */
-    public Byte getFlag() {
-        return flag;
+    public String getRoleStatus() {
+        return roleStatus;
     }
 
     /**
-     * 设置启用状态 1 启用 0 停用
+     * 设置状态
+0：未启用
+1：启用
      *
-     * @param flag 启用状态 1 启用 0 停用
+     * @param roleStatus 状态
+0：未启用
+1：启用
      */
-    public void setFlag(Byte flag) {
-        this.flag = flag;
+    public void setRoleStatus(String roleStatus) {
+        this.roleStatus = roleStatus;
+    }
+
+    public List<SysAuth> getSysAuths() {
+        return sysAuths;
+    }
+
+    public void setSysAuths(List<SysAuth> sysAuths) {
+        this.sysAuths = sysAuths;
+    }
+
+    public String getLastRoleName() {
+        return lastRoleName;
+    }
+
+    public void setLastRoleName(String lastRoleName) {
+        this.lastRoleName = lastRoleName;
     }
 }
