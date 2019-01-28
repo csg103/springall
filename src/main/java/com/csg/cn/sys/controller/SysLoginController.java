@@ -69,7 +69,7 @@ public class SysLoginController {
         List<SysCompanySimple> sysCompanySimples = user.getSysCompanySimples();
         model.addAttribute("currentCompany", user.getCurrentCompanyName());
         model.addAttribute("userCompanies", sysCompanySimples);
-        return "home";
+        return "Home";
     }
 
     @RequestMapping("/login")
