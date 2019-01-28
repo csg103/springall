@@ -165,7 +165,7 @@
                             <th>赠品类</th>
                             <td>到货</td>
                             <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
+                                <button class="layui-btn layui-btn-normal layui-btn-sm" id="confirm">确认到货</button>
                             </td>
                         </tr>
                         <tr>
@@ -293,7 +293,7 @@
 
 </body>
 <script src="../js/jquery.js"></script>
-<script src="../js/layui.all.js"></script>
+<script src="../layui/layui.all.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function () {
@@ -309,6 +309,11 @@
             , count: 50 //数据总数，从服务端得到
         });
     });
+
+    $(".layui-btn").click(function(){
+        $(this).addClass("layui-btn-disabled").parent().prev().text("已接收");
+        layer.msg('已确认接收', { icon: -1, time: 1200 });
+    })
 </script>
 <script>
 

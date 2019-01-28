@@ -10,7 +10,6 @@
     <link href="../layui/css/layui.css" rel="stylesheet" />
     <link href="../css/order.css" rel="stylesheet" />
     <style>
-
     </style>
 </head>
 
@@ -156,17 +155,19 @@
                             </th>
                             <td>or1683928715117566</td>
                             <td>周以柳</td>
-                            <td>2018/09/08 07:14</td>
+                            <td>2019/1/18 15:36</td>
                             <th>麦乐商城</th>
-                            <td>卡号</td>
-                            <td>3691599553519972</td>
-                            <td>jh1379126958239422</td>
+                            <td>终端类</td>
+                            <!-- 3691599553519972 -->
+                            <td class="trans_num"></td>
+                            <!-- jh1379126958239422 -->
+                            <td class="store_num"></td>
                             <td>
                                 <a href="02_order_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-disabled layui-btn-sm show1">生成运单</button>
-                                <button class="layui-btn layui-btn-disabled layui-btn-sm show2">生成拣货单</button>
+                                <button class="layui-btn layui-btn-sm show1">生成运单</button>
+                                <button class="layui-btn layui-btn-sm show2">生成拣货单</button>
                             </td>
                         </tr>
                         <tr>
@@ -410,23 +411,23 @@
 
         });
         $("#search").click(function () {
-            var orderNum = $("#orderNum").val();
-            console.log("orderNum = "+orderNum);
-            console.log("channel = "+channel);
-            console.log("goodsType = "+goodsType);
-            
+            // var orderNum = $("#orderNum").val();
+            // console.log("orderNum = "+orderNum);
+            // console.log("channel = "+channel);
+            // console.log("goodsType = "+goodsType);
+            $("#table tr:first").show().nextAll().hide();
+            count = 1;
+            layui.use('laypage', function () {
+                var laypage = layui.laypage;
+                laypage.render({
+                    elem: 'page', //注意，这里的 test1 是 ID，不用加 # 号
+                    count: count //数据总数，从服务端得到
+                });
+            });
             return false;
-            // $("#table tr:first").show().nextAll().hide();
-            // count = 1;
-            // layui.use('laypage', function () {
-            //     var laypage = layui.laypage;
-            //     laypage.render({
-            //         elem: 'page', //注意，这里的 test1 是 ID，不用加 # 号
-            //         count: count //数据总数，从服务端得到
-            //     });
-            // });
-            // return false;
         })
+
+
 
         form.on('submit(*)', function (data) {
             layer.msg('创建成功', { icon: -1, time: 2000 });
@@ -444,13 +445,13 @@
     }
 
     function timeUuid() {
-        var year = [2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018,];
+        var year = [2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019,];
 
-        var month = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+        var month = ["01", "01", "01", "01", "01", "01", "01", "01", "01", "01","01", "01", "01", "01", "01",];
 
         var day = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"];
 
-        var hour = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "01", "02", "03"];
+        var hour = ["06", "07", "08", "09", "10", "11", "12", "06", "07", "08", "09", "10", "11", "12"];
 
         var minu = ["11", "02", "23", "34", "55", "06", "07", "18", "09", "30", "14", "42", "13", "14", "15"];
 
@@ -499,9 +500,14 @@
 
     $(".show1").click(function () {
         layer.msg('已经生成运单', { icon: -1, time: 1000 });
+        $(this).addClass("layui-btn-disabled ");
+        $(".trans_num").text("3691599553519972");
+
     })
     $(".show2").click(function () {
         layer.msg('已经生成拣货单', { icon: -1, time: 1000 });
+        $(this).addClass("layui-btn-disabled ");
+        $(".store_num").text("jh1379126958239422");
     })
 
 

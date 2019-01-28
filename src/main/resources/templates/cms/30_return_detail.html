@@ -9,6 +9,10 @@
     <link href="../layui/css/layui.css" rel="stylesheet" />
     <link href="../css/order.css" rel="stylesheet" />
     <style>
+        .show1{
+            display: none;
+            padding-left: 20px;
+        }
 
     </style>
 </head>
@@ -105,26 +109,29 @@
                 </div>
                 <hr class="layui-bg-gray">
                 <div class="h10"></div>
-                <blockquote class="layui-elem-quote">订单信息 : or7918256288087636</blockquote>
+                <blockquote class="layui-elem-quote">订单信息 : or1406160421227180</blockquote>
                 <div class="h10"></div>
                 <div class="layui-row">
                     <ul class="ml10">
-                        <li>订单编号：or7918256288087636</li>
-                        <li>姓名：邱元白</li>
-                        <li>电话：13521976602</li>
+                        <li>订单编号：or1406160421227180</li>
+                        <li>姓名：石立诚</li>
+                        <li>电话：13911664411</li>
                         <li>地址：湖北省 荆门市 华府家园 象山大道12号 </li>
                     </ul>
                 </div>
                 <div class="h10"></div>
                 <div class="layui-row">
                     <div class="right">
-                        <button class="layui-btn border5">同意退货</button>
+                        <button class="layui-btn border5" id="agree">同意退货</button>
                         <button class="layui-btn layui-btn-danger border5">拒绝退货</button>
                     </div>
                     <div class="clearboth"></div>
                 </div>
                 <div class="h10"></div>
-                <blockquote class="layui-elem-quote">订单详情</blockquote>
+                <blockquote class="layui-elem-quote">
+                    <span class="title">订单详情: 待处理</span>
+                    <span class="show1"></span>
+                </blockquote>
                 <div>
                     <ul class="ml10">
                         <li class="layui-row mb20">
@@ -136,8 +143,9 @@
                                 <div>容量: 128GB</div>
                                 <div>版本: 国行</div>
                                 <div>数量：1</div>
-                                <div>串号: 3032733121</div>
+                                <div>串号: 391708271612719</div>
                                 <div>商品编号: SJ10079</div>
+                                <div style="color:#FF5722;">退款原因: 无理由退换</div>
                             </div>
                         </li>
                     </ul>
@@ -149,11 +157,7 @@
         <!-- <blockquote class="layui-elem-quote layui-quote-nm">搜索</blockquote> -->
 
     </div>
-
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © layui.com - 底部固定区域
-    </div>
+   
     </div>
 
 </body>
@@ -170,10 +174,16 @@
 
         //执行一个laypage实例
         laypage.render({
-            elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
-            , count: 50 //数据总数，从服务端得到
+            elem: 'page', //注意，这里的 test1 是 ID，不用加 # 号
+            count: 50 //数据总数，从服务端得到
         });
     });
+    $("#agree").click(function(){
+        layer.msg('同意退货操作成功,生成退货交接单', { icon: -1, time: 1500 });
+        $(".title").text("订单详情: 同意退货");
+        $(this).addClass('layui-btn-disabled');
+        $(".show1").show().text("退货交接单号 :  th2317840953686418");
+    })
 </script>
 <script>
 

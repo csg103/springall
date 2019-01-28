@@ -15,14 +15,14 @@
 
 <body class="layui-layout-body">
     <div class="layui-layout layui-layout-admin">
-            <div class="layui-header">
-                    <div class="layui-logo">湖北网通仓储平台</div>
-                    <!-- 头部区域（可配合layui已有的水平导航） -->
-                    <ul class="layui-nav layui-layout-left">
-                            <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
-                            <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
-                            <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
-                            <!-- <li class="layui-nav-item">
+        <div class="layui-header">
+            <div class="layui-logo">湖北网通仓储平台</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
+                <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
+                <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
+                <!-- <li class="layui-nav-item">
                                         <a href="javascript:;">公司文化</a>
                                         <dl class="layui-nav-child">
                                             <dd><a href="">邮件管理</a></dd>
@@ -30,24 +30,24 @@
                                             <dd><a href="">授权管理</a></dd>
                                         </dl>
                                     </li> -->
-                        </ul>
-                    <ul class="layui-nav layui-layout-right">
-                        <li class="layui-nav-item">
-                            <a href="">个人中心<span class="layui-badge-dot"></span></a>
-                        </li>
-                        <li class="layui-nav-item">
-                            <a href="javascript:;">
-                                <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                                <span>管理员</span>
-                            </a>
-                            <dl class="layui-nav-child">
-                                <dd><a href="">基本资料</a></dd>
-                                <dd><a href="">安全设置</a></dd>
-                                <dd><a href="">退出</a></dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="">个人中心<span class="layui-badge-dot"></span></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                        <span>管理员</span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                        <dd><a href="">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
 
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
@@ -83,12 +83,12 @@
                         </dl>
                     </li>
                     <li class="layui-nav-item">
-                            <a href="javascript:;">权限管理</a>
-                            <dl class="layui-nav-child">
-                                <dd><a href="">人员管理</a></dd>
-                                <dd><a href="">权限管理</a></dd>
-                            </dl>
-                        </li>
+                        <a href="javascript:;">权限管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="">人员管理</a></dd>
+                            <dd><a href="">权限管理</a></dd>
+                        </dl>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -99,8 +99,8 @@
                 <div class="h15"></div>
                 <div class="layui-row">
                     <span class="layui-breadcrumb" lay-separator="/">
-                        <a href="">订单管理</a>
-                        <a><cite>拣货单详情</cite></a>
+                        <a href="70_store_list.html">仓位调整</a>
+                        <a><cite>仓位明细</cite></a>
                     </span>
                 </div>
                 <hr class="layui-bg-gray">
@@ -109,22 +109,17 @@
                 <blockquote class="layui-elem-quote">
                     <div class="jhtiple">
                         <div>
-                            <span>仓位号: A01</span>
-                            <span>品种: 23</span>
-                            <span>总件数:8760</span>
+                            <span>仓位号: A01-21</span>
+                            <span>品种: 4</span>
+                            <span>总件数:10000</span>
                         </div>
                     </div>
                 </blockquote>
                 <div>
                     <table class="layui-table">
-                        <colgroup>
-                            <col width="150">
-                            <col width="200">
-                            <col>
-                        </colgroup>
                         <thead>
                             <tr>
-                                <th>序号</th>
+                                <th>编号</th>
                                 <th>货号</th>
                                 <th>物品</th>
                                 <th>数量</th>
@@ -134,46 +129,90 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td>A01-25</td>
-                                <td>IphoneXR 金色 64GB 全网通</td>
-                                <td>130</td>
+                            <tr class="no_show">
+                                <td>1412957214727485</td>
+                                <td>A01-21</td>
+                                <td>IphoneXR</td>
+                                <td>1000</td>
                                 <td>台</td>
-                                <td>无</td>
+                                <td>珊瑚色 64GB 全网通</td>
                                 <td>
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">调整</button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>02</td>
-                                <td>A01-15</td>
-                                <td>IphoneXR 手机壳 黑色无花纹</td>
-                                <td>817</td>
-                                <td>个</td>
-                                <td>无</td>
+                                <td>9312278820954271</td>
+                                <td>A01-21</td>
+                                <td>IphoneXR</td>
+                                <td>1000</td>
+                                <td>台</td>
+                                <td> 黑色 64GB 全网通</td>
                                 <td>
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">调整</button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>03</td>
-                                <td>A01-02</td>
-                                <td>Watch Series 4</td>
-                                <td>379</td>
-                                <td>个</td>
-                                <td>无</td>
+                                <td>6112448787318525</td>
+                                <td>A01-21</td>
+                                <td>IphoneXR </td>
+                                <td>1000</td>
+                                <td>台</td>
+                                <td>白色 64GB 全网通</td>
                                 <td>
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">调整</button>
                                 </td>
                             </tr>
                             <tr>
-                                <td>04</td>
-                                <td>A01-10</td>
-                                <td>卡号</td>
-                                <td>1280</td>
-                                <td>个</td>
-                                <td>无</td>
+                                <td>6193323567740199</td>
+                                <td>A01-21</td>
+                                <td>IphoneXR </td>
+                                <td>1000</td>
+                                <td>台</td>
+                                <td>红色 64GB 全网通</td>
+                                <td>
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">调整</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4124534758268955</td>
+                                <td>A01-21</td>
+                                <td>IphoneXR </td>
+                                <td>1000</td>
+                                <td>台</td>
+                                <td>蓝色 64GB 全网通</td>
+                                <td>
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">调整</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9355016986161962</td>
+                                <td>A01-21</td>
+                                <td>IphoneXR </td>
+                                <td>1000</td>
+                                <td>台</td>
+                                <td>黄色 64GB 全网通</td>
+                                <td>
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">调整</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2580101119186861</td>
+                                <td>A01-21</td>
+                                <td>IphoneXR </td>
+                                <td>1000</td>
+                                <td>台</td>
+                                <td>珊瑚色 128GB 全网通</td>
+                                <td>
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">调整</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7497581867385939</td>
+                                <td>A01-21</td>
+                                <td>IphoneXR </td>
+                                <td>1000</td>
+                                <td>台</td>
+                                <td>黑色 128GB 全网通</td>
                                 <td>
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">调整</button>
                                 </td>
@@ -186,97 +225,44 @@
 
         </div>
         <!-- <blockquote class="layui-elem-quote layui-quote-nm">搜索</blockquote> -->
-        <div id="model" style="display:none;" class="insert_model">
-            <ul class="ml10">
-                <li class="layui-row mb20 ayui-col-space30">
-                    <div class="layui-col-md4 img_detail">
-                        <img src="../images/phonex.jpg" alt="">
+        <div id="model" style="display:none;" class="store_model">
+            <form class="layui-form layui-row">
+                <div class="layui-form-item layui-col-md12">
+                    <label class="layui-form-label">商品</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="" placeholder="请输入需要转移的商品编号" autocomplete="off" class="layui-input layui-col-md6">
                     </div>
-                    <div class="layui-col-md7 ml10">
-                        <div>苹果 iPhone XR 4G智能手机苹果xr全面屏手机A2108</div>
-                        <div>容量: 256GB</div>
-                        <div>版本: 国行</div>
-                        <div>数量：3</div>
-                        <div>商品编号: SJ10023</div>
+                </div>
+                <div class="layui-form-item layui-col-md12">
+                    <label class="layui-form-label">调整类型</label>
+                    <div class="layui-input-block">
+                        <select name="interest" lay-filter="aihao">
+                            <option value="0">转移</option>
+                            <option value="1">增加</option>
+                            <option value="1">删除</option>
+                        </select>
                     </div>
-                </li>
-                <li class="layui-row mb20">
-                    <div class="layui-col-md4 img_detail">
-                        <img src="../images/iwatch.jpg" alt="">
+                </div>
+                <div class="layui-form-item layui-col-md12">
+                    <label class="layui-form-label">数量</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="" placeholder="请输入数量" autocomplete="off" class="layui-input layui-col-md6">
                     </div>
-                    <div class="layui-col-md7 ml10">
-                        <div>Watch Series 4运动型智能手表4代Watch4</div>
-                        <div>版本: 国行</div>
-                        <div>数量：3</div>
-                        <div>商品编号: SJ10013</div>
+                </div>
+                <div class="h20"></div>
+                <div class="layui-form-item layui-col-md12">
+                    <div class="layui-input-block">
+                        <button class="layui-btn submit_buttn" lay-submit lay-filter="*">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
-                </li>
-            </ul>
+                </div>
+                <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+            </form>
         </div>
 
-        <div id="model02" style="display:none;" class="download_model">
-            <table class="layui-table">
-                <colgroup>
-                    <col width="150">
-                    <col width="200">
-                    <col>
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th>序号</th>
-                        <th>货号</th>
-                        <th>物品</th>
-                        <th>数量</th>
-                        <th>单位</th>
-                        <th>描述</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>01</td>
-                        <td>A01-25</td>
-                        <td>IphoneXR 金色 64GB 全网通</td>
-                        <td>10</td>
-                        <td>台</td>
-                        <td>无</td>
-                    </tr>
-                    <tr>
-                        <td>02</td>
-                        <td>A01-15</td>
-                        <td>IphoneXR 手机壳 黑色无花纹</td>
-                        <td>8</td>
-                        <td>个</td>
-                        <td>无</td>
-                    </tr>
-                    <tr>
-                        <td>03</td>
-                        <td>A01-02</td>
-                        <td>Watch Series 4</td>
-                        <td>15</td>
-                        <td>个</td>
-                        <td>无</td>
-                    </tr>
-                    <tr>
-                        <td>04</td>
-                        <td>A01-10</td>
-                        <td>移动卡号</td>
-                        <td>32</td>
-                        <td>个</td>
-                        <td>无</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="h10"></div>
-            <div>
-                <button class="layui-btn layui-btn-sm">下载打印单</button>
-            </div>
-        </div>
+
     </div>
 
-    <div class="layui-footer">
-        <!-- 底部固定区域 -->
-        © layui.com - 底部固定区域
-    </div>
     </div>
 
 </body>
@@ -294,7 +280,7 @@
         //执行一个laypage实例
         laypage.render({
             elem: 'page' //注意，这里的 test1 是 ID，不用加 # 号
-            , count: 30 //数据总数，从服务端得到
+            , count: 20 //数据总数，从服务端得到
         });
     });
     $("#show1").click(function () {
@@ -308,7 +294,7 @@
             title: "查看订单",
             type: 1,
             content: $('#model'),
-            area: ['500px'],
+            area: ['500px','300px'],
             shade: "rgba(0,0,0,0.3)",
             anim: 1,
             end: function (index, layero) {
@@ -328,6 +314,26 @@
                 $('#model02').hide();
             }
         });
+    })
+
+    $(".layui-btn").click(function () {
+        layer.open({
+            title: "仓库编辑",
+            type: 1,
+            content: $('#model'),
+            area: ['500px'],
+            shade: "rgba(0,0,0,0.3)",
+            anim: 1,
+            end: function (index, layero) {
+                $('#model').hide();
+            }
+        });
+    })
+    $(".submit_buttn").click(function(){
+        $(".no_show").hide();
+        layer.closeAll();
+        layer.msg('已移除', { icon: -1, time: 1000 });
+        return false;
     })
 </script>
 <script>

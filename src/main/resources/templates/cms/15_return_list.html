@@ -157,16 +157,16 @@
                             </th>
                             <td>or7918256288087636</td>
                             <td>吴华清</td>
-                            <td>2018/06/03 07:18</td>
+                            <td>2019/01/21 07:18</td>
                             <th>13810213566</th>
                             <td>商城</td>
                             <td>5281767752131192</td>
-                            <td>同意退货</td>
+                            <td id="change1">待处理</td>
                             <td>
                                 <a href="30_return_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-disabled layui-btn-danger layui-btn-sm">同意退货</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-sm" id="agree">同意退货</button>
                                 <button class="layui-btn layui-btn-danger border5 layui-btn-sm">拒绝</button>
                             </td>
                         </tr>
@@ -176,16 +176,16 @@
                             </th>
                             <td>or1406160421227180</td>
                             <td>石立诚</td>
-                            <td>2018/08/08 07:02</td>
+                            <td>2019/01/23 07:02</td>
                             <th>13911664411</th>
                             <td>商城</td>
                             <td>7424783337015485</td>
-                            <td>同意退货</td>
+                            <td>待处理</td>
                             <td>
                                 <a href="30_return_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-disabled layui-btn-danger layui-btn-sm">同意退货</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-sm">同意退货</button>
                                 <button class="layui-btn layui-btn-danger border5 layui-btn-sm">拒绝</button>
                             </td>
                         </tr>
@@ -348,6 +348,12 @@
                 $('#model').hide();
             }
         });
+    })
+
+    $("#agree").click(function(){
+        $("#change1").text("同意退货");
+        layer.msg('同意退货,并生成退货交接单', { icon: -1, time: 1500 });
+        $(this).addClass('layui-btn-disabled');
     })
 </script>
 <script>

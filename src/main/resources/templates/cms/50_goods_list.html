@@ -190,8 +190,8 @@
                             <th>个</th>
                             <th>已上架</th>
                             <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">上架</button>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">下架</button>
+                                <button class="layui-btn layui-btn-normal layui-btn-sm up">上架</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-sm down">下架</button>
                                 <button class="layui-btn layui-btn-sm">盘点</button>
                             </td>
                         </tr>
@@ -207,8 +207,8 @@
                             <th>个</th>
                             <th>已上架</th>
                             <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">上架</button>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">下架</button>
+                                <button class="layui-btn layui-btn-normal layui-btn-sm up">上架</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-sm down">下架</button>
                                 <button class="layui-btn layui-btn-sm">盘点</button>
                             </td>
                         </tr>
@@ -224,8 +224,8 @@
                             <th>个</th>
                             <th>已上架</th>
                             <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">上架</button>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">下架</button>
+                                <button class="layui-btn layui-btn-normal layui-btn-sm up">上架</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-sm down">下架</button>
                                 <button class="layui-btn layui-btn-sm">盘点</button>
                             </td>
                         </tr>
@@ -241,8 +241,8 @@
                             <th>个</th>
                             <th>已上架</th>
                             <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">上架</button>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">下架</button>
+                                <button class="layui-btn layui-btn-normal layui-btn-sm up">上架</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-sm down">下架</button>
                                 <button class="layui-btn layui-btn-sm">盘点</button>
                             </td>
                         </tr>
@@ -258,8 +258,8 @@
                             <th>个</th>
                             <th>已上架</th>
                             <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">上架</button>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">下架</button>
+                                <button class="layui-btn layui-btn-normal layui-btn-sm up">上架</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-sm down">下架</button>
                                 <button class="layui-btn layui-btn-sm">盘点</button>
                             </td>
                         </tr>
@@ -275,8 +275,8 @@
                             <th>个</th>
                             <th>已上架</th>
                             <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">上架</button>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">下架</button>
+                                <button class="layui-btn layui-btn-normal layui-btn-sm up">上架</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-sm down">下架</button>
                                 <button class="layui-btn layui-btn-sm">盘点</button>
                             </td>
                         </tr>
@@ -292,8 +292,8 @@
                             <th>个</th>
                             <th>已上架</th>
                             <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">上架</button>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">下架</button>
+                                <button class="layui-btn layui-btn-normal layui-btn-sm up">上架</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-sm down">下架</button>
                                 <button class="layui-btn layui-btn-sm">盘点</button>
                             </td>
                         </tr>
@@ -309,8 +309,8 @@
                             <th>个</th>
                             <th>已上架</th>
                             <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">上架</button>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">下架</button>
+                                <button class="layui-btn layui-btn-normal layui-btn-sm up">上架</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-sm down">下架</button>
                                 <button class="layui-btn layui-btn-sm">盘点</button>
                             </td>
                         </tr>
@@ -334,7 +334,7 @@
 
 </body>
 <script src="../js/jquery.js"></script>
-<script src="../js/layui.all.js"></script>
+<script src="../layui/layui.all.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function () {
@@ -350,9 +350,14 @@
             , count: 30 //数据总数，从服务端得到
         });
     });
-</script>
-<script>
-
+    $(".up").click(function(){
+        $(this).parent().prev().text("已上架");
+        layer.msg('已上架', { icon: -1, time: 1000 });
+    })
+    $(".down").click(function(){
+        $(this).parent().prev().text("已下架");
+        layer.msg('已下架', { icon: -1, time: 1000 });
+    })
 </script>
 
 </html>

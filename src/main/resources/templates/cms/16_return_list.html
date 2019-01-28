@@ -9,20 +9,22 @@
     <link href="../layui/css/layui.css" rel="stylesheet" />
     <link href="../css/order.css" rel="stylesheet" />
     <style>
-
+        .show1{
+            display: none;
+        }
     </style>
 </head>
 
 <body class="layui-layout-body">
     <div class="layui-layout layui-layout-admin">
-            <div class="layui-header">
-                    <div class="layui-logo">湖北网通仓储平台</div>
-                    <!-- 头部区域（可配合layui已有的水平导航） -->
-                    <ul class="layui-nav layui-layout-left">
-                            <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
-                            <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
-                            <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
-                            <!-- <li class="layui-nav-item">
+        <div class="layui-header">
+            <div class="layui-logo">湖北网通仓储平台</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
+                <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
+                <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
+                <!-- <li class="layui-nav-item">
                                         <a href="javascript:;">公司文化</a>
                                         <dl class="layui-nav-child">
                                             <dd><a href="">邮件管理</a></dd>
@@ -30,24 +32,24 @@
                                             <dd><a href="">授权管理</a></dd>
                                         </dl>
                                     </li> -->
-                        </ul>
-                    <ul class="layui-nav layui-layout-right">
-                        <li class="layui-nav-item">
-                            <a href="">个人中心<span class="layui-badge-dot"></span></a>
-                        </li>
-                        <li class="layui-nav-item">
-                            <a href="javascript:;">
-                                <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                                <span>管理员</span>
-                            </a>
-                            <dl class="layui-nav-child">
-                                <dd><a href="">基本资料</a></dd>
-                                <dd><a href="">安全设置</a></dd>
-                                <dd><a href="">退出</a></dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="">个人中心<span class="layui-badge-dot"></span></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                        <span>管理员</span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                        <dd><a href="">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
 
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
@@ -83,12 +85,12 @@
                         </dl>
                     </li>
                     <li class="layui-nav-item">
-                            <a href="javascript:;">权限管理</a>
-                            <dl class="layui-nav-child">
-                                <dd><a href="">人员管理</a></dd>
-                                <dd><a href="">权限管理</a></dd>
-                            </dl>
-                        </li>
+                        <a href="javascript:;">权限管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="">人员管理</a></dd>
+                            <dd><a href="">权限管理</a></dd>
+                        </dl>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -112,7 +114,7 @@
                                 autocomplete="off" class="layui-input border5">
                         </div>
                         <div class="layui-col-md2">
-                            <button class="layui-btn border5">查询</button>
+                            <button class="layui-btn border5" id="search">查询</button>
                         </div>
                     </div>
                 </form>
@@ -149,17 +151,14 @@
                             </th>
                             <td>th3406445198222862</td>
                             <td>郭宏爽</td>
-                            <td>2018/06/07 06:14</td>
-                            <th>2018/06/12 16:23</th>
+                            <td>2019/01/07 06:14</td>
+                            <th>2019/01/12 16:23</th>
                             <td>9624829957472161</td>
                             <td>范玉龙</td>
-                            <td>审核完结</td>
+                            <td>退款中</td>
                             <td>
                                 <a href="30_return_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <a href="20_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-danger layui-btn-sm">审核</button>
                                 </a>
                                 <button class="layui-btn layui-btn-sm" id="transport">物流</button>
                             </td>
@@ -179,9 +178,6 @@
                                 <a href="30_return_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <a href="20_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-danger layui-btn-sm">审核</button>
-                                </a>
                                 <button class="layui-btn layui-btn-sm" id="transport">物流</button>
                             </td>
                         </tr>
@@ -199,9 +195,6 @@
                             <td>
                                 <a href="30_return_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <a href="20_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-danger layui-btn-sm">审核</button>
                                 </a>
                                 <button class="layui-btn layui-btn-sm" id="transport">物流</button>
                             </td>
@@ -221,9 +214,7 @@
                                 <a href="30_return_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <a href="20_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-danger layui-btn-sm">审核</button>
-                                </a>
+                               
                                 <button class="layui-btn layui-btn-sm" id="transport">物流</button>
                             </td>
                         </tr>
@@ -242,9 +233,7 @@
                                 <a href="30_return_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <a href="20_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-disabled layui-btn-sm">审核</button>
-                                </a>
+                                
                                 <button class="layui-btn layui-btn-sm" id="transport">物流</button>
                             </td>
                         </tr>
@@ -263,9 +252,7 @@
                                 <a href="02_order_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <a href="20_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-disabled layui-btn-sm">审核</button>
-                                </a>
+                                
                                 <button class="layui-btn layui-btn-sm" id="transport">物流</button>
                             </td>
                         </tr>
@@ -283,9 +270,6 @@
                             <td>
                                 <a href="02_order_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <a href="20_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-disabled layui-btn-sm">审核</button>
                                 </a>
                                 <button class="layui-btn layui-btn-sm" id="transport">物流</button>
                             </td>
@@ -305,20 +289,35 @@
                                 <a href="02_order_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <a href="20_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-disabled layui-btn-sm">审核</button>
-                                </a>
                                 <button class="layui-btn layui-btn-sm" id="transport">物流</button>
+                            </td>
+                        </tr>
+                        <tr class="show1">
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>th2317840953686418</td>
+                            <td>石立诚</td>
+                            <td>2019/01/23 07:02</td>
+                            <th>2019/01/27 09:02</th>
+                            <td>2187447289166110</td>
+                            <td>吴强</td>
+                            <td>已完成</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm" id="no_trans">物流</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <div id="page"></div>
                 <div class="layui-footer">
-                        <img src="../images/logo.png" class="logo" alt="">
+                    <img src="../images/logo.png" class="logo" alt="">
 
-                        <span class="logo_title">© 2015-2030 浩鲸云计算科技股份有限公司 版权所有| All Rights Reserved </span>
-                    </div>
+                    <span class="logo_title">© 2015-2030 浩鲸云计算科技股份有限公司 版权所有| All Rights Reserved </span>
+                </div>
             </div>
 
 
@@ -329,60 +328,65 @@
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.17 18:28 星期一</h4>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.07 10:28</h4>
                         <p>广东番禺江南分部-谢俊-已收件</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.17 22:34</h4>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.07 14:12</h4>
                         <p>广东番禺转运中心-已发往-湖北武汉转运中心</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.17 22:34</h4>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.07 15:41</h4>
                         <p>广东番禺转运中心-已进行装车扫描</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.19 06:08 星期三</h4>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.08 00:34</h4>
                         <p>已到达-湖北武汉转运中心</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.19 06:10</h4>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.08 07:42</h4>
                         <p>湖北武汉转运中心-已发往-湖北荆门转运中心</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.20 02:19</h4>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.09 01:49</h4>
                         <p>湖北荆门中心-已发往-湖北荆门集散中心</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.20 14:11</h4>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.09 07:42</h4>
                         <p>已到达-湖北省荆门市-承崔清峰(17777864930,)-派件中</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.20 18:34 星期四</h4>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.09 12:29</h4>
                         <p style="color:#FF5722;">本人签收-已签收</p>
                     </div>
                 </li>
             </ul>
+        </div>
+
+        <!-- model1 -->
+        <div id="model1" style="display:none;" class="trans_model">
+            <div style="margin:20px 0;text-align: center;width: 500px;color: #999;">暂无快递单号</div>
         </div>
     </div>
 
@@ -408,7 +412,7 @@
     });
     $("#transport").click(function () {
         layer.open({
-            title: "物流单号：3691599553519972",
+            title: "物流单号：9624829957472161",
             type: 1,
             content: $('#model'),
             area: ['500px', '700px'],
@@ -416,6 +420,25 @@
             anim: 1,
             end: function (index, layero) {
                 $('#model').hide();
+            }
+        });
+    })
+
+    $("#search").click(function () {
+        $(".show1").show().prevAll().hide();
+        return false;
+    })
+
+    $("#no_trans").click(function () {
+        layer.open({
+            title: "物流单号：暂无",
+            type: 1,
+            content: $('#model1'),
+            area: ['500px', '300px'],
+            shade: "rgba(0,0,0,0.3)",
+            anim: 1,
+            end: function (index, layero) {
+                $('#model1').hide();
             }
         });
     })

@@ -16,14 +16,14 @@
 
 <body class="layui-layout-body">
     <div class="layui-layout layui-layout-admin">
-            <div class="layui-header">
-                    <div class="layui-logo">湖北网通仓储平台</div>
-                    <!-- 头部区域（可配合layui已有的水平导航） -->
-                    <ul class="layui-nav layui-layout-left">
-                            <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
-                            <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
-                            <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
-                            <!-- <li class="layui-nav-item">
+        <div class="layui-header">
+            <div class="layui-logo">湖北网通仓储平台</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
+                <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
+                <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
+                <!-- <li class="layui-nav-item">
                                         <a href="javascript:;">公司文化</a>
                                         <dl class="layui-nav-child">
                                             <dd><a href="">邮件管理</a></dd>
@@ -31,24 +31,24 @@
                                             <dd><a href="">授权管理</a></dd>
                                         </dl>
                                     </li> -->
-                        </ul>
-                    <ul class="layui-nav layui-layout-right">
-                        <li class="layui-nav-item">
-                            <a href="">个人中心<span class="layui-badge-dot"></span></a>
-                        </li>
-                        <li class="layui-nav-item">
-                            <a href="javascript:;">
-                                <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                                <span>管理员</span>
-                            </a>
-                            <dl class="layui-nav-child">
-                                <dd><a href="">基本资料</a></dd>
-                                <dd><a href="">安全设置</a></dd>
-                                <dd><a href="">退出</a></dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="">个人中心<span class="layui-badge-dot"></span></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                        <span>管理员</span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                        <dd><a href="">退出</a></dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
 
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
@@ -84,12 +84,12 @@
                         </dl>
                     </li>
                     <li class="layui-nav-item">
-                            <a href="javascript:;">权限管理</a>
-                            <dl class="layui-nav-child">
-                                <dd><a href="">人员管理</a></dd>
-                                <dd><a href="">权限管理</a></dd>
-                            </dl>
-                        </li>
+                        <a href="javascript:;">权限管理</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="">人员管理</a></dd>
+                            <dd><a href="">权限管理</a></dd>
+                        </dl>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -137,7 +137,6 @@
                             <th>仓位</th>
                             <th>商品编号</th>
                             <th>商品名称</th>
-                            <th>商品描述</th>
                             <th>商品数量</th>
                             <th>单位</th>
                             <th>时间</th>
@@ -152,7 +151,6 @@
                             <td>A01-21</td>
                             <td>5814787585519717</td>
                             <td>IphoneXR</td>
-                            <td>64GB 金色</td>
                             <td>10000</td>
                             <td>台</td>
                             <td>2018/09/04 08:09</td>
@@ -160,7 +158,9 @@
                                 <a href="71_store_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-sm">编辑</button>
+                                <a href="71_store_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-sm">编辑</button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -169,8 +169,7 @@
                             </th>
                             <td>A01-13</td>
                             <td>6236380202580663</td>
-                            <td>IphoneXR</td>
-                            <td>128GB 金色</td>
+                            <td>IphoneXS</td>
                             <td>10000</td>
                             <td>台</td>
                             <td>2018/07/01 06:30</td>
@@ -178,7 +177,9 @@
                                 <a href="71_store_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-sm">编辑</button>
+                                <a href="71_store_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-sm">编辑</button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -188,7 +189,6 @@
                             <td>A01-18</td>
                             <td>4319260256986805</td>
                             <td>华为荣耀8</td>
-                            <td>4 + 64GB</td>
                             <td>6000</td>
                             <td>台</td>
                             <td>2018/02/08 07:07</td>
@@ -196,7 +196,9 @@
                                 <a href="71_store_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-sm">编辑</button>
+                                <a href="71_store_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-sm">编辑</button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -206,7 +208,6 @@
                             <td>A01-29</td>
                             <td>9777802849911556</td>
                             <td>华为MATE 20</td>
-                            <td>6 + 128G</td>
                             <td>14000</td>
                             <td>台</td>
                             <td>2018/08/04 08:23</td>
@@ -214,7 +215,9 @@
                                 <a href="71_store_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-sm">编辑</button>
+                                <a href="71_store_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-sm">编辑</button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -224,7 +227,6 @@
                             <td>A02-19</td>
                             <td>5252916418784385</td>
                             <td>Iphone7</td>
-                            <td>64GB 黑色</td>
                             <td>3000</td>
                             <td>台</td>
                             <td>2018/08/03 09:14</td>
@@ -232,7 +234,9 @@
                                 <a href="71_store_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-sm">编辑</button>
+                                <a href="71_store_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-sm">编辑</button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -242,7 +246,6 @@
                             <td>A03-19</td>
                             <td>9874191123663195</td>
                             <td>Iphone 8</td>
-                            <td>64GB 黑色</td>
                             <td>4500</td>
                             <td>台</td>
                             <td>2018/11/03 11:30</td>
@@ -250,7 +253,9 @@
                                 <a href="71_store_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-sm">编辑</button>
+                                <a href="71_store_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-sm">编辑</button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -260,7 +265,6 @@
                             <td>A03-10</td>
                             <td>2706670111684946</td>
                             <td>小米 8</td>
-                            <td>4 + 64GB</td>
                             <td>10000</td>
                             <td>台</td>
                             <td>2018/08/05 08:23</td>
@@ -268,7 +272,9 @@
                                 <a href="71_store_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-sm">编辑</button>
+                                <a href="71_store_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-sm">编辑</button>
+                                </a>
                             </td>
                         </tr>
                         <tr>
@@ -278,7 +284,6 @@
                             <td>A04-10</td>
                             <td>4219631696339171</td>
                             <td>小米 MAX2</td>
-                            <td>4 + 128GB</td>
                             <td>10000</td>
                             <td>台</td>
                             <td>2018/05/05 09:18</td>
@@ -286,17 +291,19 @@
                                 <a href="71_store_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-sm">编辑</button>
+                                <a href="71_store_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-sm">编辑</button>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
                 <div id="page"></div>
                 <div class="layui-footer">
-                        <img src="../images/logo.png" class="logo" alt="">
+                    <img src="../images/logo.png" class="logo" alt="">
 
-                        <span class="logo_title">© 2015-2030 浩鲸云计算科技股份有限公司 版权所有| All Rights Reserved </span>
-                    </div>
+                    <span class="logo_title">© 2015-2030 浩鲸云计算科技股份有限公司 版权所有| All Rights Reserved </span>
+                </div>
             </div>
 
 

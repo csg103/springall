@@ -9,9 +9,7 @@
     <link href="../layui/css/layui.css" rel="stylesheet" />
     <link href="../css/order.css" rel="stylesheet" />
     <style>
-        .show1{
-            display: none;
-        }
+
     </style>
 </head>
 
@@ -100,8 +98,8 @@
                 <div class="h15"></div>
                 <div class="layui-row">
                     <span class="layui-breadcrumb" lay-separator="/">
-                        <a href="18_return_list.html">退货异常单</a>
-                        <a><cite>异常单列表</cite></a>
+                        <a href="17_return_list.html">退货审核</a>
+                        <a><cite>退货审核列表</cite></a>
                     </span>
                 </div>
                 <hr class="layui-bg-gray">
@@ -110,23 +108,31 @@
                     <div class="h10"></div>
                     <div class="layui-row layui-col-space20">
                         <div class="layui-form-item layui-col-md4">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入审核异常单"
+                            <input type="text" name="title" required lay-verify="required" placeholder="请输入订单号、运单号、手机号、串号查询"
                                 autocomplete="off" class="layui-input border5">
                         </div>
                         <div class="layui-col-md2">
-                            <button class="layui-btn border5" id="search">查询</button>
+                            <select name="city" lay-verify="">
+                                <option value="">请选择购买渠道</option>
+                                <option value="010">麦乐商城</option>
+                                <option value="021">自营平台</option>
+                            </select>
+                        </div>
+                        <div class="layui-col-md2">
+                            <button class="layui-btn border5">查询</button>
                         </div>
                     </div>
                 </form>
                 <div class="h10"></div>
                 <!-- <blockquote class="layui-elem-quote">详细信息</blockquote> -->
 
-                <!-- <div class="layui-row">
+                <div class="layui-row">
                     <div class="right">
                         <button class="layui-btn border5">审核完结</button>
+                        <!-- <button class="layui-btn border5">生成拣货单号</button> -->
                     </div>
                     <div class="clearboth"></div>
-                </div> -->
+                </div>
 
                 <!-- 表格信息 -->
                 <table class="layui-table">
@@ -135,12 +141,12 @@
                             <th>
                                 <input type="checkbox" name="" title="写作" lay-skin="primary">
                             </th>
-                            <th>审核异常表</th>
-                            <th>操作人</th>
-                            <th>操作时间</th>
-                            <th>最近修改时间</th>
+                            <th>订单号</th>
+                            <th>用户名</th>
+                            <th>创建时间</th>
+                            <th>承运商</th>
+                            <th>运单号</th>
                             <th>状态</th>
-                            <th>备注</th>
                             <th>订单操作</th>
                         </tr>
                     </thead>
@@ -149,162 +155,167 @@
                             <th>
                                 <input type="checkbox" name="" title="写作" lay-skin="primary">
                             </th>
-                            <td>yc2531949324366179</td>
-                            <td>贾建中</td>
-                            <td>2018/07/07 09:14</td>
-                            <th>2018/07/07 12:14</th>
-                            <td>审核异常</td>
-                            <td>外包装破损</td>
-                            <td>
-                                <a href="21_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">审核完结</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>yc8685105375666576</td>
-                            <td>贾建中</td>
-                            <td>2018/09/08 12:02</td>
-                            <th>2018/09/08 13:02</th>
-                            <td>审核异常</td>
-                            <td>ISBN号码错误</td>
-                            <td>
-                                <a href="21_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">审核完结</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>yc4741136762195132</td>
-                            <td>蔡飞舟</td>
-                            <td>2018/09/09 07:23</td>
-                            <th>2018/09/09 08:23</th>
-                            <td>审核异常</td>
-                            <td>外包装破损</td>
-                            <td>
-                                <a href="21_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">审核完结</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>yc6858131838948686</td>
-                            <td>史宏逸</td>
-                            <td>2018/09/05 11:09</td>
-                            <th>2018/09/06 11:09</th>
-                            <td>审核异常</td>
-                            <td>商品不全</td>
-                            <td>
-                                <a href="21_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">审核完结</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>yc3963997850607629</td>
-                            <td>贺勇毅</td>
-                            <td>2018/07/04 12:07</td>
-                            <th>2018/07/04 13:07</th>
-                            <td>审核异常</td>
-                            <td>商品不全</td>
-                            <td>
-                                <a href="21_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">审核完结</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>yc4502346349262783</td>
-                            <td>贺勇毅</td>
-                            <td>2018/08/03 11:09</td>
-                            <th>2018/08/03 13:02</th>
-                            <td>审核异常</td>
-                            <td>外包装破损</td>
-                            <td>
-                                <a href="21_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">审核完结</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>yc4788632159998149</td>
-                            <td>贺勇毅</td>
-                            <td>2018/07/07 10:09</td>
-                            <th>2018/07/07 12:09</th>
+                            <td>th3406445198222862</td>
+                            <td>郭宏爽</td>
+                            <td>2019/01/07 06:14</td>
+                            <th>商城</th>
+                            <td>9624829957472161</td>
                             <td>审核完结</td>
-                            <td>无</td>
                             <td>
-                                <a href="21_return_total.html" style="color:#fff;">
+                                <a href="30_return_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-disabled layui-btn-sm">审核完结</button>
+                                <a href="20_return_total.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-danger layui-btn-sm">审核</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm" id="transport">物流</button>
                             </td>
                         </tr>
                         <tr>
                             <th>
                                 <input type="checkbox" name="" title="写作" lay-skin="primary">
                             </th>
-                            <td>yc2564266165494933</td>
-                            <td>龚浩淼</td>
-                            <td>2018/08/10 10:07</td>
-                            <th>2018/08/10 11:07</th>
-                            <td>审核异常</td>
-                            <td>外包装破损</td>
-                            <td>
-                                <a href="21_return_total.html" style="color:#fff;">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn layui-btn-danger layui-btn-sm">审核完结</button>
-                            </td>
-                        </tr>
-                        <tr class="show1">
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>yc3655298337064316</td>
+                            <td>or5517462719810501</td>
                             <td>邱宏富</td>
                             <td>2019/01/03 14:18</td>
-                            <th>2019/01/24 16:47</th>
-                            <td>审核异常</td>
-                            <td>屏幕破损</td>
+                            <td>商城</td>
+                            <td>8107586928417768</td>
+                            <td>审核完结</td>
                             <td>
-                                <a href="21_return_total.html" style="color:#fff;">
+                                <a href="30_return_detail.html" style="color:#fff;">
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
                                 </a>
-                                <button class="layui-btn layui-btn-disabled layui-btn-sm">审核完结</button>
+                                <a href="22_return_total.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-danger layui-btn-sm">审核</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm" id="transport">物流</button>
                             </td>
                         </tr>
-
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or1926042974696755</td>
+                            <td>易鸿轩</td>
+                            <td>2019/01/04 10:30</td>
+                            <td>商城</td>
+                            <td>0531284000034725</td>
+                            <td>退款中</td>
+                            <td>
+                                <a href="30_return_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <a href="20_return_total.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-danger layui-btn-sm">审核</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm" id="transport">物流</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or5505931430612585</td>
+                            <td>何皓轩</td>
+                            <td>2019/01/03 01:02</td>
+                            <td>商城</td>
+                            <td>0119133928843212</td>
+                            <td>审核完结</td>
+                            <td>
+                                <a href="30_return_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <a href="20_return_total.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-danger layui-btn-sm">审核</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm" id="transport">物流</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or4964667564112731</td>
+                            <td>金俊智</td>
+                            <td>2019/01/03 07:07</td>
+                            <td>商城</td>
+                            <td>8730254848913813</td>
+                            <td>已完成</td>
+                            <td>
+                                <a href="30_return_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <a href="20_return_total.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-disabled layui-btn-sm">审核</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm" id="transport">物流</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or5332197358217154</td>
+                            <td>吴向文</td>
+                            <td>2019/01/08 05:23</td>
+                            <td>商城</td>
+                            <td>2287215867416939</td>
+                            <td>已完成</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <a href="20_return_total.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-disabled layui-btn-sm">审核</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm" id="transport">物流</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or6507802967310825</td>
+                            <td>孟俊雅</td>
+                            <td>2019/01/02 07:23</td>
+                            <td>商城</td>
+                            <td>4548588258734715</td>
+                            <td>已完成</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <a href="20_return_total.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-disabled layui-btn-sm">审核</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm" id="transport">物流</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input type="checkbox" name="" title="写作" lay-skin="primary">
+                            </th>
+                            <td>or8869785594064167</td>
+                            <td>薛永贞</td>
+                            <td>2019/01/06 10:30</td>
+                            <td>商城</td>
+                            <td>1444759764347924</td>
+                            <td>已完成</td>
+                            <td>
+                                <a href="02_order_detail.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                                </a>
+                                <a href="20_return_total.html" style="color:#fff;">
+                                    <button class="layui-btn layui-btn-disabled layui-btn-sm">审核</button>
+                                </a>
+                                <button class="layui-btn layui-btn-sm" id="transport">物流</button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <div id="page"></div>
                 <div class="layui-footer">
                     <img src="../images/logo.png" class="logo" alt="">
-
                     <span class="logo_title">© 2015-2030 浩鲸云计算科技股份有限公司 版权所有| All Rights Reserved </span>
                 </div>
             </div>
@@ -317,62 +328,63 @@
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.17 18:28 星期一</h4>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.07 10:28</h4>
                         <p>广东番禺江南分部-谢俊-已收件</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.17 22:34</h4>
-                        <p>广东番禺转运中心-已发往-河北石家庄转运中心</p>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.07 14:12</h4>
+                        <p>广东番禺转运中心-已发往-湖北武汉转运中心</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.17 22:34</h4>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.07 15:41</h4>
                         <p>广东番禺转运中心-已进行装车扫描</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.19 06:08 星期三</h4>
-                        <p>已到达-河北石家庄转运中心</p>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.08 00:34</h4>
+                        <p>已到达-湖北武汉转运中心</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.19 06:10</h4>
-                        <p>河北石家庄转运中心-已发往-北京转运中心</p>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.08 07:42</h4>
+                        <p>湖北武汉转运中心-已发往-湖北荆门转运中心</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.20 02:19</h4>
-                        <p>北京转运中心-已发往-北京房山集散中心</p>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.09 01:49</h4>
+                        <p>湖北荆门中心-已发往-湖北荆门集散中心</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.20 14:11</h4>
-                        <p>已到达-北京石景山鲁谷公司-承崔清峰(17777864930,)-派件中</p>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.09 07:42</h4>
+                        <p>已到达-湖北省荆门市-承崔清峰(17777864930,)-派件中</p>
                     </div>
                 </li>
                 <li class="layui-timeline-item">
                     <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
                     <div class="layui-timeline-content layui-text">
-                        <h4 class="layui-timeline-title" style="color:#5FB878;">2018.12.20 18:34 星期四</h4>
+                        <h4 class="layui-timeline-title" style="color:#5FB878;">2019.01.09 12:29</h4>
                         <p style="color:#FF5722;">本人签收-已签收</p>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
+
 
     </div>
 
@@ -406,10 +418,6 @@
                 $('#model').hide();
             }
         });
-    })
-    $("#search").click(function(){
-        $(".show1").show().prevAll().hide();
-        return false;
     })
 </script>
 <script>

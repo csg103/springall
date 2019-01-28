@@ -9,7 +9,12 @@
     <link href="../layui/css/layui.css" rel="stylesheet" />
     <link href="../css/order.css" rel="stylesheet" />
     <style>
-
+        .show1{
+            display: none;
+        }
+        .show2{
+            padding-left: 20px;
+        }
     </style>
 </head>
 
@@ -99,13 +104,14 @@
                 <div class="h15"></div>
                 <div class="layui-row">
                     <span class="layui-breadcrumb" lay-separator="/">
-                        <a href="18_return_list.html">退货异常单</a>
+                        <a href="20_return_list.html">退货审核</a>
                         <a><cite>退货详情</cite></a>
                     </span>
                 </div>
                 <hr class="layui-bg-gray">
                 <div class="right">
-                    <button class="layui-btn layui-btn-sm">异常完结</button>
+                    <button class="layui-btn layui-btn-sm">完结</button>
+                    <button class="layui-btn layui-btn-danger layui-btn-sm" id="error_btn">异常</button>
                 </div>
                 <div class="h10 clearboth"></div>
                 <blockquote class="layui-elem-quote">订单信息 : or5517462719810501</blockquote>
@@ -119,7 +125,7 @@
                     </ul>
                 </div>
                 <div class="h20"></div>
-                <blockquote class="layui-elem-quote">审核详情: <span class="layui-badge ml10">退货异常</span></blockquote>
+                <blockquote class="layui-elem-quote">审核详情: <span class="layui-badge ml10 icon_title">退货中</span> <span class="show2"></span></blockquote>
                 <div class="layui-row layui-col-space30">
                     <div class="h5"></div>
                     <div class="layui-col-md5">
@@ -149,7 +155,7 @@
                         <h3>备注信息:</h3>
                         <hr>
                         <div class="h10"></div>
-                        <div>屏幕破碎</div>
+                        <div class="show1">手机寄回屏幕破碎</div>
                     </div>
                 </div>
             </div>
@@ -157,14 +163,35 @@
 
         </div>
         <!-- <blockquote class="layui-elem-quote layui-quote-nm">搜索</blockquote> -->
+        <div id="model" style="display:none;" class="insert_model">
+            <form class="layui-form layui-row">
+                <div class="layui-form-item layui-col-md12">
+                    <div class="layui-input-block">小米8 手机正品 新品全新青春指纹8se</div>
+                </div>
 
+                <div class="layui-form-item layui-form-text layui-col-md12">
+                    <label class="layui-form-label">请填写备注</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" class="layui-textarea" id="text_input"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-col-md12">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" id="submit_btn">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+                <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+            </form>
+        </div>
     </div>
+
 
     </div>
 
 </body>
-<!-- <script src="../js/jquery.js"></script> -->
-<script src="../js/layui.all.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../layui/layui.all.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function () {
@@ -180,6 +207,30 @@
             , count: 50 //数据总数，从服务端得到
         });
     });
+    var index;
+    $("#error_btn").click(function () {
+        index = layer.open({
+            title: "请输入异常备注",
+            type: 1,
+            content: $('#model'),
+            area: ['500px', '320px'],
+            shade: "rgba(0,0,0,0.3)",
+            anim: 1,
+            end: function (index, layero) {
+                $('#model').hide();
+            }
+        });
+    })
+    $("#submit_btn").click(function(){
+        var val = $("#text_input").val();
+        layer.closeAll();
+        $(".show1").show().text(val);
+        layer.msg('已生成退货异常单', { icon: -1, time: 1000 });
+        $(".icon_title").text("异常");
+        $(".show2").text("退货单： yc3655298337064316");
+        return false;
+    })
+
 </script>
 <script>
 

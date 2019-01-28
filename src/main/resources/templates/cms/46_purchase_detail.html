@@ -99,15 +99,14 @@
                 <div class="h15"></div>
                 <div class="layui-row">
                     <span class="layui-breadcrumb" lay-separator="/">
-                        <a href="41_purchase_list.html">入库单查询</a>
+                        <a href="60_returnForm_list.html">退货单查询</a>
                         <a><cite>采购单详情</cite></a>
                     </span>
                 </div>
                 <hr class="layui-bg-gray">
                 <blockquote class="layui-elem-quote">
                     <div class="jhtiple">
-                        <div><span>到货接收单: dh3123679541999233</span><span>采购时间：2019/01/07 07:30</span></div>
-                        <div><span>采购品种: 4</span><span>总件数: 4800</span></div>
+                        <div><span>退货入库单: th7863442812849783</span></div>
                     </div>
                 </blockquote>
                 <div class="layui-row">
@@ -132,9 +131,7 @@
                                 <th>规格型号</th>
                                 <th>单位</th>
                                 <th>数量</th>
-                                <th>供应商</th>
                                 <th>描述</th>
-                                <th>金额</th>
                                 <th>状态</th>
                                 <th>操作</th>
                             </tr>
@@ -144,60 +141,13 @@
                                 <th><input type="checkbox" name="" title="写作" lay-skin="primary"></th>
                                 <td>01</td>
                                 <td>iPhone X 64G 全网通4G智能手机</td>
-                                <td>黑色 64GB</td>
+                                <td>金色 64GB</td>
                                 <td>个</td>
-                                <td>800</td>
-                                <td>供应商A</td>
+                                <td>1</td>
                                 <td>无</td>
-                                <td>6959200</td>
                                 <td>未入库</td>
                                 <td>
                                     <button class="layui-btn layui-btn-normal layui-btn-sm">入库</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><input type="checkbox" name="" title="写作" lay-skin="primary"></th>
-                                <td>02</td>
-                                <td>iPhone 8 Plus 红色特别版全网通手机</td>
-                                <td>64GB</td>
-                                <td>个</td>
-                                <td>1000</td>
-                                <td>供应商B</td>
-                                <td>无</td>
-                                <td>4788000</td>
-                                <td>未入库</td>
-                                <td>
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">入库</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><input type="checkbox" name="" title="写作" lay-skin="primary"></th>
-                                <td>03</td>
-                                <td>小米8年度旗舰全面屏骁龙845处理器官方正品智能手机</td>
-                                <td>黑色 6+64G</td>
-                                <td>个</td>
-                                <td>2000</td>
-                                <td>供应商A</td>
-                                <td>无</td>
-                                <td>4598000</td>
-                                <td>未入库</td>
-                                <td>
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">入库</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th><input type="checkbox" name="" title="写作" lay-skin="primary"></th>
-                                <td>04</td>
-                                <td>华为honor/荣耀 荣耀10青春版渐变色全网通</td>
-                                <td>幻夜黑 4+64GB</td>
-                                <td>个</td>
-                                <td>1000</td>
-                                <td>供应商A</td>
-                                <td>无</td>
-                                <td>1399000</td>
-                                <td>已入库</td>
-                                <td>
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm layui-btn-disabled">入库</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -235,7 +185,7 @@
 
     $(".layui-btn").click(function(){
         $(this).addClass("layui-btn-disabled").parent().prev().text("已入库");
-        layer.msg('已入库', { icon: -1, time: 1000 });
+        layer.msg('退货已入库', { icon: -1, time: 1000 });
     })
 </script>
 <script>
