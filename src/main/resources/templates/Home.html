@@ -30,7 +30,7 @@
 
     <ul class="layui-nav right" lay-filter="" th:if="${userCompanies!=null && userCompanies.size()>0}">
         <li class="layui-nav-item">
-            <a href="javascript:;" th:text="${currentCompany}"></a>
+            <a href="javascript:; " th:text="${currentCompany}"></a>
             <dl class="layui-nav-child">
                 <dd th:each="company, iterStat:${userCompanies}">
                     <a th:text="${company.companyName}" th:id="${company.companyId}" onclick="changeCompany(event)"></a>
