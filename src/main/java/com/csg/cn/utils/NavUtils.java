@@ -19,23 +19,17 @@ public class NavUtils {
         for (MenuTree t : trees){
             sb.append("<li>");
             if (t.getSubMenu() != null && t.getSubMenu().size() > 0){
-                sb.append("<a href='javascript:;'>");
-                sb.append("<i class='iconfont'>&#xe6b8;</i>");
-                sb.append("<cite>");
-                sb.append(t.getAuthName());
-                sb.append("</cite>");
-                sb.append("<i class='iconfont nav_right'>&#xe697;</i>");
-                sb.append("</a>");
-                sb.append("<ul class='sub-menu'>");
+                sb.append("<li class='layui-nav-item'>");
+                sb.append("<a href='javascript:;'>"+ t.getAuthName() +"</a>");
+                sb.append("<dl class='layui-nav-child'>");
                 sb.append(getMenuTree(ctx, t.getSubMenu()));
-                sb.append("</ul>");
+                sb.append("</dl>");
             }else {
-                sb.append("<a _href='").append(ctx).append("/").append(t.getAuthUrl()).append("'>");
-                sb.append("<i class='iconfont'>&#xe6b8;</i>");
-                sb.append("<cite>");
+                sb.append("<dd>");
+                sb.append("<a class='nav_item' href='").append(ctx).append("/").append(t.getAuthUrl()).append("'>");
                 sb.append(t.getAuthName());
-                sb.append("</cite>");
                 sb.append("</a>");
+                sb.append("</dd>");
             }
             sb.append("</li>");
         }

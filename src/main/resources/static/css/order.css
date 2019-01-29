@@ -94,3 +94,7 @@
 /* .layui-nav{
     padding: 0 40px !important;
 } */
+.nav_item{
+    color:#fff;
+    cursor: pointer;
+}

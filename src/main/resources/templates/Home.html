@@ -5,80 +5,85 @@
     <title>仓库系统</title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport"
+          content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <div th:include="common/common"></div>
 
 </head>
-<body>
-<!-- 顶部开始 -->
-<div class="container">
-    <div class="logo"><a href="javascript:;">仓库系统</a></div>
-    <div class="left_open">
-        <i title="展开左侧栏" class="iconfont">&#xe699;</i>
-    </div>
-
-    <ul class="layui-nav right" lay-filter="">
-        <li class="layui-nav-item">
-            <a href="javascript:;" th:text="${username}"></a>
-            <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                <dd><a id="change" th:value="${userId}">修改密码</a></dd>
-                <dd><a th:href="@{logout}">退出</a></dd>
-            </dl>
-        </li>
-    </ul>
-
-    <ul class="layui-nav right" lay-filter="" th:if="${userCompanies!=null && userCompanies.size()>0}">
-        <li class="layui-nav-item">
-            <a href="javascript:; " th:text="${currentCompany}"></a>
-            <dl class="layui-nav-child">
-                <dd th:each="company, iterStat:${userCompanies}">
-                    <a th:text="${company.companyName}" th:id="${company.companyId}" onclick="changeCompany(event)"></a>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <!-- 顶部开始 -->
+    <div class="layui-header">
+        <div class="layui-logo">湖北网通仓储平台</div>
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
+            <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
+            <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item" lay-filter="" th:if="${userCompanies!=null && userCompanies.size()>0}">
+                <a href="javascript:; " th:text="${currentCompany}"></a>
+                <dd th:each="company, iterStat:${userCompanies}" class="layui-nav-child">
+                    <a th:text="${company.companyName}" th:id="${company.companyId}"
+                       onclick="changeCompany(event)"></a>
                 </dd>
-            </dl>
-        </li>
-    </ul>
-</div>
-<!-- 顶部结束 -->
-<!-- 中部开始 -->
-<!-- 左侧菜单开始 -->
-<div class="left-nav">
-    <div id="side-nav">
-        <ul id="nav">
-            <div th:utext="${tree}"></div>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    <span th:text="${username}"></span>
+                </a>
+                <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                    <dd><a id="change" th:value="${userId}">修改密码</a></dd>
+                    <dd><a th:href="@{logout}">退出</a></dd>
+                </dl>
+            </li>
         </ul>
     </div>
-</div>
-<!-- <div class="x-slide_left"></div> -->
-<!-- 左侧菜单结束 -->
-<!-- 右侧主体开始 -->
-<div class="page-content">
-    <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
-        <ul class="layui-tab-title">
-            <!--<li>我的桌面</li>-->
-        </ul>
-        <div class="layui-tab-content">
-            <!--<div class="layui-tab-item layui-show">-->
-            <!--<iframe src='./welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>-->
-            <!--</div>-->
+    <!-- 顶部结束 -->
+    <!-- 左导航开始 -->
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <div th:utext="${tree}"></div>
+            </ul>
         </div>
     </div>
-</div>
-<div class="page-content-bg"></div>
-<!-- 右侧主体结束 -->
-<!-- 中部结束 -->
-<!-- 底部开始 -->
-<div class="footer">
-    <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved</div>
+    <!-- 左导航结束 -->
+    <!-- 右侧主体开始 -->
+    <div class="page-content">
+        <div class="layui-tab tab" lay-filter="xbs_tab" lay-allowclose="false">
+            <ul class="layui-tab-title">
+                <!--<li>我的桌面</li>-->
+            </ul>
+            <div class="layui-tab-content">
+                <!--<div class="layui-tab-item layui-show">-->
+                <!--<iframe src='./welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>-->
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <!-- 右侧主体结束 -->
+    <div class="layui-footer">
+        <img  th:src="@{/images/cms/logo.png}" class="logo" alt="">
+        <span class="logo_title">© 2015-2030 浩鲸云计算科技股份有限公司 版权所有| All Rights Reserved </span>
+    </div>
 </div>
 <script>
 
     $(function () {
         $('#change').on('click', function () {
             var userId = $('#change').attr('value');
-            x_admin_show("修改密码",ctx + "user/change?userId=" + userId, 500, 400)
+            x_admin_show("修改密码", ctx + "user/change?userId=" + userId, 500, 400)
         });
     });
+
+    $(".layui-nav-child li").click(function () {
+        $(this).parents(".layui-nav-item").addClass("layui-nav-itemed");
+        $(this).parents(".layui-nav-item").nextAll().removeClass("layui-nav-itemed");
+        $(this).parents(".layui-nav-item").prevAll().removeClass("layui-nav-itemed");
+    })
 
     function changeCompany(event) {
         var obj = event.srcElement || event.target;
@@ -87,23 +92,23 @@
             $ = layui.jquery;
             var layer = layui.layer;
 
-            layer.confirm('是否切换到仓库<span style="color: #FF5722; font-size: 16px;">'+ obj.innerText +'</span>?', function (index) {
+            layer.confirm('是否切换到仓库<span style="color: #FF5722; font-size: 16px;">' + obj.innerText + '</span>?', function (index) {
                 $.ajax({
-                    url : ctx + 'changeCompany',
-                    type:'post',
-                    dataType:'json',
-                    data:{
-                        companyId:obj.id,
-                        companyName:obj.innerText
+                    url: ctx + 'changeCompany',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        companyId: obj.id,
+                        companyName: obj.innerText
                     },
-                    success:function(data){
+                    success: function (data) {
                         if (data.code == '0000') {
-                            layer.alert("切换成功", {icon: 6},function (i) {
+                            layer.alert("切换成功", {icon: 6}, function (i) {
                                 //关闭当前frame
                                 history.go(0);
                             });
-                        }else {
-                            layer.alert("切换失败：" + data.message, {icon: 5},function (i) {
+                        } else {
+                            layer.alert("切换失败：" + data.message, {icon: 5}, function (i) {
                                 //关闭当前frame
                                 layer.close(i)
                             });
