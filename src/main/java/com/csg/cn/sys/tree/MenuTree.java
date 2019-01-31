@@ -36,12 +36,13 @@ public class MenuTree extends SysAuth {
         StringBuilder builder = new StringBuilder();
         builder.append("<li>");
         if (subMenu != null && subMenu.size() > 0){
-            builder.append("<a href='javascript:;'>");
-            builder.append("<i class='iconfont'>&#xe6b8;</i>");
+            builder.append("<a href='javascript:;' style='color:#fff;'>");
+//            builder.append("<i class='iconfont'>&#xe6b8;</i>");
             builder.append("<cite>");
             builder.append(getAuthName());
             builder.append("</cite>");
-            builder.append("<i class='iconfont nav_right'>&#xe697;</i>");
+//            builder.append("<i class='iconfont nav_right'>&#xe697;</i>");
+            builder.append("<span class='layui-nav-more></span>");
             builder.append("</a>");
             builder.append("<ul class='sub-menu'>");
             for (SysAuth sysAuth : subMenu){

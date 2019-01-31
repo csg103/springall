@@ -1,8 +1,6 @@
 package com.csg.cn.utils;
 
 
-
-
 import com.csg.cn.sys.tree.MenuTree;
 
 import java.util.List;
@@ -14,22 +12,28 @@ import java.util.List;
  **/
 public class NavUtils {
 
-    public static String getMenuTree(String ctx, List<MenuTree> trees){
+    public static String getMenuTree(String ctx, List<MenuTree> trees) {
         StringBuilder sb = new StringBuilder();
-        for (MenuTree t : trees){
-            sb.append("<li>");
-            if (t.getSubMenu() != null && t.getSubMenu().size() > 0){
-                sb.append("<li class='layui-nav-item'>");
-                sb.append("<a href='javascript:;'>"+ t.getAuthName() +"</a>");
-                sb.append("<dl class='layui-nav-child'>");
-                sb.append(getMenuTree(ctx, t.getSubMenu()));
-                sb.append("</dl>");
-            }else {
-                sb.append("<dd>");
-                sb.append("<a class='nav_item' href='").append(ctx).append("/").append(t.getAuthUrl()).append("'>");
+        for (MenuTree t : trees) {
+            sb.append("<li class='left_slider'>");
+            if (t.getSubMenu() != null && t.getSubMenu().size() > 0) {
+                sb.append("<a href='javascript:;' class='item_hover'>");
+                sb.append("<i class='iconfont none'>&#xe6b8;</i>");
+                sb.append("<cite>");
                 sb.append(t.getAuthName());
+                sb.append("</cite>");
+                sb.append("<i class='iconfont nav_right'>&#xe697;</i>");
                 sb.append("</a>");
-                sb.append("</dd>");
+                sb.append("<ul class='sub-menu'>");
+                sb.append(getMenuTree(ctx, t.getSubMenu()));
+                sb.append("</ul>");
+            } else {
+                sb.append("<a _href='").append(ctx).append("/").append(t.getAuthUrl()).append("'>");
+                sb.append("<i class='iconfont none'>&#xe6b8;</i>");
+                sb.append("<cite>");
+                sb.append(t.getAuthName());
+                sb.append("</cite>");
+                sb.append("</a>");
             }
             sb.append("</li>");
         }

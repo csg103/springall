@@ -265,16 +265,16 @@ xblock{
 .left-nav{
 	position: absolute;
     top: 46px;
-    bottom: 42px;
+    bottom: 0px;
     left: 0;
     z-index: 2;
     padding-top: 10px;
 	background-color: #393D49;
-	width: 220px;
-    max-width: 220px;
+	width: 200px;
+    max-width: 200px;
     overflow: auto;
     overflow-x:hidden;
-    border-right: 1px solid #e5e5e5;
+    /*border-right: 1px solid #e5e5e5;*/
 
     /*width: 0px;*/
 }
@@ -283,25 +283,31 @@ xblock{
 }
 .left-nav #nav li:hover > a{
 	/*color: blue;*/
+    background-color: #4E5465;
 }
 .left-nav #nav .current{
 	background-color: rgba(0, 0, 0, 0.3);
 }
 .left-nav #nav li a{
 	font-size: 14px;
-	padding: 10px 15px 10px 20px;
+	padding: 14px 15px 10px 20px;
 	display: block;
 	cursor: pointer;
 }
 .left-nav #nav li a cite{
 	font-size: 14px;
+    color: rgba(255,255,255,.7);
 }
-
+#nav{
+    /*padding-top: 10px;*/
+}
 .left-nav #nav li .sub-menu{
 	display: none;
+    background-color: rgba(0,0,0,.3)!important;
 }
 .left-nav #nav li .opened{
 	display: block;
+    background-color: rgba(0,0,0,.3)!important;
 }
 .left-nav #nav li .opened:hover{
 	/*background: #fff url() 0 0 no-repeat;*/
@@ -314,7 +320,7 @@ xblock{
 	 /*background: #fff url() 0 0 no-repeat;*/
 }
 .left-nav #nav li .sub-menu li a{
-	padding: 12px 15px 12px 30px;
+	/*padding: 12px 15px 12px 30px;*/
 	font-size: 14px;
 	cursor: pointer;
 }
@@ -327,9 +333,23 @@ xblock{
 .left-nav #nav li .sub-menu li a i{
 	font-size: 12px;
 }
+#side-nav #nav .left_slider .item_hover:hover{
+    border-left: 5px solid #009688;
+    padding: 14px 15px 10px 15px;
+}
+#side-nav #nav .left_slider .item_hover:hover cite{
+    color: #fff;
+}
+#side-nav #nav .open .item_hover cite{
+    color: #fff;
+}
+#side-nav #nav .open .item_hover{
+    border-left: 5px solid #009688;
+    padding: 14px 15px 10px 15px;
+}
 .left-nav #nav li a i{
 	padding-right: 10px;
-	line-height: 14px;
+	line-height: 20px;
 }
 .left-nav #nav li .nav_right{
 	float: right;
@@ -436,8 +456,15 @@ table th, table td {
 .footer .copyright{
 	margin-left: 10px;
 }
-
-
+.none{
+    display: none;
+}
+.iconfont{
+    color:#fff;
+}
+.layui-body{
+    left: 0;
+}
 @media screen and (max-width: 768px){
 	.fast-add{
 		display: none;

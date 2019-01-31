@@ -14,38 +14,12 @@
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <!-- 顶部开始 -->
-    <div class="layui-header">
-        <div class="layui-logo">湖北网通仓储平台</div>
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
-            <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
-            <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
-        </ul>
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item" lay-filter="" th:if="${userCompanies!=null && userCompanies.size()>0}">
-                <a href="javascript:; " th:text="${currentCompany}"></a>
-                <dd th:each="company, iterStat:${userCompanies}" class="layui-nav-child">
-                    <a th:text="${company.companyName}" th:id="${company.companyId}"
-                       onclick="changeCompany(event)"></a>
-                </dd>
-            </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    <span th:text="${username}"></span>
-                </a>
-                <dl class="layui-nav-child"> <!-- 二级菜单 -->
-                    <dd><a id="change" th:value="${userId}">修改密码</a></dd>
-                    <dd><a th:href="@{logout}">退出</a></dd>
-                </dl>
-            </li>
-        </ul>
-    </div>
+    <div th:include="common/common_header"></div>
     <!-- 顶部结束 -->
     <!-- 左导航开始 -->
-    <div class="layui-side layui-bg-black">
-        <div class="layui-side-scroll">
-            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+    <div class="left-nav">
+        <div id="side-nav">
+            <ul id="nav">
                 <div th:utext="${tree}"></div>
             </ul>
         </div>
@@ -65,10 +39,7 @@
         </div>
     </div>
     <!-- 右侧主体结束 -->
-    <div class="layui-footer">
-        <img  th:src="@{/images/cms/logo.png}" class="logo" alt="">
-        <span class="logo_title">© 2015-2030 浩鲸云计算科技股份有限公司 版权所有| All Rights Reserved </span>
-    </div>
+    <div th:include="common/common_footer"></div>
 </div>
 <script>
 
