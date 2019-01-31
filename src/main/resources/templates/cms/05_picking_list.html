@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 
 <head>
@@ -6,290 +7,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>拣货单查询</title>
-    <link href="../layui/css/layui.css" rel="stylesheet" />
-    <link href="../css/order.css" rel="stylesheet" />
+    <div th:include="common/common"></div>
     <style>
 
     </style>
 </head>
 
-<body class="layui-layout-body">
-    <div class="layui-layout layui-layout-admin">
-        <div class="layui-header">
-            <div class="layui-logo">湖北网通仓储平台</div>
-            <!-- 头部区域（可配合layui已有的水平导航） -->
-            <ul class="layui-nav layui-layout-left">
-                    <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
-                    <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
-                    <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
-                    <!-- <li class="layui-nav-item">
-                                <a href="javascript:;">公司文化</a>
-                                <dl class="layui-nav-child">
-                                    <dd><a href="">邮件管理</a></dd>
-                                    <dd><a href="">消息管理</a></dd>
-                                    <dd><a href="">授权管理</a></dd>
-                                </dl>
-                            </li> -->
-                </ul>
-            <ul class="layui-nav layui-layout-right">
-                <li class="layui-nav-item">
-                    <a href="">个人中心<span class="layui-badge-dot"></span></a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                        <span>管理员</span>
-                    </a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="">基本资料</a></dd>
-                        <dd><a href="">安全设置</a></dd>
-                        <dd><a href="">退出</a></dd>
-                    </dl>
-                </li>
-            </ul>
-        </div>
-
-        <div class="layui-side layui-bg-black">
-            <div class="layui-side-scroll">
-                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                    <li class="layui-nav-item layui-nav-itemed">
-                        <a class="" href="javascript:;">订单管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="01_order_list.html">订单查询</a></dd>
-                            <dd><a href="05_picking_list.html">拣货单号查询</a></dd>
-                            <dd><a href="10_transport_list.html">运单号查询</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">退货管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="15_return_list.html">退货接收单</a></dd>
-                            <dd><a href="16_return_list.html">退货交接单</a></dd>
-                            <dd><a href="17_return_list.html">退货审核</a></dd>
-                            <dd><a href="18_return_list.html">退货审核异常表</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">仓库管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="40_purchase_list.html">到货接收单</a></dd>
-                            <dd><a href="41_purchase_list.html">入库单查询</a></dd>
-                            <dd><a href="50_goods_list.html">库存查询</a></dd>
-                            <dd><a href="60_returnForm_list.html">退货单查询</a></dd>
-                            <dd><a href="70_store_list.html">仓位调整</a></dd>
-                            <dd><a href="80_inventory_list.html">盘点单查询</a></dd>
-                            <dd><a href="90_inventory_list.html">盘点盈亏表</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                            <a href="javascript:;">权限管理</a>
-                            <dl class="layui-nav-child">
-                                <dd><a href="">人员管理</a></dd>
-                                <dd><a href="">权限管理</a></dd>
-                            </dl>
-                        </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="layui-body">
-            <!-- 内容主体区域 -->
-            <div class="layui-fluid">
-                <div class="h15"></div>
-                <div class="layui-row">
+<body>
+<div class="x-body">
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div class="layui-fluid">
+            <div class="h15"></div>
+            <div class="layui-row">
                     <span class="layui-breadcrumb" lay-separator="/">
                         <a href="05_picking_list.html">拣货单查询</a>
                         <a><cite>拣货单列表</cite></a>
                     </span>
-                </div>
-                <hr class="layui-bg-gray">
+            </div>
+            <hr class="layui-bg-gray">
 
-                <form class="layui-form" action="">
-                    <div class="h10"></div>
-                    <div class="layui-row layui-col-space20">
-                        <div class="layui-form-item layui-col-md4">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入单号"
-                                autocomplete="off" class="layui-input border5">
-                        </div>
-                        <div class="layui-col-md2">
-                            <button class="layui-btn border5">查询</button>
-                        </div>
-                    </div>
-                </form>
+            <form class="layui-form" action="">
                 <div class="h10"></div>
-                <div class="layui-row">
-                    <div class="right">
-                        <button class="layui-btn border5" id="button01">完成</button>
+                <div class="layui-row layui-col-space20">
+                    <div class="layui-form-item layui-col-md4">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入单号"
+                               autocomplete="off" class="layui-input border5">
                     </div>
-                    <div class="clearboth"></div>
+                    <div class="layui-col-md2">
+                        <button class="layui-btn border5">查询</button>
+                    </div>
                 </div>
-
-                <!-- 表格信息 -->
-                <table class="layui-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <th>拣货单号</th>
-                            <th>拣货员</th>
-                            <th>开始时间</th>
-                            <th>更新时间</th>
-                            <th>拣货状态</th>
-                            <th>订单操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>jh1379126958239422</td>
-                            <td>宋向梦</td>
-                            <td>2019/01/17 08:55</td>
-                            <td>2019/01/17 08:55</td>
-                            <th>未拣货</th>
-                            <td>
-                                <a href="06_picking_detail.html">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn  layui-btn-sm complete">完成</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>jh5352195962646428</td>
-                            <td>宋向梦</td>
-                            <td>2019/01/17 11:14</td>
-                            <td>2019/01/17 14:14</td>
-                            <th>未拣货</th>
-                            <td>
-                                <a href="06_picking_detail.html">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn  layui-btn-sm complete">完成</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>jh8687794972654882</td>
-                            <td>董安彤</td>
-                            <td>2019/01/16 11:14</td>
-                            <td>2019/01/17 11:14</td>
-                            <th>拣货完成</th>
-                            <td>
-                                <a href="06_picking_detail.html">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>jh4020269452711612</td>
-                            <td>尹琰琬</td>
-                            <td>2017/06/08 07:18</td>
-                            <td>2017/06/09 07:18</td>
-                            <th>拣货完成</th>
-                            <td>
-                                <a href="06_picking_detail.html">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>jh5131953019487824</td>
-                            <td>尹琰琬</td>
-                            <td>2018/06/06 08:34</td>
-                            <td>2018/06/07 08:34</td>
-                            <th>拣货完成</th>
-                            <td>
-                                <a href="06_picking_detail.html">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>jh0242178762612811</td>
-                            <td>尹琰琬</td>
-                            <td>2018/10/04 07:11</td>
-                            <td>2018/10/04 09:11</td>
-                            <th>拣货完成</th>
-                            <td>
-                                <a href="06_picking_detail.html">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>jh9812473356156037</td>
-                            <td>毛璞玉</td>
-                            <td>2018/03/03 07:34</td>
-                            <td>2018/03/05 07:34</td>
-                            <th>拣货完成</th>
-                            <td>
-                                <a href="06_picking_detail.html">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>jh9961589646185191</td>
-                            <td>萧平良</td>
-                            <td>2017/03/08 02:30</td>
-                            <td>2017/03/09 02:30</td>
-                            <th>拣货完成</th>
-                            <td>
-                                <a href="06_picking_detail.html">
-                                    <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
-                                </a>
-                                <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div id="page"></div>
-                <div class="layui-footer">
-                        <img src="../images/logo.png" class="logo" alt="">
-
-                        <span class="logo_title">© 2015-2030 浩鲸云计算科技股份有限公司 版权所有| All Rights Reserved </span>
-                    </div>
+            </form>
+            <div class="h10"></div>
+            <div class="layui-row">
+                <div class="right">
+                    <button class="layui-btn border5" id="button01">完成</button>
+                </div>
+                <div class="clearboth"></div>
             </div>
 
-
+            <!-- 表格信息 -->
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <th>拣货单号</th>
+                    <th>拣货员</th>
+                    <th>开始时间</th>
+                    <th>更新时间</th>
+                    <th>拣货状态</th>
+                    <th>订单操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>jh1379126958239422</td>
+                    <td>宋向梦</td>
+                    <td>2019/01/17 08:55</td>
+                    <td>2019/01/17 08:55</td>
+                    <th>未拣货</th>
+                    <td>
+                        <a href="06_picking_detail.html">
+                            <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                        </a>
+                        <button class="layui-btn  layui-btn-sm complete">完成</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>jh5352195962646428</td>
+                    <td>宋向梦</td>
+                    <td>2019/01/17 11:14</td>
+                    <td>2019/01/17 14:14</td>
+                    <th>未拣货</th>
+                    <td>
+                        <a href="06_picking_detail.html">
+                            <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                        </a>
+                        <button class="layui-btn  layui-btn-sm complete">完成</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>jh8687794972654882</td>
+                    <td>董安彤</td>
+                    <td>2019/01/16 11:14</td>
+                    <td>2019/01/17 11:14</td>
+                    <th>拣货完成</th>
+                    <td>
+                        <a href="06_picking_detail.html">
+                            <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                        </a>
+                        <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>jh4020269452711612</td>
+                    <td>尹琰琬</td>
+                    <td>2017/06/08 07:18</td>
+                    <td>2017/06/09 07:18</td>
+                    <th>拣货完成</th>
+                    <td>
+                        <a href="06_picking_detail.html">
+                            <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                        </a>
+                        <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>jh5131953019487824</td>
+                    <td>尹琰琬</td>
+                    <td>2018/06/06 08:34</td>
+                    <td>2018/06/07 08:34</td>
+                    <th>拣货完成</th>
+                    <td>
+                        <a href="06_picking_detail.html">
+                            <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                        </a>
+                        <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>jh0242178762612811</td>
+                    <td>尹琰琬</td>
+                    <td>2018/10/04 07:11</td>
+                    <td>2018/10/04 09:11</td>
+                    <th>拣货完成</th>
+                    <td>
+                        <a href="06_picking_detail.html">
+                            <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                        </a>
+                        <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>jh9812473356156037</td>
+                    <td>毛璞玉</td>
+                    <td>2018/03/03 07:34</td>
+                    <td>2018/03/05 07:34</td>
+                    <th>拣货完成</th>
+                    <td>
+                        <a href="06_picking_detail.html">
+                            <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                        </a>
+                        <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>jh9961589646185191</td>
+                    <td>萧平良</td>
+                    <td>2017/03/08 02:30</td>
+                    <td>2017/03/09 02:30</td>
+                    <th>拣货完成</th>
+                    <td>
+                        <a href="06_picking_detail.html">
+                            <button class="layui-btn layui-btn-normal layui-btn-sm">查看</button>
+                        </a>
+                        <button class="layui-btn  layui-btn-sm layui-btn-disabled complete">完成</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="page"></div>
         </div>
-        <!-- <blockquote class="layui-elem-quote layui-quote-nm">搜索</blockquote> -->
+
 
     </div>
+    <!-- <blockquote class="layui-elem-quote layui-quote-nm">搜索</blockquote> -->
 
-    </div>
-
+</div>
 </body>
-<script src="../js/jquery.js"></script>
-<script src="../layui/layui.all.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function () {
