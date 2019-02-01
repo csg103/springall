@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 
 <head>
@@ -7,293 +8,201 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>到货接收单</title>
     <!-- <link href="../css/layui.css" rel="stylesheet" /> -->
-    <link href="../layui/css/layui.css" rel="stylesheet" />
-    <link href="../css/order.css" rel="stylesheet" />
+    <div th:include="common/common"></div>
     <style>
 
     </style>
 </head>
 
-<body class="layui-layout-body">
-    <div class="layui-layout layui-layout-admin">
-        <div class="layui-header">
-            <div class="layui-logo">湖北网通仓储平台</div>
-            <!-- 头部区域（可配合layui已有的水平导航） -->
-            <ul class="layui-nav layui-layout-left">
-                <li class="layui-nav-item"><a href="order_card.html">控制台</a></li>
-                <li class="layui-nav-item"><a href="order_product.html">文档帮助</a></li>
-                <li class="layui-nav-item"><a href="other.html">最新消息</a></li>
-                <!-- <li class="layui-nav-item">
-                                        <a href="javascript:;">公司文化</a>
-                                        <dl class="layui-nav-child">
-                                            <dd><a href="">邮件管理</a></dd>
-                                            <dd><a href="">消息管理</a></dd>
-                                            <dd><a href="">授权管理</a></dd>
-                                        </dl>
-                                    </li> -->
-            </ul>
-            <ul class="layui-nav layui-layout-right">
-                <li class="layui-nav-item">
-                    <a href="">个人中心<span class="layui-badge-dot"></span></a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                        <span>管理员</span>
-                    </a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="">基本资料</a></dd>
-                        <dd><a href="">安全设置</a></dd>
-                        <dd><a href="">退出</a></dd>
-                    </dl>
-                </li>
-            </ul>
-        </div>
-
-        <div class="layui-side layui-bg-black">
-            <div class="layui-side-scroll">
-                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                    <li class="layui-nav-item">
-                        <a class="" href="javascript:;">订单管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="01_order_list.html">订单查询</a></dd>
-                            <dd><a href="05_picking_list.html">拣货单号查询</a></dd>
-                            <dd><a href="10_transport_list.html">运单号查询</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">退货管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="15_return_list.html">退货接收单</a></dd>
-                            <dd><a href="16_return_list.html">退货交接单</a></dd>
-                            <dd><a href="17_return_list.html">退货审核</a></dd>
-                            <dd><a href="18_return_list.html">退货审核异常表</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item layui-nav-itemed">
-                        <a href="javascript:;">仓库管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="40_purchase_list.html">到货接收单</a></dd>
-                            <dd><a href="41_purchase_list.html">入库单查询</a></dd>
-                            <dd><a href="50_goods_list.html">库存查询</a></dd>
-                            <dd><a href="60_returnForm_list.html">退货单查询</a></dd>
-                            <dd><a href="70_store_list.html">仓位调整</a></dd>
-                            <dd><a href="80_inventory_list.html">盘点单查询</a></dd>
-                            <dd><a href="90_inventory_list.html">盘点盈亏表</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">权限管理</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="">人员管理</a></dd>
-                            <dd><a href="">权限管理</a></dd>
-                        </dl>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="layui-body">
-            <!-- 内容主体区域 -->
-            <div class="layui-fluid">
-                <div class="h15"></div>
-                <div class="layui-row">
+<body>
+<div class="x-body">
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div class="layui-fluid">
+            <div class="h15"></div>
+            <div class="layui-row">
                     <span class="layui-breadcrumb" lay-separator="/">
                         <a href="40_purchase_list.html">到货接收单</a>
                         <a><cite>接收单列表</cite></a>
                     </span>
-                </div>
-                <hr class="layui-bg-gray">
+            </div>
+            <hr class="layui-bg-gray">
 
-                <form class="layui-form" action="">
-                    <div class="h10"></div>
-                    <div class="layui-row layui-col-space20">
-                        <div class="layui-form-item layui-col-md4">
-                            <input type="text" name="title" required lay-verify="required" placeholder="请输入商品编码"
-                                autocomplete="off" class="layui-input border5">
-                        </div>
-                        <div class="layui-col-md2">
-                            <select name="city" lay-verify="">
-                                <option value="">请选择采购平台商</option>
-                                <option value="010">富力采购中心</option>
-                                <option value="021">新华采购中心</option>
-                            </select>
-                        </div>
-                        <div class="layui-col-md2">
-                            <button class="layui-btn border5">查询</button>
-                        </div>
-                    </div>
-                </form>
+            <form class="layui-form" action="">
                 <div class="h10"></div>
-                <!-- <blockquote class="layui-elem-quote">详细信息</blockquote> -->
-
-                <div class="layui-row">
-                    <div class="right">
-                        <button class="layui-btn border5">新建接收单</button>
-                        <button class="layui-btn border5">确认到货</button>
+                <div class="layui-row layui-col-space20">
+                    <div class="layui-form-item layui-col-md4">
+                        <input type="text" name="title" required lay-verify="required" placeholder="请输入商品编码"
+                               autocomplete="off" class="layui-input border5">
                     </div>
-                    <div class="clearboth"></div>
+                    <div class="layui-col-md2">
+                        <select name="city" lay-verify="">
+                            <option value="">请选择采购平台商</option>
+                            <option value="010">富力采购中心</option>
+                            <option value="021">新华采购中心</option>
+                        </select>
+                    </div>
+                    <div class="layui-col-md2">
+                        <button class="layui-btn border5">查询</button>
+                    </div>
                 </div>
+            </form>
+            <div class="h10"></div>
+            <!-- <blockquote class="layui-elem-quote">详细信息</blockquote> -->
 
-                <!-- 表格信息 -->
-                <table class="layui-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <th>商品编码</th>
-                            <th>操作人</th>
-                            <th>到货时间</th>
-                            <th>渠道</th>
-                            <th>数量</th>
-                            <th>类型</th>
-                            <th>状态</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>cg7922352144228518</td>
-                            <td>姚正奇</td>
-                            <td>2018/05/05 03:30</td>
-                            <th>富力采购中心</th>
-                            <th>2000</th>
-                            <th>赠品类</th>
-                            <td>到货</td>
-                            <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm" id="confirm">确认到货</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>cg7764997876616616</td>
-                            <td>傅雨石</td>
-                            <td>2018/09/03 10:55</td>
-                            <th>富力采购中心</th>
-                            <th>1300</th>
-                            <th>终端类</th>
-                            <td>已接收</td>
-                            <td>
-                                <button class="layui-btn layui-btn-disabled layui-btn-sm">确认到货</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>cg6211093747684971</td>
-                            <td>方向文</td>
-                            <td>2018/08/03 02:07</td>
-                            <th>富力采购中心</th>
-                            <th>4000</th>
-                            <th>赠品类</th>
-                            <td>到货</td>
-                            <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>cg7938881044937213</td>
-                            <td>方向文</td>
-                            <td>2018/05/09 07:02</td>
-                            <th>新华采购中心</th>
-                            <th>10000</th>
-                            <th>赠品类</th>
-                            <td>到货</td>
-                            <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>cg4416774682965521</td>
-                            <td>方向文</td>
-                            <td>2018/11/04 08:06</td>
-                            <th>新华采购中心</th>
-                            <th>5000</th>
-                            <th>终端类</th>
-                            <td>到货</td>
-                            <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>cg3367695899437711</td>
-                            <td>丁星光</td>
-                            <td>2018/02/10 11:07</td>
-                            <th>富力采购中心</th>
-                            <th>2000</th>
-                            <th>终端类</th>
-                            <td>到货</td>
-                            <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>cg8432452329498043</td>
-                            <td>方向文</td>
-                            <td>2018/03/09 06:02</td>
-                            <th>富力采购中心</th>
-                            <th>28000</th>
-                            <th>终端类</th>
-                            <td>到货</td>
-                            <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" title="写作" lay-skin="primary">
-                            </th>
-                            <td>cg8146359527161725</td>
-                            <td>丁星光</td>
-                            <td>2018/08/07 03:30</td>
-                            <th>富力采购中心</th>
-                            <th>12000</th>
-                            <th>终端类</th>
-                            <td>到货</td>
-                            <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div id="page"></div>
-                <div class="layui-footer">
-                        <img src="../images/logo.png" class="logo" alt="">
-
-                        <span class="logo_title">© 2015-2030 浩鲸云计算科技股份有限公司 版权所有| All Rights Reserved </span>
-                    </div>
+            <div class="layui-row">
+                <div class="right">
+                    <button class="layui-btn border5">新建接收单</button>
+                    <button class="layui-btn border5">确认到货</button>
+                </div>
+                <div class="clearboth"></div>
             </div>
 
-
+            <!-- 表格信息 -->
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <th>商品编码</th>
+                    <th>操作人</th>
+                    <th>到货时间</th>
+                    <th>渠道</th>
+                    <th>数量</th>
+                    <th>类型</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>cg7922352144228518</td>
+                    <td>姚正奇</td>
+                    <td>2018/05/05 03:30</td>
+                    <th>富力采购中心</th>
+                    <th>2000</th>
+                    <th>赠品类</th>
+                    <td>到货</td>
+                    <td>
+                        <button class="layui-btn layui-btn-normal layui-btn-sm" id="confirm">确认到货</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>cg7764997876616616</td>
+                    <td>傅雨石</td>
+                    <td>2018/09/03 10:55</td>
+                    <th>富力采购中心</th>
+                    <th>1300</th>
+                    <th>终端类</th>
+                    <td>已接收</td>
+                    <td>
+                        <button class="layui-btn layui-btn-disabled layui-btn-sm">确认到货</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>cg6211093747684971</td>
+                    <td>方向文</td>
+                    <td>2018/08/03 02:07</td>
+                    <th>富力采购中心</th>
+                    <th>4000</th>
+                    <th>赠品类</th>
+                    <td>到货</td>
+                    <td>
+                        <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>cg7938881044937213</td>
+                    <td>方向文</td>
+                    <td>2018/05/09 07:02</td>
+                    <th>新华采购中心</th>
+                    <th>10000</th>
+                    <th>赠品类</th>
+                    <td>到货</td>
+                    <td>
+                        <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>cg4416774682965521</td>
+                    <td>方向文</td>
+                    <td>2018/11/04 08:06</td>
+                    <th>新华采购中心</th>
+                    <th>5000</th>
+                    <th>终端类</th>
+                    <td>到货</td>
+                    <td>
+                        <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>cg3367695899437711</td>
+                    <td>丁星光</td>
+                    <td>2018/02/10 11:07</td>
+                    <th>富力采购中心</th>
+                    <th>2000</th>
+                    <th>终端类</th>
+                    <td>到货</td>
+                    <td>
+                        <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>cg8432452329498043</td>
+                    <td>方向文</td>
+                    <td>2018/03/09 06:02</td>
+                    <th>富力采购中心</th>
+                    <th>28000</th>
+                    <th>终端类</th>
+                    <td>到货</td>
+                    <td>
+                        <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="checkbox" name="" title="写作" lay-skin="primary">
+                    </th>
+                    <td>cg8146359527161725</td>
+                    <td>丁星光</td>
+                    <td>2018/08/07 03:30</td>
+                    <th>富力采购中心</th>
+                    <th>12000</th>
+                    <th>终端类</th>
+                    <td>到货</td>
+                    <td>
+                        <button class="layui-btn layui-btn-normal layui-btn-sm">确认到货</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div id="page"></div>
         </div>
-        <!-- <blockquote class="layui-elem-quote layui-quote-nm">搜索</blockquote> -->
-
     </div>
-
-    </div>
-
+</div>
 </body>
-<script src="../js/jquery.js"></script>
-<script src="../layui/layui.all.js"></script>
 <script>
     //JavaScript代码区域
     layui.use('element', function () {
