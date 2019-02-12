@@ -43,12 +43,12 @@
 </div>
 <script>
 
-    $(function () {
-        $('#change').on('click', function () {
-            var userId = $('#change').attr('value');
-            x_admin_show("修改密码", ctx + "user/change?userId=" + userId, 500, 400)
-        });
-    });
+//    $(function () {
+//        $('#change').on('click', function () {
+//            var userId = $('#change').attr('value');
+//            x_admin_show("修改密码", ctx + "user/change?userId=" + userId, 500, 400)
+//        });
+//    });
 
     $(".layui-nav-child li").click(function () {
         $(this).parents(".layui-nav-item").addClass("layui-nav-itemed");
@@ -56,39 +56,39 @@
         $(this).parents(".layui-nav-item").prevAll().removeClass("layui-nav-itemed");
     })
 
-    function changeCompany(event) {
-        var obj = event.srcElement || event.target;
-
-        layui.use(['layer'], function () {
-            $ = layui.jquery;
-            var layer = layui.layer;
-
-            layer.confirm('是否切换到仓库<span style="color: #FF5722; font-size: 16px;">' + obj.innerText + '</span>?', function (index) {
-                $.ajax({
-                    url: ctx + 'changeCompany',
-                    type: 'post',
-                    dataType: 'json',
-                    data: {
-                        companyId: obj.id,
-                        companyName: obj.innerText
-                    },
-                    success: function (data) {
-                        if (data.code == '0000') {
-                            layer.alert("切换成功", {icon: 6}, function (i) {
-                                //关闭当前frame
-                                history.go(0);
-                            });
-                        } else {
-                            layer.alert("切换失败：" + data.message, {icon: 5}, function (i) {
-                                //关闭当前frame
-                                layer.close(i)
-                            });
-                        }
-                    }
-                })
-            })
-        });
-    }
+//    function changeCompany(event) {
+//        var obj = event.srcElement || event.target;
+//
+//        layui.use(['layer'], function () {
+//            $ = layui.jquery;
+//            var layer = layui.layer;
+//
+//            layer.confirm('是否切换到仓库<span style="color: #FF5722; font-size: 16px;">' + obj.innerText + '</span>?', function (index) {
+//                $.ajax({
+//                    url: ctx + 'changeCompany',
+//                    type: 'post',
+//                    dataType: 'json',
+//                    data: {
+//                        companyId: obj.id,
+//                        companyName: obj.innerText
+//                    },
+//                    success: function (data) {
+//                        if (data.code == '0000') {
+//                            layer.alert("切换成功", {icon: 6}, function (i) {
+//                                //关闭当前frame
+//                                history.go(0);
+//                            });
+//                        } else {
+//                            layer.alert("切换失败：" + data.message, {icon: 5}, function (i) {
+//                                //关闭当前frame
+//                                layer.close(i)
+//                            });
+//                        }
+//                    }
+//                })
+//            })
+//        });
+//    }
 
 </script>
 </body>
