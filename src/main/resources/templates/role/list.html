@@ -14,23 +14,39 @@
         <a>
           <cite>展示</cite></a>
       </span>
-    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
-<div class="x-body">
-    <xblock>
-        <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
-        <button class="layui-btn" onclick="x_admin_show('添加角色',ctx + 'role/add',800,600)"><i class="layui-icon"></i>添加</button>
-        <!--<span class="x-right" style="line-height:40px">共有数据：88 条</span>-->
-    </xblock>
-    <table class="layui-table" id="demo" lay-filter="user_table"></table>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="x-body">
+                    <div class="layui-card-header ">
+                        <xblock>
+                            <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
+                            <button class="layui-btn" onclick="xadmin.open('添加角色',ctx + 'role/add',800,800)"><i
+                                    class="layui-icon"></i>添加
+                            </button>
 
-    <div class="page">
-        <div id="listPage">
+                            <!--<span class="x-right" style="line-height:40px">共有数据：88 条</span>-->
+                        </xblock>
+                    </div>
+                    <table class="layui-table" id="demo" lay-filter="user_table"></table>
+
+                    <div class="page">
+                        <div id="listPage">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
 </div>
+
 <script type="text/html" id="toolbar">
     <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -40,9 +56,9 @@
 <script type="text/html" id="flagTemplate">
     <a class="layui-btn layui-btn-xs" href="javascript:;">
         {{# if(d.flag == 1){ }}
-            启用
+        启用
         {{# }else { }}
-            停用
+        停用
         {{# }}}
     </a>
 </script>

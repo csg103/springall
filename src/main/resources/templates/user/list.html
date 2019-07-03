@@ -14,32 +14,47 @@
         <a>
           <cite>展示</cite></a>
       </span>
-    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
 </div>
-<div class="x-body">
-    <xblock>
-        <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
-        <button class="layui-btn" onclick="x_admin_show('添加人员',ctx + 'user/add', 800, 600)"><i class="layui-icon"></i>添加</button>
-        <button class="layui-btn" id="deleteAll"><i class="layui-icon"></i></button>
-        <!--<span class="x-right" style="line-height:40px">共有数据：88 条</span>-->
-        <button id="search" class="layui-btn" style="float: right;">搜索</button>
-        <div class="layui-input-inline" style="float: right">
-            <input id="searchName" type="text"  placeholder="人员姓名.." autocomplete="off" class="layui-input">
-        </div>
-        &nbsp;&nbsp;
-    </xblock>
-    <table class="layui-table" id="demo" lay-filter="user_table"></table>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="x-body">
+                    <xblock>
+                        <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
+                        <button class="layui-btn" onclick="xadmin.open('添加人员',ctx + 'user/add', 800, 600)"><i
+                                class="layui-icon"></i>添加
+                        </button>
+                        <button th:if="${isLeader} eq 9" class="layui-btn" id="deleteAll"><i class="layui-icon"></i></button>
+                        <!--<span class="x-right" style="line-height:40px">共有数据：88 条</span>-->
+                        <button id="search" class="layui-btn" style="float: right;">搜索</button>
+                        <div class="layui-input-inline" style="float: right">
+                            <input id="searchName" type="text" placeholder="人员姓名.." autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        &nbsp;&nbsp;
+                    </xblock>
+                    <table class="layui-table" id="demo" lay-filter="user_table"></table>
 
-    <div class="page">
-        <div id="listPage">
+                    <div class="page">
+                        <div id="listPage">
 
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
 <script type="text/html" id="toolbar">
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <div th:if="${isLeader} eq 9" class="layui-inline">
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </div>
 </script>
 <script type="text/html" id="flagTemplate">
 

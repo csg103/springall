@@ -1,5 +1,6 @@
 package com.csg.cn.sys.controller;
 
+import com.baidu.UUIDUtils;
 import com.csg.cn.db.entity.SysAuth;
 import com.csg.cn.db.entity.SysCompany;
 import com.csg.cn.db.vo.SysAuthCount;
@@ -10,7 +11,6 @@ import com.csg.cn.sys.service.SysCompanyService;
 import com.csg.cn.sys.service.SysUserService;
 import com.csg.cn.sys.tree.JsTreeNode;
 import com.csg.cn.sys.tree.JsTreeNodeState;
-import com.csg.cn.utils.UUIDUtils;
 import com.csg.cn.vo.AjaxResult;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;

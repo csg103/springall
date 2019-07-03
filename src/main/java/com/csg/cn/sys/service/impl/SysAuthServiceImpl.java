@@ -9,7 +9,7 @@ import com.csg.cn.db.entity.SysRoleAuthExample;
 import com.csg.cn.db.vo.SysAuthCount;
 import com.csg.cn.sys.service.SysAuthService;
 import com.csg.cn.sys.tree.MenuTree;
-import com.csg.cn.utils.NavUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,9 +34,11 @@ public class SysAuthServiceImpl implements SysAuthService {
     }
 
     @Override
-    public String menuTree(String ctx, String userId) {
-        List<MenuTree> menuTreeList = sysAuthMapper.selectMenu("0", userId);
-        return NavUtils.getMenuTree(ctx, menuTreeList);
+   public    List<MenuTree>  menuTree(String ctx, String userId){
+//        List<MenuTree> menuTreeList = sysAuthMapper.selectMenu("0", userId);
+
+//        List<MenuTree> menuTreeList =
+        return sysAuthMapper.selectMenu("0", userId);
     }
 
     @Override

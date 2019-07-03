@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>添加党员</title>
+    <div th:include="common/common"></div>
+    <script th:src="@{/js/partyMember/add.js}"></script>
+</head>
+<body>
+<div class="x-body">
+    <form class="layui-form">
+
+
+        <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">党员基本信息</div>
+                        <div class="layui-card-body">
+
+                            <div class="layui-form-item">
+
+                                <label class="layui-form-label">姓名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="name" lay-verify="required" placeholder="请输入"
+                                           autocomplete="off"
+                                           class="layui-input">
+                                </div>
+
+
+                                <label class="layui-form-label">民族</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="ethnicgroup" lay-verify="required" autocomplete="off"
+                                           placeholder="请输入"
+                                           class="layui-input">
+                                </div>
+
+
+                                <label class="layui-form-label">学历</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="education" lay-verify="required" autocomplete="off"
+                                           placeholder="请输入"
+                                           class="layui-input">
+
+                                </div>
+
+                                <label class="layui-form-label">出生年月</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" id="birthday" name="birthday" lay-verify="required"
+                                           placeholder="yyyy-MM-dd">
+                                </div>
+
+
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">籍贯</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="birthplace" autocomplete="off" placeholder="请输入籍贯" lay-verify="required"
+                                           class="layui-input">
+                                </div>
+                            </div>
+
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">单选框</label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="sex" value="男" title="男" checked>
+                                    <input type="radio" name="sex" value="女" title="女">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">结婚状况</label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="marry" value="已婚" title="已婚" checked>
+                                    <input type="radio" name="marry" value="未婚" title="未婚">
+                                </div>
+                            </div>
+
+                            <!--<div class="layui-form-item">-->
+                            <!--<label class="layui-form-label">学历学位</label>-->
+                            <!--<div class="layui-input-block">-->
+                            <!--<input type="text" name="school" autocomplete="off" placeholder="请输入学历学位"-->
+                            <!--class="layui-input">-->
+                            <!--</div>-->
+                            <!--</div>-->
+
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">毕业院校及专业</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="school" autocomplete="off" placeholder="请输入" lay-verify="required"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">入党时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" name="joinpartytime" id="joinpartytime" lay-verify="required"
+                                           placeholder="yyyy-MM-dd">
+                                </div>
+
+                                <label class="layui-form-label">转正时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" name="realjoinpartytime" id="realjoinpartytime"  lay-verify="required"
+                                            placeholder="yyyy-MM-dd">
+                                </div>
+
+
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">现任党内职务 </label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="partymemberjob" autocomplete="off" placeholder="请输入" lay-verify="required"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                            <!--<div class="layui-form-mid layui-word-aux">-->
+                            <!--<span class="x-red">*</span>-->
+                            <!--</div>-->
+
+                            <div class="layui-form-item">
+
+                                <label class="layui-form-label">参加工作时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" name="worktime" id="worktime" lay-verify="required"
+                                           placeholder="yyyy-MM-dd">
+                                </div>
+
+                                <label class="layui-form-label">身份证号码</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="cardnum" lay-verify="required" placeholder="请输入"
+                                           autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                                <label class="layui-form-label">联系方式</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="tel" lay-verify="required" placeholder="请输入"
+                                           autocomplete="off"
+                                           class="layui-input">
+                                </div>
+
+                            </div>
+
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">现在工作单位及职务 </label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="workjob" autocomplete="off" placeholder="请输入" lay-verify="required"
+                                           class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">现户籍所在地 </label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="hujiaddress" autocomplete="off" placeholder="请输入" lay-verify="required"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">现家庭住址</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="address" autocomplete="off" placeholder="请输入" lay-verify="required"
+                                           class="layui-input">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-col-md12" style="height: 600px">
+                    <div class="layui-card">
+                        <div class="layui-card-header">家庭主要成员</div>
+                        -
+                        <div class="layui-card-body">
+
+                            <table class="layui-table" lay-size="lg">
+                                <colgroup>
+                                    <col width="150">
+                                    <col width="150">
+                                    <col width="150">
+                                    <col width="250">
+                                    <col width="150">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>称谓</th>
+                                    <th>姓名</th>
+                                    <th>政治面貌</th>
+                                    <th>工作单位及职务</th>
+                                    <th>联系方式</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[0].relation"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[0].name"
+                                                   placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline"  style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[0].zhengzhimianmao"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[0].work"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[0].tel"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[1].relation"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[1].name"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline"  style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[1].zhengzhimianmao"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[1].work"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[1].tel"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[2].relation"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[2].name"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[2].zhengzhimianmao"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[2].work"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[2].tel"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[3].relation"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[3].name"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[3].zhengzhimianmao"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[3].work"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[3].tel"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[4].relation"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[4].name"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[4].zhengzhimianmao"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[4].work"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" name="partyMemberFamilyVoList[4].tel"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+                                </tbody>
+                            </table>
+                            <!--<div class="" style=" margin-left:40%" name="addTable" id="addTable" >-->
+
+                            <!--<button class="layui-btn">增加新成员</button>-->
+
+
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item" style=" margin-left:40%">
+
+            <button class="layui-btn" lay-filter="add" lay-submit="">
+                增加
+            </button>
+        </div>
+
+    </form>
+</div>
+</body>
+
+<script>
+
+    //    $("#addTable").click(function(){
+    //        alert( $(".layui-table").html())
+    //        var tr=" <tr>"+
+    //            " <td>11</td>"+
+    //            " <td>22</td>"+
+    //            " <td>33</td>"+
+    //            " <td>44</td>"+
+    //            " <td>55</td>"+
+    //            " </tr>";
+    //        $(".layui-table").append(tr);
+    //        alert( $(".layui-table"));
+    //    });
+
+
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#realjoinpartytime'
+        });
+        laydate.render({
+            elem: '#birthday'
+        });
+        laydate.render({
+            elem: '#joinpartytime'
+        });
+        laydate.render({
+            elem: '#worktime'
+        });
+
+
+    });
+</script>
+</html>

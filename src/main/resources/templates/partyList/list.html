@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>党员列表</title>
+    <div th:include="common/common"></div>
+    <script th:src="@{/js/partyList/list.js}"></script>
+</head>
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">列表</a>
+        <a href="">记录</a>
+        <a>
+          <cite>政治生活记录</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="x-body">
+                    <xblock>
+                        <div class="layui-inline" style="width: 100%">
+                            <form class="layui-form layui-col-space5">
+
+
+                                <div class="layui-inline layui-show-xs-block">
+                                    <label class="layui-form-label">上传时间起</label>
+                                    <div  class="layui-input-inline">
+                                    <input type="text" name="starttime" id="starttime"  placeholder="yyyy-MM-dd"
+                                           autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-inline layui-show-xs-block">
+                                    <label class="layui-form-label">上传时间止</label>
+                                    <div  class="layui-input-inline">
+                                    <input type="text" name="endtime" id="endtime"  placeholder="yyyy-MM-dd"
+                                           autocomplete="off" class="layui-input">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item layui-input-inline" >
+                                    <label class="layui-form-label">上传人</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" name="parytmemberid" id="parytmemberid" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"    th:value="${username}">
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="layui-inline layui-show-xs-block" style="margin-left: 40%">
+                                <button class="layui-btn" id="searchMes" lay-submit="" lay-filter="sreach"><i
+                                        class="layui-icon">&#xe615;</i></button>
+                            </div>
+                        </div>
+                        &nbsp;&nbsp;
+                    </xblock>
+
+
+                    <table class="layui-table" id="demo" lay-filter="user_table"></table>
+
+                    <div class="page">
+                        <div id="listPage">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="toolbar">
+    <div th:if="${isLeader} ne 0" class=" layui-input-inline">
+
+
+    <a class="layui-btn layui-btn-xs layui-input-inline"  style="vertical-align:top" lay-event="edit">人员签到</a>
+    </div>
+
+    <a class="layui-btn  layui-btn-xs  " lay-event="uploadPic">上传会议记录</a>
+</script>
+<script type="text/html" id="flagTemplate">
+
+</script>
+<script>
+
+    layui.use(['form', 'layedit', 'laydate', 'layer'], function () {
+        var date = new Date;
+        var yearnow = date.getFullYear();
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+//日期
+        //年选择器
+        laydate.render({
+            elem: '#starttime'
+            ,value: '2019-01-01'
+            ,isInitValue: true
+        });
+
+        //年选择器
+        laydate.render({
+            elem: '#endtime'
+            ,value: '2019-12-31'
+            ,isInitValue: true
+        });
+
+
+    });
+</script>
+</body>
+</html>

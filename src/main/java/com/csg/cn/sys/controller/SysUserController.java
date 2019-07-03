@@ -1,17 +1,18 @@
 package com.csg.cn.sys.controller;
 
 
-import com.csg.cn.db.entity.SysCompany;
-import com.csg.cn.db.entity.SysRole;
-import com.csg.cn.db.entity.SysUser;
+import com.csg.cn.business.service.partyMember.PartyMemberMessageService;
+import com.csg.cn.db.entity.*;
 import com.csg.cn.db.vo.SysUpdatePassword;
 import com.csg.cn.db.vo.SysUserSimple;
+import com.csg.cn.db.vo.request.PartyMemberMessageVo;
 import com.csg.cn.sys.service.SysCompanyService;
 import com.csg.cn.sys.service.SysRoleService;
 import com.csg.cn.sys.service.SysUserService;
 import com.csg.cn.vo.AjaxResult;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,16 +39,38 @@ public class SysUserController {
     private SysRoleService sysRoleService;
     @Autowired
     private SysCompanyService sysCompanyService;
+    @Autowired
+    private  PartyMemberMessageService partyMemberMessageService;
 
     @RequestMapping("/list")
-    public String list(){
+    public String list(Model model){
+        String userName = (String) SecurityUtils.getSubject().getSession().getAttribute("userName");
+        String isLeader = (String) SecurityUtils.getSubject().getSession().getAttribute("isLeader");
+        String group = (String) SecurityUtils.getSubject().getSession().getAttribute("group");
+
+        model.addAttribute("userName", userName);
+        model.addAttribute("isLeader", isLeader);
+        model.addAttribute("group", group);
+
+
+
         return "user/list";
     }
 
     @RequestMapping("/add")
     public String add(Model model){
         List<SysRole> roles = sysRoleService.selectListByEnabled();
+
+        List<Department> departmentsList =partyMemberMessageService.getAllDepartment();
+
+        List<Common> commons =partyMemberMessageService.getGroup("02");
+
         model.addAttribute("roles", roles);
+        model.addAttribute("groups", commons);
+        model.addAttribute("departmentsList", departmentsList);
+
+
+
 //        List<FinanceCompany> companys = financeCompanyService.selectListByEnabled();
 //        model.addAttribute("companys", companys);
         return "user/add";
@@ -58,6 +81,17 @@ public class SysUserController {
         List<SysRole> roles = sysRoleService.selectListByEnabled();
         model.addAttribute("roles", roles);
         List<SysCompany> companys = sysCompanyService.selectListByEnabled();
+
+
+        List<Department> departmentsList =partyMemberMessageService.getAllDepartment();
+
+        model.addAttribute("departmentsList", departmentsList);
+
+
+        List<Common> commons =partyMemberMessageService.getGroup("02");
+        model.addAttribute("groups", commons);
+
+
         model.addAttribute("companys", companys);
         model.addAttribute("id", id);
         return "user/edit";
@@ -69,7 +103,10 @@ public class SysUserController {
         AjaxResult result = new AjaxResult();
         try{
             SysUserSimple sysUserSimple = sysUserService.selectUserInfo(id);
-            result.setData(sysUserSimple);
+
+            PartyMemberMessageVo  partyMemberMessage =partyMemberMessageService.getPartyMemberMessage(sysUserSimple);
+
+            result.setData(partyMemberMessage);
             result.setCode(AjaxResult.SUCCESS);
             result.setMessage("success");
         }catch (Exception e){
@@ -103,7 +140,7 @@ public class SysUserController {
 
     @RequestMapping("/saveAdd")
     @ResponseBody
-    public AjaxResult saveAdd(SysUserSimple sysUserSimple, String[] checked){
+    public AjaxResult saveAdd(PartyMemberMessageVo sysUserSimple, String[] checked){
         AjaxResult result = new AjaxResult();
         try{
             if(sysUserService.saveAdd(sysUserSimple, checked)){
@@ -123,10 +160,10 @@ public class SysUserController {
 
     @RequestMapping("/saveEdit")
     @ResponseBody
-    public AjaxResult saveEdit(SysUserSimple sysUserSimple, String[] checked){
+    public AjaxResult saveEdit(PartyMemberMessageVo partyMemberMessageVo, String[] checked){
         AjaxResult result = new AjaxResult();
         try{
-            if(sysUserService.saveEdit(sysUserSimple, checked)){
+            if(sysUserService.saveEdit(partyMemberMessageVo, checked)){
                 result.setCode(AjaxResult.SUCCESS);
                 result.setMessage("success");
             }else{

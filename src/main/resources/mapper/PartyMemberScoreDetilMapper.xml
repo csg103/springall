@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.csg.cn.db.dao.PartyMemberScoreDetilMapper">
+  <resultMap id="BaseResultMap" type="com.csg.cn.db.entity.PartyMemberScoreDetil">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="scoreDetilId" jdbcType="CHAR" property="scoredetilid" />
+    <result column="partymemberId" jdbcType="CHAR" property="partymemberid" />
+    <result column="pipId" jdbcType="CHAR" property="pipid" />
+    <result column="year" jdbcType="DATE" property="year" />
+    <result column="operator" jdbcType="CHAR" property="operator" />
+    <result column="operatorTime" jdbcType="TIME" property="operatortime" />
+    <result column="remake" jdbcType="CHAR" property="remake" />
+    <result column="remake1" jdbcType="CHAR" property="remake1" />
+    <result column="remake2" jdbcType="CHAR" property="remake2" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    scoreDetilId, partymemberId, pipId, year, operator, operatorTime, remake, remake1, 
+    remake2
+  </sql>
+  <select id="countByExample" parameterType="com.csg.cn.db.entity.PartyMemberScoreDetilExample" resultType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from t_partymember_score_detil
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

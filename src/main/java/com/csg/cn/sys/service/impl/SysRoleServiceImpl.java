@@ -1,12 +1,12 @@
 package com.csg.cn.sys.service.impl;
 
+import com.baidu.UUIDUtils;
 import com.csg.cn.db.dao.SysRoleAuthMapper;
 import com.csg.cn.db.dao.SysRoleMapper;
 import com.csg.cn.db.dao.SysRoleUserMapper;
 import com.csg.cn.db.entity.*;
 import com.csg.cn.sys.constant.SysConstant;
 import com.csg.cn.sys.service.SysRoleService;
-import com.csg.cn.utils.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

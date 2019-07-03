@@ -87,7 +87,7 @@
   </select>
 
   <select id="selectMenu" resultMap="MenuTreeResultMap">
-    select c.*, a.user_id from t_sys_role_user a
+    select distinct c.*, a.user_id from t_sys_role_user a
     left join t_sys_role_auth b on a.role_id = b.role_id
     left join t_sys_auth c on b.auth_id = c.id
     where c.auth_status = '1' and c.auth_type = '0'

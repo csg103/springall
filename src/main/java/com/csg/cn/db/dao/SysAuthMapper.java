@@ -14,6 +14,8 @@ public interface SysAuthMapper extends Mapper<SysAuth> {
 
     List<SysAuth> selectListByRoleId(String roleId);
 
+//    List<MenuTree> selectMenu(@Param("id") String id, @Param("userId") String userId);
+
     List<MenuTree> selectMenu(@Param("id") String id, @Param("userId") String userId);
 
     List<SysAuthCount> selectAuthWithSubCount(@Param("authParentId") String authParentId);

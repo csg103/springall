@@ -1,4 +1,4 @@
-package com.csg.cn.utils;
+package com.baidu;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,5 +1,6 @@
 package com.csg.cn.sys.service.impl;
 
+import com.baidu.UUIDUtils;
 import com.csg.cn.db.dao.SysCompanyMapper;
 import com.csg.cn.db.dao.SysUserCompanyMapper;
 import com.csg.cn.db.entity.SysCompany;
@@ -10,7 +11,6 @@ import com.csg.cn.db.vo.SysCompanyCount;
 import com.csg.cn.db.vo.SysCompanySimple;
 import com.csg.cn.sys.constant.SysConstant;
 import com.csg.cn.sys.service.SysCompanyService;
-import com.csg.cn.utils.UUIDUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

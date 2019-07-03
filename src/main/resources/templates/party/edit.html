@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>公司管理</title>
+    <div th:include="common/common"></div>
+    <script th:src="@{/js/party/edit.js}"></script>
+    <style>
+        .demo-transfer {
+            margin: 10px 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="x-body">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <label for="partyName" class="layui-form-label">
+                <span class="x-red">*</span>主题
+            </label>
+
+            <div class="layui-input-inline" style="width: 70%">
+                <input type="text" id="partyname" name="partyname" required="" lay-verify="required"
+                       th:value="${party.partyname}"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <!--<div class="layui-form-mid layui-word-aux">-->
+            <!--<span class="x-red">*</span>-->
+            <!--</div>-->
+        </div>
+        <div class="layui-form-item">
+
+            <label class="layui-form-label">会议时间</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="partytime" name="partytime" lay-verify="required"
+                       th:value="${party.partytimeStr}"
+                       placeholder="yyyy-MM-dd HH:mm:ss">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label for="partyName" class="layui-form-label">
+                <span class="x-red">*</span>地点
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <input type="text" id="partyadress" name="partyadress" required="" lay-verify="required"
+                       th:value="${party.partyadress}"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <!--<div class="layui-form-mid layui-word-aux">-->
+            <!--<span class="x-red">*</span>-->
+            <!--</div>-->
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">类型</label>
+            <div class="layui-input-block">
+                <div th:each="type,iterStat:${listType}" class="layui-input-inline">
+                    <div th:if="${type.isChecked} eq 1">
+                        <input type="checkbox" lay-filter="checkbox" th:name="type" th:id="${type.id}" th:title="${type.valuename}" checked>
+                    </div>
+
+                    <div th:if="${type.isChecked} ne 1">
+                        <input type="checkbox"  lay-filter="checkbox" th:name="type" th:id="${type.id}" th:title="${type.valuename}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id ="checkGroup" class="layui-form-item"  style="display:none">
+            <label class="layui-form-label">选择小组</label>
+            <div  class="layui-col-md2 layui-input-inline" >
+            <select name="groupid" id="groupid"   >
+                <option value=""></option>
+                <div th:each="gruop,iterStat:${groupList}">
+                    <option th:selected="${groupid}==${gruop.id}" th:text="${gruop.valuename}"
+                            th:value="${gruop.id}"></option>
+                </div>
+            </select>
+            </div>
+        </div>
+
+        <div id="partyPlays"></div>
+
+                <div class="layui-form-item " >
+
+
+                </div>
+
+
+            <!--<div class="layui-input-inline" th:if="${group} eq 2 or ${group} eq 0">-->
+                <!--<div th:if="${isLeader} ne 0 ">-->
+                <!--<div class="layui-form-item ">-->
+                    <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">-->
+                        <!--<legend>参会人员</legend>-->
+                    <!--</fieldset>-->
+                    <!--<div id="test2" class="demo-transfer"></div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div  class="layui-input-inline" th:if="${isLeader} ne 0">-->
+            <!--<div th:if="${group} eq 3 or ${group} eq 0">-->
+                <!--<div class="layui-form-item ">-->
+                    <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">-->
+                        <!--<legend>参会人员</legend>-->
+                    <!--</fieldset>-->
+                    <!--<div id="test3" class="demo-transfer"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <input type="text" id="data1" name="data1" th:value="${listMember1}" style="display:none"
+               autocomplete="off" class="layui-input">
+        <input type="text" id="data2" name="data2" th:value="${listMember2}" style="display:none"
+               autocomplete="off" class="layui-input">
+        <input type="text" id="data3" name="data3" th:value="${listMember3}" style="display:none"
+               autocomplete="off" class="layui-input">
+
+        <input type="text" id="partyid" name="partyid" th:value="${party.partyid}" style="display:none"
+               autocomplete="off" class="layui-input">
+
+        <input type="text" id="isChecked1" name="isChecked1" th:value="${isChecked1}" style="display:none"
+               autocomplete="off" class="layui-input">
+
+        <input type="text" id="isChecked2" name="isChecked2" th:value="${isChecked2}" style="display:none"
+               autocomplete="off" class="layui-input">
+
+        <input type="text" id="isChecked3" name="isChecked3" th:value="${isChecked3}" style="display:none"
+               autocomplete="off" class="layui-input">
+
+        <input type="text" id="listMember" name="listMember" th:value="${listMember}" style="display:none"
+               autocomplete="off" class="layui-input">
+
+        <input type="text" id="checkedList" name="checkedList" th:value="${checkedList}" style="display:none"
+               autocomplete="off" class="layui-input">
+
+        <input type="text" id="id" name="id" th:value="${id}" style="display:none"
+               autocomplete="off" class="layui-input">
+
+
+        <div class="layui-form-item">
+            <label for="partyName" class="layui-form-label">
+            </label>
+            <button class="layui-btn" lay-filter="add" lay-submit="" lay-demotransferactive="getData">
+                增加
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+
+
+</script>
+</body>
+</html>

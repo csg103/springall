@@ -1,8 +1,10 @@
 package com.csg.cn.sys.service;
 
+import com.csg.cn.db.entity.PartyMemberMessage;
 import com.csg.cn.db.entity.SysUser;
 import com.csg.cn.db.vo.SysUpdatePassword;
 import com.csg.cn.db.vo.SysUserSimple;
+import com.csg.cn.db.vo.request.PartyMemberMessageVo;
 
 import java.util.List;
 import java.util.Set;
@@ -22,9 +24,9 @@ public interface SysUserService {
 
     List<SysUser> selectList();
 
-    boolean saveAdd(SysUserSimple sysUserSimple, String[] checked);
+    boolean saveAdd(PartyMemberMessageVo sysUserSimple, String[] checked);
 
-    boolean saveEdit(SysUserSimple sysUserSimple, String[] checked);
+    boolean saveEdit(PartyMemberMessageVo sysUserSimple, String[] checked);
 
     boolean saveChange(SysUpdatePassword sysUpdatePassword);
 

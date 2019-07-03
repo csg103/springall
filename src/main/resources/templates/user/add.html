@@ -21,25 +21,25 @@
             <!--</div>-->
         </div>
         <div class="layui-form-item">
-            <label for="L_username" class="layui-form-label">
+            <label for="name" class="layui-form-label">
                 <span class="x-red">*</span>登录名
             </label>
             <div class="layui-input-inline" style="width: 70%">
-                <input type="text" id="L_username" name="username" required="" lay-verify="required"
+                <input type="text" id="name" name="loginname" required="" lay-verify="required"
                        autocomplete="off" class="layui-input">
             </div>
             <!--<div class="layui-form-mid layui-word-aux">-->
             <!--<span class="x-red">*</span>-->
             <!--</div>-->
         </div>
-        <div class="layui-form-item">
-            <label for="L_phone" class="layui-form-label">
-                联系方式
-            </label>
-            <div class="layui-input-inline" style="width: 70%">
-                <input type="text" id="L_phone" name="phone" autocomplete="off" class="layui-input">
-            </div>
-        </div>
+        <!--<div class="layui-form-item">-->
+        <!--<label for="L_phone" class="layui-form-label">-->
+        <!--联系方式-->
+        <!--</label>-->
+        <!--<div class="layui-input-inline" style="width: 70%">-->
+        <!--<input type="text" id="L_phone" name="phone" autocomplete="off" class="layui-input">-->
+        <!--</div>-->
+        <!--</div>-->
         <div class="layui-form-item">
             <label for="L_role" class="layui-form-label">
                 <span class="x-red">*</span>角色
@@ -55,28 +55,77 @@
                 </select>
             </div>
         </div>
-        <!--<div class="layui-form-item">-->
-            <!--<label for="L_companyName" class="layui-form-label">-->
-                <!--<span class="x-red">*</span>所属公司-->
-            <!--</label>-->
-            <!--<div class="layui-input-inline" style="width: 70%">-->
-                <!--&lt;!&ndash;<input type="text" id="L_isMenu" name="isMenu" required=""&ndash;&gt;-->
-                <!--&lt;!&ndash;autocomplete="off" class="layui-input">&ndash;&gt;-->
-                <!--<select name="companyName" id="L_companyName" lay-verify="required">-->
-                    <!--<option value=""></option>-->
-                    <!--<div th:each="company,iterStat:${companys}">-->
-                        <!--<option th:text="${company.companyName}" th:value="${company.id}"></option>-->
-                    <!--</div>-->
-                <!--</select>-->
-            <!--</div>-->
-        <!--</div>-->
+
+
+        <div class="layui-form-item">
+            <label for="departmentid" class="layui-form-label">
+                <span class="x-red">*</span>部门列表
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <!--<input type="text" id="L_isMenu" name="isMenu" required=""-->
+                <!--autocomplete="off" class="layui-input">-->
+                <select name="departmentid" id="departmentid" lay-verify="required">
+                    <option value=""></option>
+                    <div th:each="departments,iterStat:${departmentsList}">
+                        <option th:text="${departments.departmentname}" th:value="${departments.departmentid}"></option>
+                    </div>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">组长</label>
+            <div class="layui-input-block">
+                <input type="radio" name="isleader" value="0" title="党员" checked>
+                <input type="radio" name="isleader" value="1" title="党小组长">
+                <input type="radio" name="isleader" value="2" title="支部委员">
+            </div>
+        </div>
         <div class="layui-form-item">
             <label for="L_role" class="layui-form-label">
-                <span class="x-red">*</span>选择仓库
+                <span class="x-red">*</span>小组分组
             </label>
-            <div id="permissionTree" style="margin-left: 20%" lay-verify="companies"></div>
+            <div class="layui-input-inline" style="width: 70%">
+                <!--<input type="text" id="L_isMenu" name="isMenu" required=""-->
+                <!--autocomplete="off" class="layui-input">-->
 
+                <select name="partymembergroup" id="partymembergroup" lay-verify="required">
+                    <option value=""></option>
+                    <div th:each="group,iterStat:${groups}">
+                        <option th:text="${group.valuename}" th:value="${group.id}"></option>
+                    </div>
+                </select>
+
+
+
+
+
+
+            </div>
         </div>
+
+        <!--<div class="layui-form-item">-->
+        <!--<label for="L_companyName" class="layui-form-label">-->
+        <!--<span class="x-red">*</span>所属公司-->
+        <!--</label>-->
+        <!--<div class="layui-input-inline" style="width: 70%">-->
+        <!--&lt;!&ndash;<input type="text" id="L_isMenu" name="isMenu" required=""&ndash;&gt;-->
+        <!--&lt;!&ndash;autocomplete="off" class="layui-input">&ndash;&gt;-->
+        <!--<select name="companyName" id="L_companyName" lay-verify="required">-->
+        <!--<option value=""></option>-->
+        <!--<div th:each="company,iterStat:${companys}">-->
+        <!--<option th:text="${company.companyName}" th:value="${company.id}"></option>-->
+        <!--</div>-->
+        <!--</select>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+        <!--<label for="L_role" class="layui-form-label">-->
+        <!--<span class="x-red">*</span>选择仓库-->
+        <!--</label>-->
+        <!--<div id="permissionTree" style="margin-left: 20%" lay-verify="companies"></div>-->
+
+        <!--</div>-->
         <div class="layui-form-item">
             <div class="layui-input-inline">
             </div>
@@ -84,7 +133,7 @@
         <div class="layui-form-item">
             <label for="L_role" class="layui-form-label">
             </label>
-            <button  class="layui-btn" lay-filter="add" lay-submit="">
+            <button class="layui-btn" lay-filter="add" lay-submit="">
                 增加
             </button>
         </div>
@@ -94,80 +143,59 @@
 <script>
 
     $(function () {
-        $('#permissionTree').css({'margin-left':($('body').width() - $('#permissionTree').width())/2})
-        $('#permissionTree').jstree({
-            core:{
-                check_callback: true,
-                themes: {
-                    // "responsive": false,
-                    "icons": false,
-                    // "stripes" : true
-                },
-                data:{
-                    'url': function (node) {
-                        return ctx + 'auth/getCompanyTree';
-                    },
-                    'data': function (node) {
-                        return {'companyParentId': node.id};
-                    }
-                },
-            },
-            types: {
-                "default": {
-                    "icon": "fa fa-folder icon-state-warning icon-lg"
-                },
-                "file": {
-                    "icon": "fa fa-file icon-state-warning icon-lg"
-                }
-            },
-            plugins: ["types","themes","checkbox"]
-        });
+
     });
 
-    layui.use(['form', 'layer'], function () {
-        $ = layui.jquery;
-        var form = layui.form
-            , layer = layui.layer;
+        layui.use(['form', 'layer'], function () {
+            $ = layui.jquery;
+            var form = layui.form
+                , layer = layui.layer;
 
         form.verify({
             companies: function (value, item) {
-                var ref = $('#permissionTree').jstree(true),
-                    checked = ref.get_selected(),
-                    undetermined = ref.get_undetermined()
+//                var ref = $('#permissionTree').jstree(true),
+//                    checked = ref.get_selected(),
+//                    undetermined = ref.get_undetermined()
+//
+//                for (var i in undetermined){
+//                    checked.push(undetermined[i])
+//                }
 
-                for (var i in undetermined){
-                    checked.push(undetermined[i])
-                }
-
-                if(checked.length == 0){
-                    return '公司不能为空';
-                }
+//                if(checked.length == 0){
+//                    return '公司不能为空';
+//                }
             }
         });
 
-        form.on('submit(add)', function(data){
+        form.on('radio',function (data) {
+            console.log(data.value);
+
+        })
+
+
+        form.on('submit(add)', function (data) {
             console.log(data.field);
             //发异步，把数据提交给php
 
-            var ref = $('#permissionTree').jstree(true),
-                checked = ref.get_selected(),
-                undetermined = ref.get_undetermined()
-
-            for (var i in undetermined){
-                checked.push(undetermined[i])
-            }
-
-            data.field.checked = checked;
+//            var ref = $('#permissionTree').jstree(true),
+//                checked = ref.get_selected(),
+//                undetermined = ref.get_undetermined()
+//
+//            for (var i in undetermined) {
+//                checked.push(undetermined[i])
+//            }
+//
+//            data.field.checked = checked;
 
             $.ajax({
-                url:ctx + "user/saveAdd",
-                type:'post',
-                dataType:'json',
-                data:data.field,
-                traditional:true,
-                success:function(data){
-                    if (data.code == '0000'){
-                        layer.alert("添加成功", {icon: 6},function () {
+                url: ctx + "user/saveAdd",
+                type: 'post',
+                dataType: 'json',
+                data: data.field,
+                traditional: true,
+                success: function (data) {
+                    if (data.code == '0000') {
+                        layer.alert("添加成功", {icon: 6}, function () {
                             // 获得frame索引
                             var index = parent.layer.getFrameIndex(window.name);
                             //关闭当前frame
@@ -175,7 +203,7 @@
                             parent.layer.close(index);
                         });
                     } else {
-                        layer.alert("添加失败 " + data.message, {icon: 6},function (index) {
+                        layer.alert("添加失败 " + data.message, {icon: 6}, function (index) {
                             layer.close(index)
                         });
                     }

@@ -6,33 +6,34 @@
     <div th:include="common/common"></div>
 </head>
 <body>
-    <div class="x-nav">
+<div class="x-nav">
           <span class="layui-breadcrumb">
             <a href="">列表</a>
             <a href="">权限</a>
             <a>
               <cite>展示</cite></a>
           </span>
-        <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
-            <i class="layui-icon" style="line-height:30px">ဂ</i></a>
-    </div>
-    <div class="x-body">
-        <div id="permissionTree" style="width: 400px">
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <div id="permissionTree" style="width: 400px ">
 
-        </div>
     </div>
+</div>
 </body>
 <script type="text/javascript">
-    $('#permissionTree').css({'margin-left':($('body').width() - $('#permissionTree').width())/2})
+    $('#permissionTree').css({'margin-left': ($('body').width() - $('#permissionTree').width()) / 2})
     $('#permissionTree').jstree({
-        core:{
+        core: {
             check_callback: true,
             themes: {
                 // "responsive": false,
                 "icons": false,
-                "stripes" : true
+                "stripes": true
             },
-            data:{
+            data: {
                 'url': function (node) {
                     return ctx + 'auth/getTree';
                 },
@@ -49,90 +50,94 @@
                 "icon": "fa fa-file icon-state-warning icon-lg"
             }
         },
-        'contextmenu' : {
-            select_node : true,
-            'items' : {
-                "新增权限":{
-                    label:'新增权限',
-                    action:function (data) {
+        'contextmenu': {
+            select_node: true,
+            'items': {
+                "新增权限": {
+                    label: '新增权限',
+                    action: function (data) {
                         addPermission(data)
                     }
                 },
-                "修改权限":{
-                    label:'修改权限',
-                    action:function (data) {
+                "修改权限": {
+                    label: '修改权限',
+                    action: function (data) {
                         editPermission(data)
                     }
                 },
-                "删除权限":{
-                    label:'删除权限',
-                    action:function (data) {
+                "删除权限": {
+                    label: '删除权限',
+                    action: function (data) {
                         deletePermission(data)
                     }
                 }
             }
         },
-        plugins: ["types", "contextmenu","themes"]
+        plugins: ["types", "contextmenu", "themes"]
     })
 
     function addPermission(data) {
         var inst = $.jstree.reference(data.reference),
             obj = inst.get_node(data.reference);
-        x_admin_show("增加权限",ctx + "auth/add?authParentId=" + obj.id, 500, 400)
+        xadmin.open("增加权限", ctx + "auth/add?authParentId=" + obj.id, 500, 400)
     }
 
-    function editPermission(data){
+    function editPermission(data) {
         var inst = $.jstree.reference(data.reference),
             obj = inst.get_node(data.reference);
-        x_admin_show("修改权限",ctx + "auth/edit?id=" + obj.id, 500, 400)
+        xadmin.open("修改权限", ctx + "auth/edit?id=" + obj.id, 500, 400)
     }
 
-    function deletePermission(data){
+    function deletePermission(data) {
         var inst = $.jstree.reference(data.reference),
             obj = inst.get_node(data.reference);
 
         var ref = $("#permissionTree").jstree(true),
             sel = ref.get_text(obj);
 
-        layer.confirm("确定删除权限 \""+ sel +"\"?", {
+        layer.confirm("确定删除权限 \"" + sel + "\"?", {
             btn: ['确定', '取消'],
-            'btn1':function(index, layero){
+            'btn1': function (index, layero) {
                 $.ajax({
-                    url:ctx + 'auth/delete?id=' + obj.id,
-                    dataType:'json',
-                    type:'json',
-                    success:function(data){
-                        if (data.code == '0000'){
-                            layer.alert("删除成功", {icon: 6},function (index) {
+                    url: ctx + 'auth/delete?id=' + obj.id,
+                    dataType: 'json',
+                    type: 'json',
+                    success: function (data) {
+                        if (data.code == '0000') {
+                            layer.alert("删除成功", {icon: 6}, function (index) {
                                 ref.delete_node(obj)
                                 layer.close(index)
                             });
                         } else {
-                            layer.alert("删除失败 " + data.message, {icon: 5},function (index) {
+                            layer.alert("删除失败 " + data.message, {icon: 5}, function (index) {
                                 layer.close(index)
                             });
                         }
                     }
                 })
             },
-            'btn2':function(index, layero){
+            'btn2': function (index, layero) {
                 layer.close(index)
             }
         })
     }
 
-    function addNode(treeId, node){
+    function addNode(treeId, node) {
         var ref = $(treeId).jstree(true),
             sel = ref.get_selected();
-        if(!sel.length) { return false; }
+        if (!sel.length) {
+            return false;
+        }
         sel = sel[0];
         sel = ref.create_node(sel, node);
     }
 
-    function editNode(treeId, text){
+    function editNode(treeId, text) {
         var ref = $(treeId).jstree(true),
             sel = ref.get_selected();
-        if(!sel.length) { return false; }
+        if (!sel.length) {
+            return false;
+        }
         sel = sel[0];
         ref.set_text(sel, text)
     }

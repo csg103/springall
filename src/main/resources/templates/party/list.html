@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>党员列表</title>
+    <div th:include="common/common"></div>
+    <script th:src="@{/js/party/list.js}"></script>
+</head>
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">列表</a>
+        <a href="">记录</a>
+        <a>
+          <cite>政治生活记录</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="x-body">
+                    <xblock>
+                        <!--<button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>-->
+                        <button class="layui-btn" onclick="xadmin.open('添加政治生活记录',ctx + 'party/add', '','')"><i
+                                class="layui-icon"></i>添加
+                        </button>
+                        <button class="layui-btn" id="deleteAll"><i class="layui-icon"></i></button>
+                        <!--<span class="x-right" style="line-height:40px">共有数据：88 条</span>-->
+                        <button id="search" class="layui-btn" style="float: right;">搜索</button>
+                        <div class="layui-input-inline" style="float: right">
+                            <input id="searchName" type="text" placeholder="人员姓名.." autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        &nbsp;&nbsp;
+                    </xblock>
+                    <table class="layui-table" id="demo" lay-filter="user_table"></table>
+
+                    <div class="page">
+                        <div id="listPage">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="toolbar">
+    <div th:if="${isLeader} ne 0" class=" layui-input-inline">
+
+
+    <a class="layui-btn layui-btn-xs layui-input-inline"  style="vertical-align:top" lay-event="edit">人员签到</a>
+    </div>
+
+    <a class="layui-btn  layui-btn-xs  " lay-event="uploadPic">上传会议记录</a>
+</script>
+<script type="text/html" id="flagTemplate">
+
+</script>
+</body>
+</html>

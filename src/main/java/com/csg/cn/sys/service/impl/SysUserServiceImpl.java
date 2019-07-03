@@ -1,20 +1,24 @@
 package com.csg.cn.sys.service.impl;
 
+import com.baidu.MD5Utils;
+import com.baidu.UUIDUtils;
+import com.csg.cn.db.dao.PartyMemberMessageMapper;
 import com.csg.cn.db.dao.SysRoleUserMapper;
 import com.csg.cn.db.dao.SysUserCompanyMapper;
 import com.csg.cn.db.dao.SysUserMapper;
 import com.csg.cn.db.entity.*;
 import com.csg.cn.db.vo.SysUpdatePassword;
 import com.csg.cn.db.vo.SysUserSimple;
+import com.csg.cn.db.vo.request.PartyMemberMessageVo;
 import com.csg.cn.sys.constant.UserConstant;
 import com.csg.cn.sys.service.SysUserService;
-import com.csg.cn.utils.MD5Utils;
-import com.csg.cn.utils.UUIDUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
@@ -34,6 +38,9 @@ public class SysUserServiceImpl implements SysUserService {
     private SysRoleUserMapper sysRoleUserMapper;
     @Autowired
     private SysUserCompanyMapper sysUserCompanyMapper;
+
+    @Autowired
+    private PartyMemberMessageMapper partyMemberMessageMapper;
 
     @Override
     public SysUser selectOneByUsername(String username) {
@@ -68,9 +75,10 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public boolean saveAdd(SysUserSimple sysUserSimple, String[] checked) {
+    @Transactional
+    public boolean saveAdd(PartyMemberMessageVo sysUserSimple, String[] checked) {
         SysUserExample sysUserExample = new SysUserExample();
-        sysUserExample.createCriteria().andUsernameEqualTo(sysUserSimple.getUsername());
+        sysUserExample.createCriteria().andUsernameEqualTo(sysUserSimple.getName());
         if(sysUserMapper.countByExample(sysUserExample) > 0){
             return false;
         }
@@ -80,25 +88,25 @@ public class SysUserServiceImpl implements SysUserService {
 
         SysUser sysUser = new SysUser();
         sysUser.setId(userId);
-        sysUser.setUsername(sysUserSimple.getUsername());
-        sysUser.setName(sysUserSimple.getName());
+        sysUser.setUsername(sysUserSimple.getName());
+        sysUser.setName(sysUserSimple.getLoginname());
         sysUser.setPassword(MD5Utils.encode(password));
-        sysUser.setPhone(sysUserSimple.getPhone());
-        sysUser.setSalt(sysUserSimple.getUsername());
+        sysUser.setPhone(sysUserSimple.getTel());
+        sysUser.setSalt(sysUserSimple.getName());
         sysUser.setUserStatus(UserConstant.USER_STATUS_NORMAL);
         sysUserMapper.insert(sysUser);
 
-        SysUserCompany sysUserCompany;
-        for(String companyId : checked){
-            if("0".equals(companyId)){
-                continue;
-            }
-            sysUserCompany = new SysUserCompany();
-            sysUserCompany.setId(UUIDUtils.generateUUID());
-            sysUserCompany.setUserId(userId);
-            sysUserCompany.setCompanyId(companyId);
-            sysUserCompanyMapper.insert(sysUserCompany);
-        }
+//        SysUserCompany sysUserCompany;
+//        for(String companyId : checked){
+//            if("0".equals(companyId)){
+//                continue;
+//            }
+//            sysUserCompany = new SysUserCompany();
+//            sysUserCompany.setId(UUIDUtils.generateUUID());
+//            sysUserCompany.setUserId(userId);
+//            sysUserCompany.setCompanyId(companyId);
+//            sysUserCompanyMapper.insert(sysUserCompany);
+//        }
 
         SysRoleUser sysRoleUser = new SysRoleUser();
         sysRoleUser.setId(UUIDUtils.generateUUID());
@@ -106,51 +114,69 @@ public class SysUserServiceImpl implements SysUserService {
         sysRoleUser.setUserId(userId);
         sysRoleUserMapper.insert(sysRoleUser);
 
+        PartyMemberMessage partyMemberMessage =new PartyMemberMessage();
+        partyMemberMessage.setParytmemberid(UUIDUtils.generateUUID());
+        partyMemberMessage.setDepartmentid(sysUserSimple.getDepartmentid());
+        partyMemberMessage.setName(sysUserSimple.getName());
+        partyMemberMessage.setIsleader(sysUserSimple.getIsleader());
+        partyMemberMessage.setPartymembergroup(sysUserSimple.getPartymembergroup());
+        partyMemberMessage.setRemake1(sysUser.getId());
+
+        partyMemberMessageMapper.insertSelective(partyMemberMessage);
+
         return true;
     }
 
     @Override
-    public boolean saveEdit(SysUserSimple sysUserSimple, String[] checked) {
-        if(!sysUserSimple.getUsername().equals(sysUserSimple.getLastUserName())){
-            SysUserExample sysUserExample = new SysUserExample();
-            sysUserExample.createCriteria().andUsernameEqualTo(sysUserSimple.getUsername());
-            if(sysUserMapper.countByExample(sysUserExample) > 0){
-                return false;
-            }
-        }
+    @Transactional
+    public boolean saveEdit(PartyMemberMessageVo partyMemberMessageVo, String[] checked) {
+//        if(!partyMemberMessageVo.getUsername().equals(sysUserSimple.getLastUserName())){
+//            SysUserExample sysUserExample = new SysUserExample();
+//            sysUserExample.createCriteria().andUsernameEqualTo(sysUserSimple.getUsername());
+//            if(sysUserMapper.countByExample(sysUserExample) > 0){
+//                return false;
+//            }
+//        }
 
         SysUser sysUser = new SysUser();
-        sysUser.setId(sysUserSimple.getId());
-        sysUser.setName(sysUserSimple.getName());
-        sysUser.setUsername(sysUserSimple.getUsername());
-        sysUser.setPhone(sysUserSimple.getPhone());
-        sysUser.setSalt(sysUserSimple.getUsername());
+        sysUser.setId(partyMemberMessageVo.getId());
+        sysUser.setName(partyMemberMessageVo.getLoginname());
+        sysUser.setUsername(partyMemberMessageVo.getLoginname());
+//        sysUser.setPhone(partyMemberMessageVo.getPhone());
+        sysUser.setSalt(partyMemberMessageVo.getLoginname());
         sysUserMapper.updateByPrimaryKeySelective(sysUser);
 
         SysRoleUserExample sysRoleUserExample = new SysRoleUserExample();
-        sysRoleUserExample.createCriteria().andUserIdEqualTo(sysUserSimple.getId());
+        sysRoleUserExample.createCriteria().andUserIdEqualTo(partyMemberMessageVo.getId());
         sysRoleUserMapper.deleteByExample(sysRoleUserExample);
 
         SysRoleUser sysRoleUser = new SysRoleUser();
         sysRoleUser.setId(UUIDUtils.generateUUID());
-        sysRoleUser.setUserId(sysUserSimple.getId());
-        sysRoleUser.setRoleId(sysUserSimple.getRole());
+        sysRoleUser.setUserId(partyMemberMessageVo.getId());
+        sysRoleUser.setRoleId(partyMemberMessageVo.getRole());
         sysRoleUserMapper.insert(sysRoleUser);
 
-        SysUserCompanyExample sysUserCompanyExample = new SysUserCompanyExample();
-        sysUserCompanyExample.createCriteria().andUserIdEqualTo(sysUserSimple.getId());
-        sysUserCompanyMapper.deleteByExample(sysUserCompanyExample);
+        PartyMemberMessageExample partyMemberMessageExample =new PartyMemberMessageExample();
+        partyMemberMessageExample.createCriteria().andRemake1EqualTo(partyMemberMessageVo.getId());
+       PartyMemberMessage partyMemberMessage =new PartyMemberMessage();
+
+        BeanUtils.copyProperties(partyMemberMessageVo,partyMemberMessage);
+        partyMemberMessageMapper.updateByExampleSelective(partyMemberMessage,partyMemberMessageExample);
+
+//        SysUserCompanyExample sysUserCompanyExample = new SysUserCompanyExample();
+//        sysUserCompanyExample.createCriteria().andUserIdEqualTo(sysUserSimple.getId());
+//        sysUserCompanyMapper.deleteByExample(sysUserCompanyExample);
         SysUserCompany sysUserCompany;
-        for(String companyId : checked){
-            if("0".equals(companyId)){
-                continue;
-            }
-            sysUserCompany = new SysUserCompany();
-            sysUserCompany.setId(UUIDUtils.generateUUID());
-            sysUserCompany.setUserId(sysUserSimple.getId());
-            sysUserCompany.setCompanyId(companyId);
-            sysUserCompanyMapper.insert(sysUserCompany);
-        }
+//        for(String companyId : checked){
+//            if("0".equals(companyId)){
+//                continue;
+//            }
+//            sysUserCompany = new SysUserCompany();
+//            sysUserCompany.setId(UUIDUtils.generateUUID());
+//            sysUserCompany.setUserId(sysUserSimple.getId());
+//            sysUserCompany.setCompanyId(companyId);
+//            sysUserCompanyMapper.insert(sysUserCompany);
+//        }
         return true;
     }
 

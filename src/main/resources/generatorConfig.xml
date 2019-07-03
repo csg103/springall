@@ -27,12 +27,13 @@
         <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}" type="XMLMAPPER" />
 
         <!--<table tableName="t_sys_auth" domainObjectName="SysAuth" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
-        <table tableName="t_sys_company" domainObjectName="SysCompany" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>
-        <!--<table tableName="t_sys_role" domainObjectName="SysRole" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
-        <!--<table tableName="t_sys_role_auth" domainObjectName="SysRoleAuth" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
-        <!--<table tableName="t_sys_role_user" domainObjectName="SysRoleUser" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
-        <!--<table tableName="t_sys_user" domainObjectName="SysUser" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
-        <!--<table tableName="t_sys_user_company" domainObjectName="SysUserCompany" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
+        <!--<table tableName="t_partymember_score_detil" domainObjectName="PartyMemberScoreDetil" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
+        <!--<table tableName="t_partymember_family" domainObjectName="PartyMemberFamily" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
+        <!--<table tableName="t_partymember_message" domainObjectName="PartyMemberMessage" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
+        <!--<table tableName="t_party" domainObjectName="Party" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
+        <!--<table tableName="t_common" domainObjectName="Common" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
+        <table tableName="t_appendix" domainObjectName="Appendix" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>
+        <!--<table tableName="t_party_record" domainObjectName="PartyRecord" enableSelectByExample="false" enableDeleteByExample="false" enableUpdateByExample="false"><columnRenamingRule searchString="^c_|^d_|^n_" replaceString="" /></table>-->
 
     </context>
 </generatorConfiguration>

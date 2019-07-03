@@ -1,9 +1,11 @@
 package com.csg.cn.sys.controller;
 
+import com.baidu.MD5Utils;
+import com.csg.cn.business.service.partyMember.PartyMemberMessageService;
 import com.csg.cn.db.entity.SysUser;
 import com.csg.cn.db.vo.SysCompanySimple;
 import com.csg.cn.sys.service.SysAuthService;
-import com.csg.cn.utils.MD5Utils;
+import com.csg.cn.sys.tree.MenuTree;
 import com.csg.cn.vo.AjaxResult;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -30,6 +32,8 @@ public class SysLoginController {
     private SysAuthService sysAuthService;
 
     private Logger logger = LoggerFactory.getLogger(SysLoginController.class);
+    @Autowired
+    private PartyMemberMessageService partyMemberMessageService;
 
     @RequestMapping("/loginIn")
     @ResponseBody
@@ -39,6 +43,12 @@ public class SysLoginController {
             UsernamePasswordToken token = new UsernamePasswordToken(username, MD5Utils.encode(password));
             SecurityUtils.getSubject().login(token);
             SecurityUtils.getSubject().getSession().setTimeout(-1001l);
+            SecurityUtils.getSubject().getSession().setAttribute("userName",username);
+            if(partyMemberMessageService.data(username).size()==1){
+                SecurityUtils.getSubject().getSession().setAttribute("isLeader",partyMemberMessageService.data(username).get(0).getIsleader());
+                SecurityUtils.getSubject().getSession().setAttribute("group",partyMemberMessageService.data(username).get(0).getPartymembergroup());
+
+            }
             result.setCode(AjaxResult.SUCCESS);
             result.setMessage("成功");
         }catch (UnknownAccountException e){
@@ -61,7 +71,9 @@ public class SysLoginController {
     public String home(HttpServletRequest request, Model model){
         String ctx = request.getContextPath();
         SysUser user = (SysUser) SecurityUtils.getSubject().getPrincipal();
-        String treeHtml = sysAuthService.menuTree(ctx, user.getId());
+        List<MenuTree>  treeHtml = sysAuthService.menuTree(ctx, user.getId());
+
+
         model.addAttribute("tree", treeHtml);
         model.addAttribute("userId", user.getId());
         model.addAttribute("username", user.getName());
@@ -69,12 +81,12 @@ public class SysLoginController {
         List<SysCompanySimple> sysCompanySimples = user.getSysCompanySimples();
         model.addAttribute("currentCompany", user.getCurrentCompanyName());
         model.addAttribute("userCompanies", sysCompanySimples);
-        return "Home";
+        return "index";
     }
 
     @RequestMapping("/login")
     public String login(){
-        return "login";
+        return "/";
     }
 
     @RequestMapping("")
@@ -85,7 +97,7 @@ public class SysLoginController {
     @RequestMapping("/logout")
     public String logout(){
         SecurityUtils.getSubject().logout();
-        return "login";
+        return "/";
     }
 
     @RequestMapping("/changeCompany")

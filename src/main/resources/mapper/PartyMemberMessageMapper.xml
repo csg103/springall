@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.csg.cn.db.dao.PartyMemberMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.csg.cn.db.entity.PartyMemberMessage" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="parytMemberId" property="parytmemberid" jdbcType="CHAR" />
+    <result column="departmentId" property="departmentid" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="ethnicGroup" property="ethnicgroup" jdbcType="CHAR" />
+    <result column="birthPlace" property="birthplace" jdbcType="CHAR" />
+    <result column="Marry" property="marry" jdbcType="CHAR" />
+    <result column="education" property="education" jdbcType="CHAR" />
+    <result column="school" property="school" jdbcType="CHAR" />
+    <result column="joinPartyTime" property="joinpartytime" jdbcType="DATE" />
+    <result column="realJoinPartyTime" property="realjoinpartytime" jdbcType="DATE" />
+    <result column="partyMemberJob" property="partymemberjob" jdbcType="CHAR" />
+    <result column="workTime" property="worktime" jdbcType="DATE" />
+    <result column="workJob" property="workjob" jdbcType="CHAR" />
+    <result column="hujiAddress" property="hujiaddress" jdbcType="CHAR" />
+    <result column="cardNum" property="cardnum" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="CHAR" />
+    <result column="tel" property="tel" jdbcType="CHAR" />
+    <result column="remarks" property="remarks" jdbcType="CHAR" />
+    <result column="picUrl" property="picurl" jdbcType="CHAR" />
+    <result column="remake1" property="remake1" jdbcType="CHAR" />
+    <result column="remale2" property="remale2" jdbcType="CHAR" />
+    <result column="partyMemberGroup" property="partymembergroup" jdbcType="CHAR" />
+    <result column="isLeader" property="isleader" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    parytMemberId, departmentId, name, sex, birthday, ethnicGroup, birthPlace, Marry, 
+    education, school, joinPartyTime, realJoinPartyTime, partyMemberJob, workTime, workJob, 
+    hujiAddress, cardNum, address, tel, remarks, picUrl, remake1, remale2, partyMemberGroup, 
+    isLeader
+  </sql>
+  <select id="countByExample" parameterType="com.csg.cn.db.entity.PartyMemberMessageExample" resultType="java.lang.Integer" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select count(*) from t_partymember_message
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

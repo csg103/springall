@@ -1,4 +1,4 @@
-package com.csg.cn.utils;
+package com.baidu;
 
 
 import com.csg.cn.sys.tree.MenuTree;
@@ -28,8 +28,11 @@ public class NavUtils {
                 sb.append(getMenuTree(ctx, t.getSubMenu()));
                 sb.append("</ul>");
             } else {
-                sb.append("<a _href='").append(ctx).append("/").append(t.getAuthUrl()).append("'>");
-                sb.append("<i class='iconfont none'>&#xe6b8;</i>");
+                sb.append("<a onclick='xadmin.add_tab" +
+                        "('折线图','auth/list')" +
+                        "'");
+                //                sb.append("<a _href='").append(ctx).append("http://localhost:8080/").append(t.getAuthUrl()).append("'>");
+//                sb.append("<i class='iconfont none'>&#xe6b8;</i>");
                 sb.append("<cite>");
                 sb.append(t.getAuthName());
                 sb.append("</cite>");

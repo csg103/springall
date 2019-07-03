@@ -69,12 +69,12 @@ function loadData(index, size){
             ,cols: [[
                 {type:'checkbox'}
                 // ,{field: 'id', title: 'ID', }
-                ,{field: 'name', title: '人员姓名'}
-                ,{field: 'username', title: '登录名'}
+                ,{field: 'name', title: '人员姓名',width :'20%'}
+                ,{field: 'username', title: '登录名',width :'20%'}
                 // ,{field: 'companyName', title: '所属公司'}
-                ,{field: 'role', title: '角色'}
-                ,{field: 'phone', title: '联系方式'}
-                ,{title:'操作' ,fixed: 'right', width:150, align:'center', toolbar: '#toolbar'}
+                ,{field: 'role', title: '角色',width :'10%'}
+                ,{field: 'phone', title: '联系方式',width :'20%'}
+                ,{title:'操作' ,fixed: 'right', width :'20%', align:'center', toolbar: '#toolbar'}
             ]],
             response:{
                 statusName: 'code',
@@ -132,5 +132,5 @@ function generatePagination(total){
 }
 
 var editCompany = function (id) {
-    x_admin_show("编辑人员",ctx + "user/edit?id=" + id, 800, 600)
+    xadmin.open("编辑人员",ctx + "user/edit?id=" + id, 800, 600)
 }

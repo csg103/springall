@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.ValueFilter;
+import com.csg.cn.db.entity.PartyMemberScoreDetil;
+import com.csg.cn.db.entity.PartyMemberScorePip;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.collections.FastHashMap;
@@ -12,6 +14,7 @@ import org.apache.commons.collections.map.HashedMap;
 import org.dozer.DozerBeanMapper;
 import org.junit.Assert;
 import org.junit.Test;
+import org.thymeleaf.util.StringUtils;
 import test.testa;
 import test.testb;
 
@@ -316,7 +319,9 @@ public class BaseUtils {
 
     }
 
-    /** bean 抓换成MAP 不支持嵌套对象转换
+    /**
+     * bean 抓换成MAP 不支持嵌套对象转换
+     *
      * @param obj
      */
     public static Map BeanToMap(Object obj) {
@@ -332,6 +337,30 @@ public class BaseUtils {
         }
         return map;
 
+    }
+
+    public static int getScore(List<PartyMemberScoreDetil> partyMemberScoreDetilList, List<PartyMemberScorePip> partyMemberScorePipList) {
+        int i = 100;
+        for (PartyMemberScorePip partyMemberScorePip : partyMemberScorePipList) {
+            int m= Integer.parseInt(partyMemberScorePip.getScore());// 总分
+            int n= Integer.parseInt(partyMemberScorePip.getRemake1());//每次分数标准
+            int j=0; //当前标准当前得分
+            for (PartyMemberScoreDetil partyMemberScoreDetil : partyMemberScoreDetilList) {
+                if(StringUtils.equals(partyMemberScorePip.getScoreid(),partyMemberScoreDetil.getPipid())){
+                    j=j+n;
+                    if(j>=m){
+                        j=m;
+                        break;
+                    }
+                }
+            }
+            if(StringUtils.equals(partyMemberScorePip.getIsadd(),"1")){
+                i=i+j;
+            }else{
+                i=i-j;
+            }
+        }
+        return i;
     }
 
     @Test
@@ -353,7 +382,7 @@ public class BaseUtils {
         b.setC(true);
         a.setD(b);
 //        MapToBean(a, map);
-      Map map1 =  BeanToMap(a);
+        Map map1 = BeanToMap(a);
 
         String mapJson = ObjectToJsonString(map);
 

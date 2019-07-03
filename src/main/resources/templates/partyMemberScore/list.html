@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>党员列表</title>
+    <div th:include="common/common"></div>
+    <script th:src="@{/js/partyMemberScore/list.js}"></script>
+</head>
+<body>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">列表</a>
+        <a href="">党员</a>
+        <a>
+          <cite>积分</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+       href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="x-body">
+                    <xblock>
+                        <div class="layui-input-inline" style="width: 100%">
+                            <div th:if="${isLeader} eq '9'" class="layui-inline">
+                                <div class="layui-inline">
+                                    <label class="layui-form-label">年度选择器</label>
+                                    <div class="layui-input-inline">
+                                        <input type="text" class="layui-input" id="year" name="year" placeholder="yyyy">
+                                    </div>
+                                </div>
+                                <button class="layui-btn" name="addBaseScore" id="addBaseScore">生成基础分数</button>
+                            </div>
+
+                            <hr class="layui-bg-cyan">
+                        </div>
+
+
+                    </xblock>
+
+                    <div class="layui-inline">
+                        <form class="layui-form layui-col-space5">
+                            <div class="layui-input-inline layui-show-xs-block">
+                                <select name="departmentid" id="departmentid" lay-verify="required">
+                                    <option value=""></option>
+                                    <div th:each="departments,iterStat:${departmentsList}">
+                                        <option th:text="${departments.departmentname}"
+                                                th:value="${departments.departmentid}"></option>
+                                    </div>
+                                </select>
+                            </div>
+
+                            <div class="layui-inline layui-show-xs-block">
+                                <input type="text" name="searchTime" id="searchTime" placeholder="请输入年度"
+                                       autocomplete="off" class="layui-input">
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="layui-inline layui-show-xs-block">
+                        <button class="layui-btn" id="searchMes" lay-submit="" lay-filter="sreach"><i
+                                class="layui-icon">&#xe615;</i></button>
+                    </div>
+                    <table class="layui-table" id="demo" lay-filter="user_table"></table>
+
+                    <div class="page">
+                        <div id="listPage">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="toolbar">
+    <div th:if="${isLeader} eq '0'">
+        <a class="layui-btn layui-btn-xs" lay-event="look">查看[[${isLeader}]]</a>
+    </div>
+    <div th:if="${isLeader} ne '0'">
+        <a class="layui-btn layui-btn-xs" lay-event="look"> 查看</a>
+        <a class="layui-btn layui-btn-xs" lay-event="detail">编辑</a>
+    </div>
+    <!--<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
+</script>
+<script>
+
+    layui.use(['form', 'layedit', 'laydate', 'layer'], function () {
+        var date = new Date;
+        var yearnow = date.getFullYear();
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+//日期
+        //年选择器
+        laydate.render({
+            elem: '#year'
+            , value: yearnow
+            , type: 'year'
+        });
+
+        //年选择器
+        laydate.render({
+            elem: '#searchTime'
+            , value: yearnow
+            , type: 'year'
+        });
+
+
+    });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>添加党员</title>
+    <div th:include="common/common"></div>
+    <script th:src="@{/js/partyMember/edit.js}"></script>
+</head>
+<body>
+<div class="x-body">
+    <form class="layui-form">
+
+
+        <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-header">党员基本信息</div>
+                        <div class="layui-card-body">
+
+                            <div class="layui-form-item">
+
+
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">ID</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="parytmemberid" autocomplete="off" placeholder="请输入籍贯" lay-verify="required" th:value="${partyMemberMessage.parytmemberid}"
+                                               class="layui-input" readonly>
+                                    </div>
+                                </div>
+
+                                <label class="layui-form-label">姓名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="name" th:value="${partyMemberMessage.name}" lay-verify="required" readonly placeholder="请输入"
+                                           autocomplete="off"
+                                           class="layui-input">
+
+                                </div>
+
+
+                                <label class="layui-form-label">民族</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="ethnicgroup" th:value="${partyMemberMessage.ethnicgroup}" lay-verify="required" autocomplete="off"
+                                           placeholder="请输入"
+                                           class="layui-input">
+                                </div>
+
+
+                                <label class="layui-form-label">学历</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="education" lay-verify="required" autocomplete="off" th:value="${partyMemberMessage.education}"
+                                           placeholder="请输入"
+                                           class="layui-input">
+
+                                </div>
+
+                                <label class="layui-form-label">出生年月</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" id="birthday" name="birthday" lay-verify="required"  th:value="${partyMemberMessage.birthday}"
+                                           placeholder="yyyy-MM-dd">
+                                </div>
+
+
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">籍贯</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="birthplace" autocomplete="off" placeholder="请输入籍贯" lay-verify="required" th:value="${partyMemberMessage.birthplace}"
+                                           class="layui-input">
+                                </div>
+                            </div>
+
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">性别</label>
+                                <div class="layui-input-block" id="sex" name="sex"  >
+                                    <input type="radio" th:red name="sex" value="1" title="男">
+                                    <input type="radio" name="sex" value="2" title="女" >
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">结婚状况</label>
+                                <div class="layui-input-block" id="marry" name="marry"  >
+                                    <input type="radio" name="marry" value="1" title="已婚" >
+                                    <input type="radio" name="marry" value="2" title="未婚"  >
+                                </div>
+                            </div>
+
+                            <!--<div class="layui-form-item">-->
+                            <!--<label class="layui-form-label">学历学位</label>-->
+                            <!--<div class="layui-input-block">-->
+                            <!--<input type="text" name="school" autocomplete="off" placeholder="请输入学历学位"-->
+                            <!--class="layui-input">-->
+                            <!--</div>-->
+                            <!--</div>-->
+
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">毕业院校及专业</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="school" autocomplete="off" placeholder="请输入" lay-verify="required"   th:value="${partyMemberMessage.school}"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">入党时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" name="joinpartytime" id="joinpartytime" lay-verify="required" th:value="${partyMemberMessage.joinpartytime}"
+                                           placeholder="yyyy-MM-dd">
+                                </div>
+
+                                <label class="layui-form-label">转正时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" name="realjoinpartytime" id="realjoinpartytime"  lay-verify="required"  th:value="${partyMemberMessage.realjoinpartytime}"
+                                            placeholder="yyyy-MM-dd">
+                                </div>
+
+
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">现任党内职务 </label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="partymemberjob" autocomplete="off" placeholder="请输入" lay-verify="required"  th:value="${partyMemberMessage.partymemberjob}"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                            <!--<div class="layui-form-mid layui-word-aux">-->
+                            <!--<span class="x-red">*</span>-->
+                            <!--</div>-->
+
+                            <div class="layui-form-item">
+
+                                <label class="layui-form-label">参加工作时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" name="worktime" id="worktime" lay-verify="required"   th:value="${partyMemberMessage.worktime}"
+                                           placeholder="yyyy-MM-dd">
+                                </div>
+
+                                <label class="layui-form-label">身份证号码</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="cardnum" lay-verify="required" placeholder="请输入" th:value="${partyMemberMessage.cardnum}"
+                                           autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                                <label class="layui-form-label">联系方式</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="tel" lay-verify="required" placeholder="请输入"  th:value="${partyMemberMessage.tel}"
+                                           autocomplete="off"
+                                           class="layui-input">
+                                </div>
+
+                            </div>
+
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">现在工作单位及职务 </label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="workjob" autocomplete="off" placeholder="请输入" lay-verify="required"  th:value="${partyMemberMessage.workjob}"
+                                           class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">现户籍所在地 </label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="hujiaddress" autocomplete="off" placeholder="请输入" lay-verify="required"   th:value="${partyMemberMessage.hujiaddress}"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">现家庭住址</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="address" autocomplete="off" placeholder="请输入" lay-verify="required"   th:value="${partyMemberMessage.address}"
+                                           class="layui-input">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-col-md12" style="height: 600px">
+                    <div class="layui-card">
+                        <div class="layui-card-header">家庭主要成员</div>
+                        -
+                        <div class="layui-card-body">
+
+                            <table class="layui-table" lay-size="lg">
+                                <colgroup>
+                                    <col width="150">
+                                    <col width="150">
+                                    <col width="150">
+                                    <col width="250">
+                                    <col width="150">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>称谓</th>
+                                    <th>姓名</th>
+                                    <th>政治面貌</th>
+                                    <th>工作单位及职务</th>
+                                    <th>联系方式</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr  th:each=" partyMemberFamilyVo,partyMemberFamilyVoStat: ${partyMemberFamilyVoList}">
+                                    <td >
+
+                                    <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" th:name="'partyMemberFamilyVoList['+${partyMemberFamilyVoStat.index}+'].relation'"  th:value="${partyMemberFamilyVo.relation}"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text"  th:name="'partyMemberFamilyVoList['+${partyMemberFamilyVoStat.index}+'].name'"  th:value="${partyMemberFamilyVo.name}"
+                                                   placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline"  style="width: 100%">
+                                            <input type="text"  th:name="'partyMemberFamilyVoList['+${partyMemberFamilyVoStat.index}+'].zhengzhimianmao'"   th:value="${partyMemberFamilyVo.zhengzhimianmao}"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" th:name="'partyMemberFamilyVoList['+${partyMemberFamilyVoStat.index}+'].work'"   th:value="${partyMemberFamilyVo.work}"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="layui-input-inline" style="width: 100%">
+                                            <input type="text" th:name="'partyMemberFamilyVoList['+${partyMemberFamilyVoStat.index}+'].tel'"   th:value="${partyMemberFamilyVo.tel}"
+                                                    placeholder="请输入"
+                                                   autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                            <!--<div class="" style=" margin-left:40%" name="addTable" id="addTable" >-->
+
+                            <!--<button class="layui-btn">增加新成员</button>-->
+
+
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item" style=" margin-left:40%">
+
+            <button class="layui-btn" lay-filter="add" lay-submit="">
+                保存
+            </button>
+        </div>
+
+    </form>
+</div>
+</body>
+
+<script>
+
+    var isCheckedsex = [[${partyMemberMessage.sex}]]=="1" ? "1" : "2";
+    $("#sex").find("input").each(function () {//循环判断添加 radio
+
+        if ($(this).val() == isCheckedsex) {
+            $(this).attr("checked", "checked")
+        }
+    })
+
+
+    var isCheckedmarry = [[${partyMemberMessage.marry}]]=="1" ? "1" : "2";
+    $("#marry").find("input").each(function () {//循环判断添加 radio
+
+        if ($(this).val() == isCheckedmarry) {
+            $(this).attr("checked", "checked")
+        }
+    })
+
+    //    $("#addTable").click(function(){
+    //        alert( $(".layui-table").html())
+    //        var tr=" <tr>"+
+    //            " <td>11</td>"+
+    //            " <td>22</td>"+
+    //            " <td>33</td>"+
+    //            " <td>44</td>"+
+    //            " <td>55</td>"+
+    //            " </tr>";
+    //        $(".layui-table").append(tr);
+    //        alert( $(".layui-table"));
+    //    });
+
+
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var form = layui.form
+            , layer = layui.layer
+            , layedit = layui.layedit
+            , laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#realjoinpartytime'
+        });
+        laydate.render({
+            elem: '#birthday'
+        });
+        laydate.render({
+            elem: '#joinpartytime'
+        });
+        laydate.render({
+            elem: '#worktime'
+        });
+
+
+    });
+</script>
+</html>

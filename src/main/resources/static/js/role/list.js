@@ -27,9 +27,9 @@ function loadData(index, size){
             ,cols: [[
                 {type:'checkbox'}
                 // ,{field: 'id', title: 'ID', }
-                ,{field: 'roleName', title: '角色名'}
-                ,{field: 'roleDescription', title: '描述', width:'50%'}
-                ,{field: 'roleStatus', title: '状态', templet: function (d) {
+                ,{field: 'roleName', title: '角色名', width:'25%'}
+                ,{field: 'roleDescription', title: '描述', width:'25%'}
+                ,{field: 'roleStatus', title: '状态',  width:'20%' ,templet: function (d) {
                         var dom = ''
                         if (d.roleStatus == 1){
                             dom += '<a class="layui-btn layui-btn-xs" href="javascript:;">启用'
@@ -39,7 +39,7 @@ function loadData(index, size){
                         dom += '</a>'
                         return dom;
                     }}
-                ,{title:'操作' ,fixed: 'right', width:150, align:'center', toolbar: '#toolbar'}
+                ,{title:'操作' ,fixed: 'right', width:'20%', align:'center', toolbar: '#toolbar'}
             ]],
             response:{
                 statusName: 'code',
@@ -61,7 +61,7 @@ function loadData(index, size){
             if (layEvent == 'detail'){
                 layer.msg(JSON.stringify(data))
             } else if (layEvent == 'edit'){
-                x_admin_show("角色编辑", ctx + 'role/edit?id=' + data.id, 600, 400);
+                xadmin.open("角色编辑", ctx + 'role/edit?id=' + data.id, 600, 400);
             } else if (layEvent == 'del'){
                 layer.confirm('是否删除角色<span style="color: #FF5722; font-size: 16px;">'+ data.roleName +'</span>?', function(index){
                     $.ajax({

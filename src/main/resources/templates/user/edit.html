@@ -27,21 +27,21 @@
                 <span class="x-red">*</span>登录名
             </label>
             <div class="layui-input-inline" style="width: 70%">
-                <input type="text" id="L_username" name="username" required="" lay-verify="required"
+                <input type="text" id="L_username" name="loginname" required="" lay-verify="required"
                        autocomplete="off" class="layui-input">
             </div>
             <!--<div class="layui-form-mid layui-word-aux">-->
             <!--<span class="x-red">*</span>-->
             <!--</div>-->
         </div>
-        <div class="layui-form-item">
-            <label for="L_phone" class="layui-form-label">
-                联系方式
-            </label>
-            <div class="layui-input-inline" style="width: 70%">
-                <input type="text" id="L_phone" name="phone" autocomplete="off" class="layui-input">
-            </div>
-        </div>
+        <!--<div class="layui-form-item">-->
+            <!--<label for="L_phone" class="layui-form-label">-->
+                <!--联系方式-->
+            <!--</label>-->
+            <!--<div class="layui-input-inline" style="width: 70%">-->
+                <!--<input type="text" id="L_phone" name="phone" autocomplete="off" class="layui-input">-->
+            <!--</div>-->
+        <!--</div>-->
         <div class="layui-form-item">
             <label for="L_role" class="layui-form-label">
                 <span class="x-red">*</span>角色
@@ -57,6 +57,49 @@
                 </select>
             </div>
         </div>
+
+
+        <div class="layui-form-item">
+            <label for="departmentid" class="layui-form-label">
+                <span class="x-red">*</span>部门列表
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <!--<input type="text" id="L_isMenu" name="isMenu" required=""-->
+                <!--autocomplete="off" class="layui-input">-->
+                <select name="departmentid" id="departmentid" lay-verify="required">
+                    <option value=""></option>
+                    <div th:each="departments,iterStat:${departmentsList}">
+                        <option th:text="${departments.departmentname}" th:value="${departments.departmentid}"></option>
+                    </div>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">组长</label>
+            <div class="layui-input-block">
+                <input type="radio" name="isleader" value="0" title="党员" checked>
+                <input type="radio" name="isleader" value="1" title="组长">
+                <input type="radio" name="isleader" value="2" title="委员">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="partymembergroup" class="layui-form-label">
+                <span class="x-red">*</span>小组分组
+            </label>
+            <div class="layui-input-inline" style="width: 70%">
+                <!--<input type="text" id="L_isMenu" name="isMenu" required=""-->
+                <!--autocomplete="off" class="layui-input">-->
+                <select name="partymembergroup" id="partymembergroup" lay-verify="required">
+                    <option value=""></option>
+                    <div th:each="group,iterStat:${groups}">
+                        <option th:text="${group.valuename}" th:value="${group.id}"></option>
+                    </div>
+                </select>
+            </div>
+        </div>
+
+
         <!--<div class="layui-form-item">-->
             <!--<label for="L_companyName" class="layui-form-label">-->
                 <!--<span class="x-red">*</span>所属公司-->
@@ -72,13 +115,13 @@
                 <!--</select>-->
             <!--</div>-->
         <!--</div>-->
-        <div class="layui-form-item">
-            <label for="L_role" class="layui-form-label">
-                <span class="x-red">*</span>选择公司
-            </label>
-            <div id="permissionTree" style="margin-left: 20%" lay-verify="companies"></div>
+        <!--<div class="layui-form-item">-->
+            <!--<label for="L_role" class="layui-form-label">-->
+                <!--<span class="x-red">*</span>选择公司-->
+            <!--</label>-->
+            <!--<div id="permissionTree" style="margin-left: 20%" lay-verify="companies"></div>-->
 
-        </div>
+        <!--</div>-->
         <div class="layui-form-item">
             <div class="layui-input-inline">
             </div>
@@ -95,34 +138,34 @@
 <script>
 
     $(function () {
-        $('#permissionTree').css({'margin-left':($('body').width() - $('#permissionTree').width())/2})
-        $('#permissionTree').jstree({
-            core:{
-                check_callback: true,
-                themes: {
-                    // "responsive": false,
-                    "icons": false,
-                    // "stripes" : true
-                },
-                data:{
-                    'url': function (node) {
-                        return ctx + 'auth/getCompanyTreeWithState';
-                    },
-                    'data': function (node) {
-                        return {'companyParentId': node.id, 'userId' : $('#id').val()};
-                    }
-                },
-            },
-            types: {
-                "default": {
-                    "icon": "fa fa-folder icon-state-warning icon-lg"
-                },
-                "file": {
-                    "icon": "fa fa-file icon-state-warning icon-lg"
-                }
-            },
-            plugins: ["types","themes","checkbox"]
-        });
+//        $('#permissionTree').css({'margin-left':($('body').width() - $('#permissionTree').width())/2})
+//        $('#permissionTree').jstree({
+//            core:{
+//                check_callback: true,
+//                themes: {
+//                    // "responsive": false,
+//                    "icons": false,
+//                    // "stripes" : true
+//                },
+//                data:{
+//                    'url': function (node) {
+//                        return ctx + 'auth/getCompanyTreeWithState';
+//                    },
+//                    'data': function (node) {
+//                        return {'companyParentId': node.id, 'userId' : $('#id').val()};
+//                    }
+//                },
+//            },
+//            types: {
+//                "default": {
+//                    "icon": "fa fa-folder icon-state-warning icon-lg"
+//                },
+//                "file": {
+//                    "icon": "fa fa-file icon-state-warning icon-lg"
+//                }
+//            },
+//            plugins: ["types","themes","checkbox"]
+//        });
 
         edit();
     });
@@ -143,11 +186,15 @@
                     var value = data.data;
                     form.val('editForm', {
                         'name':value.name
-                        ,'username':value.username
+                        ,'loginname':value.loginname
                         ,'lastUserName':value.username
-                        ,'phone':value.phone
+                        ,'partymembergroup':value.partymembergroup
+                        ,'isleader':value.isleader
+                        ,'departmentid':value.departmentid
+
+
                         ,'role':value.role
-                        ,'companyName':value.companyName
+
                     })
                 }
             });
@@ -161,32 +208,32 @@
 
         form.verify({
             companies: function (value, item) {
-                var ref = $('#permissionTree').jstree(true),
-                    checked = ref.get_selected(),
-                    undetermined = ref.get_undetermined()
-
-                for (var i in undetermined){
-                    checked.push(undetermined[i])
-                }
-
-                if(checked.length == 0){
-                    return '公司不能为空';
-                }
+//                var ref = $('#permissionTree').jstree(true),
+//                    checked = ref.get_selected(),
+//                    undetermined = ref.get_undetermined()
+//
+//                for (var i in undetermined){
+//                    checked.push(undetermined[i])
+//                }
+//
+//                if(checked.length == 0){
+//                    return '公司不能为空';
+//                }
             }
         });
 
         form.on('submit(save)', function (data) {
             console.log(data.field);
 
-            var ref = $('#permissionTree').jstree(true),
-                checked = ref.get_selected(),
-                undetermined = ref.get_undetermined()
-
-            for (var i in undetermined){
-                checked.push(undetermined[i])
-            }
-
-            data.field.checked = checked;
+//            var ref = $('#permissionTree').jstree(true),
+//                checked = ref.get_selected(),
+//                undetermined = ref.get_undetermined()
+//
+//            for (var i in undetermined){
+//                checked.push(undetermined[i])
+//            }
+//
+//            data.field.checked = checked;
 
             $.ajax({
                 url:ctx + 'user/saveEdit',

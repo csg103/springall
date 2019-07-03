@@ -40,10 +40,11 @@ public class ShiroConfig {
 //        filterChainDefinitionMap.put("/fonts/**", "anon");
         filterChainDefinitionMap.put("/images/**", "anon");
         filterChainDefinitionMap.put("/loginIn", "anon");
-
+//        filterChainDefinitionMap.put("/home", "anon");
+//        filterChainDefinitionMap.put("/**", "anon");
         filterChainDefinitionMap.put("/**", "authc");
 
-        shiroFilterFactoryBean.setLoginUrl("/login");
+        shiroFilterFactoryBean.setLoginUrl("/");
         shiroFilterFactoryBean.setSuccessUrl("/home");
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
